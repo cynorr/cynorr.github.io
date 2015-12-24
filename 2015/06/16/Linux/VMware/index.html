@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>VMware WorkStation for linux | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="##简介Linux系统是程序员主要开发环境,但是linux在办公应用方面做的并不完美,比如部分打印机不支持和QQ版本不稳定.为避免双系统频繁切换问题,有必要在linux下安装虚拟街.VMware是目前最优秀的虚拟机,内存读取速度,网速,硬盘读取速度等各个参数完胜VirtualBox,本文介绍Fedo">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="VMware WorkStation for linux"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> VMware WorkStation for linux</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>##简介<br>Linux系统是程序员主要开发环境,但是linux在办公应用方面做的并不完美,比如部分打印机不支持和QQ版本不稳定.为避免双系统频繁切换问题,有必要在linux下安装虚拟街.VMware是目前最优秀的虚拟机,内存读取速度,网速,硬盘读取速度等各个参数完胜VirtualBox,本文介绍Fedora下VMware虚拟机的安装.</p>
+<p>##准备工作</p>
+<ul>
+<li>安装文件:VMware-Workstation-Full-11.1.2-2780323.x86_64.bundle</li>
+<li>VMware11永久序列号:1F04Z-6D111-7Z029-AV0Q4-3AEH8</li>
+<li><p>配置gtk-2.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su&#10;#&#23433;&#35013;gtk&#10;yum install gtk* -y&#10;locate pk-gtk-module.so&#10;&#62; /usr/lib/gtk-2.0/modules/pk-gtk-module.so #&#26681;&#25454;&#26597;&#25214;,&#30830;&#23450;gtk-2.0&#30446;&#24405;&#10;&#10;#&#28155;&#21152;modules&#36335;&#24452;&#10;vim /etc/ld.so.conf.d/gtk-2.0.conf #&#26032;&#24314;gtk-2.0-conf&#25991;&#20214;&#10;/usr/lib/gtk-2.0/modules               #&#28155;&#21152;modules&#30446;&#24405;&#10;ldconfig</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>链接kernel headers</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su&#10;#&#26597;&#25214;linux version&#30446;&#24405;&#10;locate version.h | more&#10;&#62; /usr/include/linux/version.h&#10;&#10;ln -s /usr/include/linux/version.h /lib/modules/3.17.04.fc21.x86_64/build/include/linux/ &#10;#&#19978;&#25991;build&#26159;/usr/src/kernel/3.17.04.fc21.x86_64&#30340;&#38142;&#25509;,&#22914;&#26524;&#22833;&#25928;&#38738;&#37325;&#24314;&#38142;&#25509;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##安装VMware<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x VMware-Workstation-Full-11.1.2-2780323.x86_64.bundle&#10;su&#10;./VMware-Workstation-Full-11.1.2-2780323.x86_64.bundle</span><br></pre></td></tr></table></figure></p>
+<p>##安装Win8.1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#26032;&#24314;&#34394;&#25311;&#26426;&#10;&#37197;&#32622;&#31867;&#22411;:&#33258;&#23450;&#20041;(&#39640;&#32423;)&#10;&#30828;&#20214;&#20860;&#23481;&#24615;:workstation11&#10;&#23433;&#35013;&#23458;&#25143;&#26426;&#25805;&#20316;&#31995;&#32479;:&#31245;&#21518;&#23433;&#35013;&#31995;&#32479;&#10;&#36873;&#25321;&#23458;&#25143;&#26426;&#25805;&#20316;&#31995;&#32479;:Win8.1&#36873;windows8&#10;&#21629;&#21517;&#34394;&#25311;&#26426;:&#40664;&#35748;&#10;&#22788;&#29702;&#22120;&#37197;&#32622;:&#22788;&#29702;&#22120;&#25968;&#37327;1,&#27599;&#20010;&#22788;&#29702;&#22120;&#26680;&#24515;&#25968;&#37327;2(&#20010;&#20154;&#20027;&#26426;&#20960;&#20046;&#37117;&#21482;&#26377;1&#21508;&#22788;&#29702;&#22120;,&#26680;&#24515;2&#20010;&#25110;4&#20010;,&#21306;&#26680;&#24515;&#25968;&#37327;&#19968;&#21322;&#21363;&#21487;)&#10;&#20869;&#23384;:3G&#10;&#32593;&#32476;&#31867;&#22411;:NAT(&#31532;&#20108;&#20010;)&#10;I/O&#25511;&#21046;&#22120;:&#40664;&#35748;&#10;&#30913;&#30424;&#31867;&#22411;:SATA(A)&#10;&#36873;&#25321;&#30913;&#30424;:&#21019;&#24314;&#26032;&#30340;&#34394;&#25311;&#30913;&#30424;&#10;&#23481;&#37327;:&#33258;&#23450;,&#25171;&#21246;&#31435;&#21363;&#20998;&#37197;&#30913;&#30424;,&#36873;&#25321;&#23384;&#20648;&#20026;&#21333;&#20010;&#25991;&#20214;&#10;&#33258;&#23450;&#20041;&#30828;&#20214; -&#62; &#26032;CD/DVD -&#62; &#20351;&#29992;ISO&#38236;&#20687;&#25991;&#20214; -&#62; &#36873;&#25321;win8&#38236;&#20687;</span><br></pre></td></tr></table></figure></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/06/26/Linux/sync/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2014/10/10/Linux/GithubPages/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-06-16 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Fedora-Customized/">Fedora Customized<span>4</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/VMware虚拟机/">VMware虚拟机<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

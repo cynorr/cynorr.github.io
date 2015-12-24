@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>A branch of Gentoo troubleshooting | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="1. emerge can’t work :Checking whether the C compiler works… no12root # gcc-config -lroot # gcc-config 1
+2. How to screenshoot on xfce41root # emerge ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="A branch of Gentoo troubleshooting"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> A branch of Gentoo troubleshooting</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h3 id="1-_emerge_can_u2019t_work__3AChecking_whether_the_C_compiler_works_u2026_no"><a href="#1-_emerge_can_u2019t_work__3AChecking_whether_the_C_compiler_works_u2026_no" class="headerlink" title="1. emerge can’t work :Checking whether the C compiler works… no"></a>1. emerge can’t work :Checking whether the C compiler works… no</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># gcc-config -l</span></span><br><span class="line">root <span class="comment"># gcc-config 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-_How_to_screenshoot_on_xfce4"><a href="#2-_How_to_screenshoot_on_xfce4" class="headerlink" title="2. How to screenshoot on xfce4"></a>2. How to screenshoot on xfce4</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge xfce4-screenshooter</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-_Dual_boot_gentoo_and_windows"><a href="#3-_Dual_boot_gentoo_and_windows" class="headerlink" title="3. Dual boot gentoo and windows"></a>3. Dual boot gentoo and windows</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge os-prober</span></span><br><span class="line">root <span class="comment"># grub2-install /dev/sda</span></span><br><span class="line">root <span class="comment"># grub2-mkconfig -o /boot/grub/grub.cfg</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-_Laptop__3A_Powermanager_2C_Volumn_2C_Brightness"><a href="#4-_Laptop__3A_Powermanager_2C_Volumn_2C_Brightness" class="headerlink" title="4. Laptop : Powermanager, Volumn, Brightness"></a>4. Laptop : Powermanager, Volumn, Brightness</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge laptop-mode-tools</span></span><br><span class="line">root <span class="comment"># rc-update add laptop_mode default</span></span><br><span class="line">root <span class="comment"># emerge xfce4-power-manager</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-_error_3A_generated/bounds-h_when_emerging_VirtualBox"><a href="#5-_error_3A_generated/bounds-h_when_emerging_VirtualBox" class="headerlink" title="5. error: generated/bounds.h when emerging VirtualBox"></a>5. error: generated/bounds.h when emerging VirtualBox</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># cd /usr/src/linux</span></span><br><span class="line">root <span class="comment"># make modules_prepare</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-_Necessary_applications_list"><a href="#6-_Necessary_applications_list" class="headerlink" title="6. Necessary applications list"></a>6. Necessary applications list</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">euse -E vlc networkmanager alsa&#10;emerge --autounmask-write \&#10;x11-misc/slim xf86-video-intel xf86-video-vesa xorg-drivers xorg-x11 \&#10;greybird xfce4-meta xfce4-notifyd xfce4-panel xfce4-terminal xfce4-screenshooter xfce4-battery-plugin xfce4-power-manager xfce4-mixer xfce4-appfinder xfce4-archive-plugin xfce-extra/tumbler thunar-volman\&#10;thunderbird firefox google-chrome dhcp net-misc/networkmanager nm-applet opera\&#10;smplayer alsa-utils rhythmbox adobe-flash media-gfx/mirage\&#10;virtualbox virtualbox-guest-additions wine \&#10;wps-office media-fonts/symbola libreoffice gedit fcitx wqy-zenhei sunpinyin \&#10;compiz fusion-icon emerald compiz-plugins-main compiz-plugins-extra \&#10;htop sudo screenfetch pciutils gentoolkit laptop-mode-tools bumblebee</span><br></pre></td></tr></table></figure>
+<h3 id="7-_Chinese_fonts"><a href="#7-_Chinese_fonts" class="headerlink" title="7. Chinese fonts"></a>7. Chinese fonts</h3><p>First, configure the /etc/locale.gen<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">en_US ISO-8859-1&#10;en_US.UTF-8 UTF-8&#10;zh_CN GB18030&#10;zh_CN.GBK GBK&#10;zh_CN.GB2312 GB2312&#10;zh_CN.UTF-8 UTF-8</span><br></pre></td></tr></table></figure></p>
+<p>Then, install the Chinese fonts and refresh profile<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge wqy-zenhei #正黑</span></span><br><span class="line">root <span class="comment"># env-update &amp;&amp; source /etc/profile</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="8-_Inatll_OS_X_theme"><a href="#8-_Inatll_OS_X_theme" class="headerlink" title="8. Inatll OS X theme"></a>8. Inatll OS X theme</h3><p>First download the Gnome Cupertino file, which is available at gnome-look.org. Then unpackage it and copy it to /usr/share/themes/ rather than user’s home.<br>After installation, open apperence and activate the Gnome-Cupertino theme. But after you activate the theme, the window frame remains the same. To fix this we need <code>dconf</code> - the Configurator system files tools.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge dconf dconf-editor</span></span><br></pre></td></tr></table></figure></p>
+<p>After installation, launch the <code>dconf-editor</code>, go to the following address: <strong>org/gnome/desktop/wm/preferences</strong> and in the line theme, change the name of the theme on <code>Gnome-Cupertino</code>.<br>Now the window frames should vary according to the installed and activated the theme <strong>Gnome Cupertino</strong>. If not, open the apperance and reactivate <strong>Gnome Cupertino</strong>.</p>
+<h3 id="9-Session_and_StartUp_for_Compiz_can_u2019t_work"><a href="#9-Session_and_StartUp_for_Compiz_can_u2019t_work" class="headerlink" title="9.Session and StartUp for Compiz can’t work"></a>9.Session and StartUp for <strong>Compiz</strong> can’t work</h3><p>Admittedly, <strong>compiz</strong> should be started after X and xfce4 completely initialization. We can delay the startup of compiz for 1s by using <code>sleep 1</code>, otherwise compiz wouldn’t work.<br>Following is the script for compiz startup placed at ~/.start-compiz.sh, which needs to be add to <code>Session and Startup</code> list.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash</span></span><br><span class="line">sleep <span class="number">1</span></span><br><span class="line">compiz --replace --sm-disable --ignore-desktop-hints ccp &amp;</span><br><span class="line">emerald --replace &amp;</span><br></pre></td></tr></table></figure></p>
+<h3 id="10-_alsa_cannot_find_control_device"><a href="#10-_alsa_cannot_find_control_device" class="headerlink" title="10. alsa cannot find control device"></a>10. alsa cannot find control device</h3><p>We need to set codec for alsa<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Device Drivers  ---&#62;&#10;  &#60;*&#62; Sound card support  ---&#62;&#10;    &#60;*&#62;   Advanced Linux Sound Architecture  ---&#62;  &#10;      HD-Audio  ---&#62;&#10;        &#60;*&#62; HD Audio PCI                                                             &#9474; &#9474;  &#10;  &#9474; &#9474;       (64) Pre-allocated buffer size for HD-audio driver                           &#9474; &#9474;  &#10;  &#9474; &#9474;       [*] Build hwdep interface for HD-audio driver                                &#9474; &#9474;  &#10;  &#9474; &#9474;       -*- Allow dynamic codec reconfiguration                                      &#9474; &#9474;  &#10;  &#9474; &#9474;       [*] Support digital beep via input layer                                     &#9474; &#9474;  &#10;  &#9474; &#9474;       (1)   Digital beep registration mode (0=off, 1=on)                           &#9474; &#9474;  &#10;  &#9474; &#9474;       [*] Support jack plugging notification via input layer                       &#9474; &#9474;  &#10;  &#9474; &#9474;       [*] Support initialization patch loading for HD-audio                        &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build Realtek HD-audio codec support                                     &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build Analog Device HD-audio codec support                               &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build IDT/Sigmatel HD-audio codec support                                &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build VIA HD-audio codec support                                         &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build HDMI/DisplayPort HD-audio codec support                            &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build Cirrus Logic codec support                                         &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build Conexant HD-audio codec support                                    &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build Creative CA0110-IBG codec support                                  &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build Creative CA0132 codec support                                      &#9474; &#9474;  &#10;  &#9474; &#9474;       [*]   Support new DSP code for CA0132 codec                                  &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build C-Media HD-audio codec support                                     &#9474; &#9474;  &#10;  &#9474; &#9474;       &#60;*&#62; Build Silicon Labs 3054 HD-modem codec support                           &#9474; &#9474;  &#10;  &#9474; &#9474;       -*- Enable generic HD-audio codec parser                                     &#9474; &#9474;  &#10;  &#9474; &#9474;       (0) Default time-out for HD-audio power-save mode</span><br></pre></td></tr></table></figure></p>
+<h3 id="10-_VirtualBox_kernel_is_not_runnint"><a href="#10-_VirtualBox_kernel_is_not_runnint" class="headerlink" title="10. VirtualBox kernel is not runnint"></a>10. VirtualBox kernel is not runnint</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root #modprobe vboxdrv&#10;root #modprobe vboxnetadp&#10;root #modprobe vboxnetflt</span><br></pre></td></tr></table></figure>
+<h3 id="11-_Themes_3A_Apperance_Icons_Fonts"><a href="#11-_Themes_3A_Apperance_Icons_Fonts" class="headerlink" title="11. Themes: Apperance Icons Fonts"></a>11. Themes: Apperance Icons Fonts</h3><p>Theme: GreyBird<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge greybird</span></span><br></pre></td></tr></table></figure></p>
+<p>Icons: Yosemite Osx xfce, the package of which is in my BaiduCloud. Download it and unpackage it to <code>/usr/share/icons/</code><br>Fonts: URW Gothic L Book</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/12/24/Linux/Introduction_To_Linux/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-12-24 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Gentoo-Linux-Server/">Gentoo & Linux Server<span>5</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用Hexo部署GithubPages | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="Hexo简介Hexo是一个基于Node.js的静态博客程序，以闪电版的生成速度博得个人博主喜爱。其工作原理非常简单，首先在本地编写博客，然后将博客转化成静态网页，最后将静态网页上传到所需平台。Hexo采用极为高效的markdown格式，避免了排版的繁琐，让作者专注于内容。所生成的静态网页风格支持各个">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="用Hexo部署GithubPages"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 用Hexo部署GithubPages</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h3 id="Hexo_u7B80_u4ECB"><a href="#Hexo_u7B80_u4ECB" class="headerlink" title="Hexo简介"></a>Hexo简介</h3><p>Hexo是一个基于Node.js的静态博客程序，以闪电版的生成速度博得个人博主喜爱。其工作原理非常简单，首先在本地编写博客，然后将博客转化成静态网页，最后将静态网页上传到所需平台。Hexo采用极为高效的markdown格式，避免了排版的繁琐，让作者专注于内容。所生成的静态网页风格支持各个种类的主题提供选择，无论成熟高端黑还是清新小萝莉，都能找到属于自已的主题，当然也可自行修改CSS。更重要的是其生成速度，其编译上百篇文字只需要几秒。除此外，Hexo还可以通过引用成熟的插件库，如评论系统,和Latex公式的扩展。综合其闪电般的生成速度和强大的插件支持，Hexo无疑是静态博客搭建的不二选择。</p>
+<h3 id="u5B89_u88C5_u548C_u914D_u7F6EHexo"><a href="#u5B89_u88C5_u548C_u914D_u7F6EHexo" class="headerlink" title="安装和配置Hexo"></a>安装和配置Hexo</h3><h4 id="1-Node-js"><a href="#1-Node-js" class="headerlink" title="1.Node.js"></a>1.Node.js</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">#安装GCC编译环境</span></span><br><span class="line">sudo  yum install g++ curl openssl openssl-devel make gcc-c++ glibc-devel -y</span><br><span class="line"></span><br><span class="line"><span class="comment">#下载并安装NodeJs</span></span><br><span class="line">wget http://nodejs.org/dist/node-latest.tar.gz</span><br><span class="line">tar -xvpzf node-latest.tar.gz</span><br><span class="line"><span class="built_in">cd</span> node-v*</span><br><span class="line"></span><br><span class="line">./configure  </span><br><span class="line">make</span><br><span class="line">sudo make install <span class="comment">#编译与安装</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-npm_u73AF_u5883"><a href="#2-npm_u73AF_u5883" class="headerlink" title="2.npm环境"></a>2.npm环境</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl http://npmjs.org/install.sh | sh&#10;node --version #&#26597;&#30475;NodeJS&#29256;&#26412;</span><br></pre></td></tr></table></figure>
+<h4 id="3-_u672C_u5730_u642D_u5EFAhexo"><a href="#3-_u672C_u5730_u642D_u5EFAhexo" class="headerlink" title="3.本地搭建hexo"></a>3.本地搭建hexo</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># as root</span></span><br><span class="line">npm install hexo-cli -g</span><br><span class="line">mkdir blog</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<h4 id="4-_u914D_u7F6E_u5230GithubPages"><a href="#4-_u914D_u7F6E_u5230GithubPages" class="headerlink" title="4.配置到GithubPages"></a>4.配置到GithubPages</h4><ul>
+<li>4.1创建仓库<strong>username.github.io</strong>(username必须为github应用名,不能用其他字符串,否则网页打不开)</li>
+<li><p>4.2安装Hexo git插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.3配置<strong>_config.yml</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#1.&#20882;&#21495;&#21518;&#38754;&#26377;&#19968;&#20010;&#31354;&#26684;&#10;#2.repository &#29992;&#20179;&#24211;&#30340;ssh&#10;deploy:&#10;  type: git&#10;  repository: git@github.com:username/username.github.io.git (username&#20026;&#20320;github&#29992;&#25143;&#21517;)&#10;  branch: master</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="5-_u8BBE_u7F6E_u57DF_u540D_uFF08optional_uFF09"><a href="#5-_u8BBE_u7F6E_u57DF_u540D_uFF08optional_uFF09" class="headerlink" title="5.设置域名（optional）"></a>5.设置域名（optional）</h4><ul>
+<li>在namecheap网站购买域名,用途设置GithubPages(免域名解析的麻烦)</li>
+<li>本地source文件夹下创建CNAME文件,内容为购买的域名,去掉www,例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cyno.me</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="6-Enjoy_it"><a href="#6-Enjoy_it" class="headerlink" title="6.Enjoy it"></a>6.Enjoy it</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h4 id="7-_u66F4_u6362_u76AE_u80A4"><a href="#7-_u66F4_u6362_u76AE_u80A4" class="headerlink" title="7.更换皮肤"></a>7.更换皮肤</h4><ul>
+<li>1.下载Theme包,hexo官网或其他论坛</li>
+<li>2.解压到 /blog/themes文件夹下</li>
+<li>3.更改 blog/_config.yml 中theme:name (name为theme包的文件夹名)</li>
+</ul>
+<p><strong>安装过程结束，以下是博主主题CSS备份，无关安装</strong></p>
+<h3 id="CSS_u5907_u4EFD"><a href="#CSS_u5907_u4EFD" class="headerlink" title="CSS备份"></a>CSS备份</h3><hr>
+<h4 id="1-_u8C03_u6574_u8BED_u6CD5_u9AD8_u4EAE_u914D_u8272_u548C_u8FB9_u7F18"><a href="#1-_u8C03_u6574_u8BED_u6CD5_u9AD8_u4EAE_u914D_u8272_u548C_u8FB9_u7F18" class="headerlink" title="1.调整语法高亮配色和边缘"></a>1.调整语法高亮配色和边缘</h4><p><strong> /themes/freemind/source/css/highlight.css</strong><br>更改了background，margin，padding<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pre, .highlight, .gist &#123;  &#10;  background: #1a1a1a !important;&#10;  margin: 0.1em 2%;&#10;  padding: 0.3em 2%;&#10;  overflow: auto;&#10;  color: #fffafa;  &#10;  font-size: 14px;&#10;  text-shadow: none;&#10;  -webkit-border-radius: 4px;&#10;  -moz-border-radius: 4px;&#10;  border-radius: 4px;  &#10;  border-style: solid;&#10;  border-color: #ddd;&#10;  border-width: 1px 0;&#10;  line-height: 20px;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-_u8C03_u6574categories_u6837_u5F0F"><a href="#2-_u8C03_u6574categories_u6837_u5F0F" class="headerlink" title="2.调整categories样式"></a>2.调整categories样式</h4><p><strong> /themes/freemind/source/css/style.css</strong><br>添加链接里a下的b样式，主要更改padding右值，margin右值，border宽度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.tag_box a.b &#123;&#10;  padding: 4px 50px 2px 6px;&#10;  margin: 2px 40px 2px 2px;&#10;  background: #e5e5e5;&#10;  color:#555;&#10;  border-radius: 3px;&#10;  text-decoration:none;&#10;  border:0px dashed #bbb;&#10;&#125;&#10;.tag_box a.b span&#123;&#10;  vertical-align:super;&#10;  font-size:0.8em;&#10;&#125;&#10;.tag_box a.b:hover &#123;&#10;  background-color:#397bdd;&#10;  color:#FFF;&#10;&#125;&#10;.tag_box a.b.active &#123;&#10;  background:#57A957;&#10;  border:1px solid #4C964D;&#10;  color:#FFF;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后，在框架设置里使用该设置，即在<a href="...">中添加 class=”b”,确定格式：<br><strong>/themes/freemind/layout/_widget/category.ejs</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;li&#62;&#60;a href=&#34;&#60;%- config.root %&#62;&#60;%- item.path %&#62; class=&#34;b&#34;&#34;&#62;&#60;%= item.name %&#62;&#60;span&#62;&#60;%= item.   posts.length %&#62;&#60;/span&#62;&#60;/a&#62;&#60;/li&#62;</span><br></pre></td></tr></table></figure></a></p>
+<h4 id="3-_u66F4_u6539header_u6E10_u53D8_u989C_u8272"><a href="#3-_u66F4_u6539header_u6E10_u53D8_u989C_u8272" class="headerlink" title="3.更改header渐变颜色"></a>3.更改header渐变颜色</h4><p><strong> /themes/freemind/source/css/style.css</strong><br>更改background: -moz-linear-gradient(top, #333, #1a1a1a 50%); 即header背景从上到下333到1a1a1a渐变，333同主标题背景，1a1a1a同语法高亮背景。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.page-header &#123;&#10;  -webkit-background-clip: border-box;&#10;  -webkit-background-origin: padding-box;&#10;  -webkit-background-size: cover;&#10;  /* background-color: #f5f5f5; */&#10;  padding: 10px 20px 0px 20px;&#10;  margin: -20px -20px 20px;&#10;  background: #333;&#10;  background: -moz-linear-gradient(top, #333, #1a1a1a 50%);&#10;  background: -webkit-gradient(linear, 0 0, 0 50%, from(#333), to(#000));&#10;  color: #e9e9e9;&#10;  border-bottom-left-radius: 0px;&#10;  border-bottom-right-radius: 0px;&#10;  border-top-left-radius: 6px;&#10;  border-top-right-radius: 6px;  &#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>参考</em> <a href="http://blog.sina.com.cn/s/blog_60f01ce50100ffeo.html" target="_blank" rel="external">CSS &lt; a  href&gt;链接样式冲突解决方法！</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/06/16/Linux/VMware/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2014/02/01/Linux/Github2/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-10-10 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Tech-Tools/">Tech & Tools<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/GithubPages/">GithubPages<span>1</span></a></li> <li><a href="/tags/hexo/">hexo<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

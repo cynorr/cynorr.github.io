@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Log_2015-11-18 -- File and Dictionary Authority, Hadoop New/Old API | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="File and Dictionary Authority
+chmod 只修改子目录如果只修改子目录（不包括文件）权限，举例：chmod 755 find -type d或者：find /目录 -type d -exec chmod 755 {} \;find /目录 -type f -exec c">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Log_2015-11-18 -- File and Dictionary Authority, Hadoop New/Old API"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Log_2015-11-18 -- File and Dictionary Authority, Hadoop New/Old API</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h3 id="File_and_Dictionary_Authority"><a href="#File_and_Dictionary_Authority" class="headerlink" title="File and Dictionary Authority"></a>File and Dictionary Authority</h3><ol>
+<li>chmod 只修改子目录<br>如果只修改子目录（不包括文件）权限，举例：<br>chmod 755 <code>find -type d</code><br>或者：<br>find /目录 -type d -exec chmod 755 {} \;<br>find /目录 -type f -exec chmod 644 {} \; （相反，只改文件）</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileSystem;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.ArrayWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.IntWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.Writable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.JobConf;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.RecordWriter;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.lib.MultipleOutputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.lib.MultipleTextOutputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Job;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Reducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.util.Progressable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCount</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">StateNumMapper</span></span><br><span class="line">            <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">Object</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">IntArrayWritable</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> IntArrayWritable Time = <span class="keyword">new</span> IntArrayWritable();</span><br><span class="line">        <span class="keyword">private</span> Text IPStr = <span class="keyword">new</span> Text();</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(Object key, Text value, Context context</span><br><span class="line">        )</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">            StringTokenizer lines = <span class="keyword">new</span> StringTokenizer(value.toString(),<span class="string">"\n"</span>);</span><br><span class="line">            <span class="keyword">while</span> (lines.hasMoreTokens()) &#123;</span><br><span class="line">                <span class="keyword">int</span> time = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">int</span> stateNum = <span class="number">0</span>;</span><br><span class="line">                String line = lines.nextToken();</span><br><span class="line">                String[] items = line.split(<span class="string">" "</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// To extract Clock of specific log</span></span><br><span class="line">                <span class="keyword">if</span> ( items[<span class="number">1</span>].length() == <span class="number">21</span>)&#123;</span><br><span class="line">                    <span class="keyword">try</span>&#123;</span><br><span class="line">                        time = Integer.parseInt(items[<span class="number">1</span>].substring(<span class="number">13</span>, <span class="number">15</span>));</span><br><span class="line">                    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">                        System.out.println(<span class="string">"Error when parsing time"</span> + e.getMessage());</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// To extract Number of IP Address</span></span><br><span class="line">                IPStr.set(items[<span class="number">0</span>]);</span><br><span class="line">                IntWritable [] timeArray = <span class="keyword">new</span> IntWritable[<span class="number">1</span>];</span><br><span class="line">                timeArray[<span class="number">0</span>] = <span class="keyword">new</span> IntWritable(time);</span><br><span class="line">                Time.set(timeArray);</span><br><span class="line">                context.write(IPStr, Time);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">StateNumCombiner</span></span><br><span class="line">            <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>,<span class="title">IntArrayWritable</span>,<span class="title">Text</span>,<span class="title">IntArrayWritable</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> IntArrayWritable IPAllHourStatis = <span class="keyword">new</span> IntArrayWritable();</span><br><span class="line">        <span class="keyword">private</span> IntWritable [] IPAllHourStatisWritableArray = <span class="keyword">new</span> IntWritable[<span class="number">26</span>];</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;IntArrayWritable&gt; values,</span><br><span class="line">                           Context context )</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> stateNum;</span><br><span class="line">            <span class="keyword">int</span>[] IPAllHourStatisArray = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i ++)</span><br><span class="line">                IPAllHourStatisArray[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (IntArrayWritable valArray : values)&#123;</span><br><span class="line">                Writable[] valWritable = valArray.get();</span><br><span class="line">                IntWritable tempIntWritable = (IntWritable)valWritable[<span class="number">0</span>];</span><br><span class="line">                stateNum = tempIntWritable.get();</span><br><span class="line">                IPAllHourStatisArray[stateNum] ++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++ )</span><br><span class="line">                IPAllHourStatisWritableArray[i] = <span class="keyword">new</span> IntWritable(IPAllHourStatisArray[i]);</span><br><span class="line"></span><br><span class="line">            IPAllHourStatis.set(IPAllHourStatisWritableArray);</span><br><span class="line">            context.write(<span class="keyword">null</span>,IPAllHourStatis);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiOutPut</span> <span class="keyword">extends</span> <span class="title">MultipleOutputFormat</span>&lt;<span class="title">Text</span>, <span class="title">IntArrayWritable</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> TextOutputFormat&lt;Text, IntArrayWritable&gt; outputer = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">protected</span> RecordWriter&lt;Text, IntArrayWritable&gt;</span><br><span class="line">            getBaseRecordWriter(FileSystem fs, JobConf job, String name, Progressable arg3)</span><br><span class="line">                        <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">            <span class="keyword">if</span> (outputer == <span class="keyword">null</span>) &#123;</span><br><span class="line">                outputer = <span class="keyword">new</span> TextOutputFormat&lt;Text, IntArrayWritable&gt;();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> outputer.getRecordWriter(fs, job, name, arg3);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> String <span class="title">generateFileNameForKeyValue</span><span class="params">(Text key, IntArrayWritable value, String name)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> key.toString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/*</span><br><span class="line">    public static class StateNumReducer</span><br><span class="line">            extends Reducer&lt;IntWritable,IntArrayWritable,Text,IntArrayWritable&gt; &#123;</span><br><span class="line"></span><br><span class="line">        private IntArrayWritable SingleHourStatis = new IntArrayWritable();</span><br><span class="line">        private IntWritable [] SingleHourStatisIntWritableArray = new IntWritable[3];</span><br><span class="line"></span><br><span class="line">        public void reduce(IntWritable key, Iterable&lt;IntArrayWritable&gt; values,</span><br><span class="line">                           Context context ) throws IOException, InterruptedException &#123;</span><br><span class="line">            int stateNum;</span><br><span class="line">            int[] SingleHourStatisIntArray = new int[3];</span><br><span class="line">            for ( int i = 0; i &lt; 3; i ++)</span><br><span class="line">                SingleHourStatisIntArray[i] = 0;</span><br><span class="line">            for (IntArrayWritable valArray : values)&#123;</span><br><span class="line">                Writable[] valWritable = valArray.get();</span><br><span class="line">                for ( int i = 0; i &lt; 3; i++)&#123;</span><br><span class="line">                    IntWritable tempIntWritable = (IntWritable)valWritable[i];</span><br><span class="line">                    stateNum = tempIntWritable.get();</span><br><span class="line">                    SingleHourStatisIntArray[i] += stateNum;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if ( key.get() != -1)&#123;</span><br><span class="line"></span><br><span class="line">                for (int i = 0; i &lt; 3; i++ )</span><br><span class="line">                    SingleHourStatisIntWritableArray[i] = new IntWritable(SingleHourStatisIntArray[i]);</span><br><span class="line"></span><br><span class="line">                SingleHourStatis.set(SingleHourStatisIntWritableArray);</span><br><span class="line">                String keyStr = key.toString() + ":00-"+(key.get() + 1) + ":00";</span><br><span class="line">                context.write(new Text(keyStr), SingleHourStatis);</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                String keyStr = "200:"+SingleHourStatisIntArray[0] + "\n" +</span><br><span class="line">                        "404:" + SingleHourStatisIntArray[1] + "\n" +</span><br><span class="line">                        "500:" + SingleHourStatisIntArray[2];</span><br><span class="line">                context.write(new Text(keyStr), null);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">*/</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntArrayWritable</span></span><br><span class="line">            <span class="keyword">extends</span> <span class="title">ArrayWritable</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">IntArrayWritable</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(IntWritable.class);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">            String str = <span class="string">""</span>;</span><br><span class="line">            Writable[] values = get();</span><br><span class="line">            IntWritable[] Values = <span class="keyword">new</span> IntWritable[<span class="number">26</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">24</span>; i ++)&#123;</span><br><span class="line">                Values[i] = (IntWritable)values[i];</span><br><span class="line">                str += i + <span class="string">" "</span> + Values[i].toString() + <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> str;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Configuration conf = <span class="keyword">new</span> Configuration();</span><br><span class="line">        conf.set(<span class="string">"mapreduce.output.textoutputformat.separator"</span>, <span class="string">" "</span>);</span><br><span class="line"></span><br><span class="line">        Job job = Job.getInstance(conf, <span class="string">"word count"</span>);</span><br><span class="line">        job.setJarByClass(WordCount.class);</span><br><span class="line"></span><br><span class="line">        job.setMapperClass(StateNumMapper.class);</span><br><span class="line">        <span class="comment">//job.setCombinerClass(StateNumCombiner.class);</span></span><br><span class="line">        <span class="comment">//job.setReducerClass(StateNumReducer.class);</span></span><br><span class="line">        job.setReducerClass(StateNumCombiner.class);</span><br><span class="line"></span><br><span class="line">        job.setMapOutputKeyClass(Text.class);</span><br><span class="line">        job.setMapOutputValueClass(IntArrayWritable.class);</span><br><span class="line"></span><br><span class="line">        job.setOutputKeyClass(Text.class);</span><br><span class="line">        job.setOutputValueClass(IntArrayWritable.class);</span><br><span class="line"></span><br><span class="line">        job.setOutputFormatClass(TextOutputFormat.class);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(args[<span class="number">0</span>]));</span><br><span class="line">        FileOutputFormat.setOutputPath(job, <span class="keyword">new</span> Path(args[<span class="number">1</span>]));</span><br><span class="line">        System.exit(job.waitForCompletion(<span class="keyword">true</span>) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Hadoop_new_api_is_incompatible_with_old_api"><a href="#Hadoop_new_api_is_incompatible_with_old_api" class="headerlink" title="Hadoop new api is incompatible with old api"></a>Hadoop new api is incompatible with old api</h3><p>New API : org.hadoop.mapreduce.<em><br>Old API : org.hadoop.mapred.</em></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/11/26/Journals/20151126_log/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/11/17/Journals/20151117_log/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-11-18 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Journal/">Journal<span>8</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#File_and_Dictionary_Authority"><span class="toc-article-text">File and Dictionary Authority</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Hadoop_new_api_is_incompatible_with_old_api"><span class="toc-article-text">Hadoop new api is incompatible with old api</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

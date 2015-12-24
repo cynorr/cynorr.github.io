@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Log_2015-11-17 -- Standard ArrayWritable, Application of Combiner, Mega, YouDao-Dict | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="Standard ArrayWritableA Writable for arrays containing instances of a class. The elements of this writable must all be instances of the same class. If">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Log_2015-11-17 -- Standard ArrayWritable, Application of Combiner, Mega, YouDao-Dict"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Log_2015-11-17 -- Standard ArrayWritable, Application of Combiner, Mega, YouDao-Dict</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h3 id="Standard_ArrayWritable"><a href="#Standard_ArrayWritable" class="headerlink" title="Standard ArrayWritable"></a>Standard ArrayWritable</h3><p>A Writable for arrays containing instances of a class. The elements of this writable must all be instances of the same class. If this writable will be the input for a Reducer, you will need to create a subclass that sets the value to be of the proper type. For example:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntArrayWritable</span> <span class="keyword">extends</span> <span class="title">ArrayWritable</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">IntArrayWritable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(IntWritable.class);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.ArrayWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.LongWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.FileInputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.FileOutputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.JobClient;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.JobConf;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.MapReduceBase;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.OutputCollector;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.Reducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.Reporter;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.TextInputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapred.TextOutputFormat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCount</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TextArrayWritable</span> <span class="keyword">extends</span> <span class="title">ArrayWritable</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">TextArrayWritable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(Text.class);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">TextArrayWritable</span><span class="params">(String[] strings)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(Text.class);</span><br><span class="line">            Text[] texts = <span class="keyword">new</span> Text[strings.length];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strings.length; i++) &#123;</span><br><span class="line">                texts[i] = <span class="keyword">new</span> Text(strings[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            set(texts);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MapClass</span> <span class="keyword">extends</span> <span class="title">MapReduceBase</span> <span class="keyword">implements</span></span><br><span class="line">            <span class="title">Mapper</span>&lt;<span class="title">LongWritable</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">ArrayWritable</span>&gt; </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(LongWritable key, Text value,</span><br><span class="line">                        OutputCollector&lt;Text, ArrayWritable&gt; output, Reporter reporter)</span></span><br><span class="line">                <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">            String[] arr_str = <span class="keyword">new</span> String[] &#123;</span><br><span class="line">                    <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span> &#125;;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)</span><br><span class="line">                output.collect(<span class="keyword">new</span> Text(<span class="string">"my_key"</span>), <span class="keyword">new</span> TextArrayWritable(</span><br><span class="line">                        arr_str));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Reduce</span> <span class="keyword">extends</span> <span class="title">MapReduceBase</span> <span class="keyword">implements</span></span><br><span class="line">            <span class="title">Reducer</span>&lt;<span class="title">Text</span>, <span class="title">TextArrayWritable</span>, <span class="title">Text</span>, <span class="title">TextArrayWritable</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterator&lt;TextArrayWritable&gt; values,</span><br><span class="line">                           OutputCollector&lt;Text, TextArrayWritable&gt; output,</span><br><span class="line">                           Reporter reporter)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">            TextArrayWritable tmp;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (values.hasNext()) &#123;</span><br><span class="line">                tmp = values.next();</span><br><span class="line">                output.collect(key, tmp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Configuration conf = <span class="keyword">new</span> Configuration();</span><br><span class="line"></span><br><span class="line">        JobConf job = <span class="keyword">new</span> JobConf(conf, WordCount.class);</span><br><span class="line"></span><br><span class="line">        job.setOutputKeyClass(Text.class);</span><br><span class="line">        job.setOutputValueClass(TextArrayWritable.class);</span><br><span class="line">        job.setOutputFormat(TextOutputFormat.class);</span><br><span class="line">        job.setInputFormat(TextInputFormat.class);</span><br><span class="line"></span><br><span class="line">        job.setMapperClass(MapClass.class);</span><br><span class="line">        job.setReducerClass(Reduce.class);</span><br><span class="line"></span><br><span class="line">        FileInputFormat.setInputPaths(job, <span class="keyword">new</span> Path(args[<span class="number">0</span>]));</span><br><span class="line">        FileOutputFormat.setOutputPath(job, <span class="keyword">new</span> Path(args[<span class="number">1</span>]));</span><br><span class="line"></span><br><span class="line">        job.setJobName(<span class="string">"TempClass"</span>);</span><br><span class="line"></span><br><span class="line">        JobClient.runJob(job);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Application_of_Combiner"><a href="#Application_of_Combiner" class="headerlink" title="Application of Combiner"></a>Application of Combiner</h3><p><strong>Import</strong>: The output Key/Value format of Combiner has to be same as Mapper’s output format, and the input Key/Value format of Combiner has to be same as Reducer’s input Key/Value format.</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><strong>map/reduce 下ArrayWritable 的使用</strong></p>
+<ul>
+<li>1.在map/reduce的开发中经常使用数组类型, 例如DoubleWritable ,当需要使用一组DoubleWritable的时候,<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DoubleWritable[] doublewritable =<span class="keyword">new</span> DoubleWritable[n]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>即可.</p>
+<ul>
+<li><p>2.但是DoubleWritable[] 这种形式的数组并不能作为value在map和reduce中传递. 实际上,map/reduce 的序列类型为ArrayWritable.<br>当我要使用DoubleWritable类型的数组作为value进行传递时,需要重写一个类继承于ArrayWritable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewArrayWritable</span> <span class="keyword">extends</span> <span class="title">ArrayWritable</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">NewArrayWritable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	     <span class="keyword">super</span>(DoubleWritable.class);</span><br><span class="line">	   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.当要使用时:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NewArrayWritable ntemp=<span class="keyword">new</span> NewArrayWritable();</span><br><span class="line"><span class="comment">//如果我现在有一个DoubleWritable[]  ctemp, 我可以这样赋值:</span></span><br><span class="line">ntemp.set(ctemp);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.当修改map的输出key类型时,需要对如下语句进行修改</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">job.setMapOutputValueClass(IntWritable.class);</span><br><span class="line">改为</span><br><span class="line">job.setMapOutputValueClass(NewArrayWritable.class);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5.此时程序可能出现wrong value class: class org.apache.hadoop.io.IntWritable is not class org.apache.hadoop.examples.NewArrayWritable 异常<br>解决方法: 注释掉main函数中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">job.setCombinerClass(IntSumReducer.class);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Key/Value_Separator"><a href="#Key/Value_Separator" class="headerlink" title="Key/Value Separator"></a>Key/Value Separator</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Configuration conf = <span class="keyword">new</span> Configuration();</span><br><span class="line">conf.set(<span class="string">"mapreduce.output.textoutputformat.separator"</span>, <span class="string">"-----"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Java_Integer_Output_Format"><a href="#Java_Integer_Output_Format" class="headerlink" title="Java Integer Output Format"></a>Java Integer Output Format</h3><p>你可以用String的format函数输出，整数3，想要输出两位用0填充，输出03，就可以像下面这样。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FormatTest</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line">        System.out.println(String.format(<span class="string">"%02d"</span>, a));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="It_occured_error_which_is__u201CNo_module_named__u2018PyQt5-QtWebKitWidgets_u2019_u201D_when_I_launch_YouDao-Dict"><a href="#It_occured_error_which_is__u201CNo_module_named__u2018PyQt5-QtWebKitWidgets_u2019_u201D_when_I_launch_YouDao-Dict" class="headerlink" title="It occured error which is “No module named ‘PyQt5.QtWebKitWidgets’” when I launch YouDao-Dict"></a>It occured error which is “No module named ‘PyQt5.QtWebKitWidgets’” when I launch YouDao-Dict</h3><p>Though I installed PyQt5 it occured same errors, since my core Qt is Qt4 not Qt5. Moreover, It still lack QtWebKitWidgetsafter I check my python library file <code>/usr/lib64/python3.4/site-packages/PyQt5</code>,  though I have installed it though I have installed all version of QtWebKit and WebKit. So I have planed to compile and install it manually, but failed with no core Qt5. So the right method is update my core Qt version.</p>
+<h3 id="Mega_Cloud_Drive"><a href="#Mega_Cloud_Drive" class="headerlink" title="Mega Cloud Drive."></a>Mega Cloud Drive.</h3><p>With command line tool, <code>Mega</code> is very powerful and compatible with Linux. Gentoo have it being masked in default source, we can install it as root by typing :<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emerge net-misc/megatools</span><br></pre></td></tr></table></figure></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/11/18/Journals/20151118_log/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/11/15/Journals/20151115_log/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-11-17 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Journal/">Journal<span>8</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Standard_ArrayWritable"><span class="toc-article-text">Standard ArrayWritable</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Application_of_Combiner"><span class="toc-article-text">Application of Combiner</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#References"><span class="toc-article-text">References</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Key/Value_Separator"><span class="toc-article-text">Key/Value Separator</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Java_Integer_Output_Format"><span class="toc-article-text">Java Integer Output Format</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#It_occured_error_which_is__u201CNo_module_named__u2018PyQt5-QtWebKitWidgets_u2019_u201D_when_I_launch_YouDao-Dict"><span class="toc-article-text">It occured error which is “No module named ‘PyQt5.QtWebKitWidgets’” when I launch YouDao-Dict</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Mega_Cloud_Drive"><span class="toc-article-text">Mega Cloud Drive.</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

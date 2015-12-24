@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Gentoo Develop Tools -- Android SDK | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="This section, we will install an android emulator on Linux. Android platform are based on two components: JDK and SDK. We assumed that JDK has been in">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Gentoo Develop Tools -- Android SDK"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Gentoo Develop Tools -- Android SDK</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>This section, we will install an android emulator on Linux. Android platform are based on two components: JDK and SDK. We assumed that JDK has been installed well.</p>
+<h5 id="1-Download_the_android-sdk-*_frome_Android_offical_site_2C_here_we_use_the_android-sdk_r24-4-1-linux-tgz_version"><a href="#1-Download_the_android-sdk-*_frome_Android_offical_site_2C_here_we_use_the_android-sdk_r24-4-1-linux-tgz_version" class="headerlink" title="1.Download the android-sdk-* frome Android offical site, here we use the android-sdk_r24.4.1-linux.tgz version."></a>1.Download the <code>android-sdk-*</code> frome <a href="http://developer.android.com/sdk/index.html" target="_blank" rel="external">Android offical site</a>, here we use the <code>android-sdk_r24.4.1-linux.tgz</code> version.</h5><h5 id="2-Unpack_it_and_you_will_see_what_likes_following_3A"><a href="#2-Unpack_it_and_you_will_see_what_likes_following_3A" class="headerlink" title="2.Unpack it and you will see what likes following:"></a>2.Unpack it and you will see what likes following:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">user $ tar -zxvf android-sdk_r24.<span class="number">4.1</span>-linux.tgz</span><br><span class="line">user $ <span class="built_in">cd</span> android-sdk-linux</span><br><span class="line">user $ ls</span><br><span class="line">drwxr-xr-x  <span class="number">2</span> cyno cyno <span class="number">4096</span> Oct <span class="number">14</span> <span class="number">01</span>:<span class="number">57</span> add-ons</span><br><span class="line">drwxr-xr-x  <span class="number">3</span> cyno cyno <span class="number">4096</span> Dec  <span class="number">8</span> <span class="number">21</span>:<span class="number">20</span> build-tools</span><br><span class="line">drwxr-xr-x <span class="number">25</span> cyno cyno <span class="number">4096</span> Dec  <span class="number">8</span> <span class="number">21</span>:<span class="number">26</span> docs</span><br><span class="line">drwxr-xr-x  <span class="number">7</span> cyno cyno <span class="number">4096</span> Dec  <span class="number">8</span> <span class="number">21</span>:<span class="number">32</span> platforms</span><br><span class="line">drwxr-xr-x  <span class="number">5</span> cyno cyno <span class="number">4096</span> Dec  <span class="number">8</span> <span class="number">21</span>:<span class="number">19</span> platform-tools</span><br><span class="line">-rw-r--r--  <span class="number">1</span> cyno cyno <span class="number">1158</span> Oct <span class="number">14</span> <span class="number">01</span>:<span class="number">57</span> SDK Readme.txt</span><br><span class="line">drwxr-xr-x  <span class="number">2</span> cyno cyno <span class="number">4096</span> Dec  <span class="number">8</span> <span class="number">21</span>:<span class="number">33</span> temp</span><br><span class="line">drwxr-xr-x <span class="number">12</span> cyno cyno <span class="number">4096</span> Oct <span class="number">14</span> <span class="number">08</span>:<span class="number">02</span> tools</span><br></pre></td></tr></table></figure>
+<h5 id="3-Update_and_Install_the_APIs_that_you_need"><a href="#3-Update_and_Install_the_APIs_that_you_need" class="headerlink" title="3.Update and Install the APIs that you need."></a>3.Update and Install the APIs that you need.</h5><ul>
+<li>3.1 Launch android<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user $ <span class="built_in">cd</span> android-sdk-linux/tools/</span><br><span class="line">user $ ./android</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>then you will see the prompt that checks whether the update is available automatically.</p>
+<ul>
+<li>3.2 Proxy for Region that can’t access Google server.<br>The update and API is on Google’s serve, which cannot be accessed if you are in China or some other region. We can use proxy to deal with this problem.<br>Select menu <code>Tools</code>  -&gt;  <code>Options</code>, then you will see another <code>Settings</code> windows. Configure the proxy like this:<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP Proxy: Server mirrors.neusoft.edu.cn&#10;Proxy Port: 80</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>And active <code>Force https://... sources to be fetched using http:</code></p>
+<ul>
+<li><p>3.2.2(Alternative) Change hosts temporarily<br>Add the following text to <code>/etc/hosts</code>, and delete after you update and install all you need.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">203.208.46.146 dl.google.com&#10;203.208.46.146 dl-ssl.google.com127.0.0.1 servserv.generals.ea.com&#10;74.125.237.1 dl-ssl.google.com&#10;203.208.46.146 dl.google.com&#10;74.125.237.1 dl-ssl.google.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.Install <code>Platform</code> and <code>Image</code><br>Since the update will run automatically, so we just need to focus on installation of <code>Platform</code> and <code>Image</code>. The rule is simple, you have to install at least 1 platform and each platform should be with at least 1 image. Following is my choice</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-----------------------------------</span><br><span class="line">[*] Android <span class="number">5.1</span>.<span class="number">1</span></span><br><span class="line">     [*] ARM [*] System Image</span><br><span class="line">     [*] Intel x86 Atom System Image</span><br><span class="line">-----------------------------------     </span><br><span class="line">[*] Android <span class="number">4.4</span>.<span class="number">2</span></span><br><span class="line">     [*] ARM [*] System Image</span><br><span class="line">     [*] Intel x86 Atom System Image</span><br><span class="line">-----------------------------------</span><br></pre></td></tr></table></figure>
+<ul>
+<li>5.Launch android AVD and enjoy it<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user $ <span class="built_in">cd</span> android-sdk-linux/tools/</span><br><span class="line">user $ ./android avd</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>===</p>
+<h3 id="PS1-Make_sure_the_KVM_work_well_which_in_the_Linux_kernel"><a href="#PS1-Make_sure_the_KVM_work_well_which_in_the_Linux_kernel" class="headerlink" title="PS1.Make sure the KVM work well which in the Linux kernel"></a>PS1.Make sure the KVM work well which in the Linux kernel</h3><p><strong>KVM</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[*] Virtualization---&gt;</span><br><span class="line">    &lt;*&gt;   Kernel-based Virtual Machine (KVM) support</span><br><span class="line">    &lt;*&gt;     KVM <span class="keyword">for</span> Intel processors support</span><br><span class="line">    &lt; &gt;     KVM <span class="keyword">for</span> AMD processors support</span><br><span class="line">    &lt;M&gt;   Host kernel accelerator <span class="keyword">for</span> virtio net</span><br></pre></td></tr></table></figure></p>
+<p><strong>Others</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">General Setup---&gt;</span><br><span class="line">    [*] Control Group support ---&gt;</span><br><span class="line">        [*]   Freezer cgroup subsystem</span><br><span class="line">        [*]   Device controller <span class="keyword">for</span> cgroups</span><br><span class="line">        [*]   Group CPU scheduler</span><br><span class="line">        [*]   Enable perf_event per-cpu per-container group (cgroup) monitoring</span><br><span class="line">        [*]   Block IO controller</span><br><span class="line">        [*]   Resource counters</span><br><span class="line">        [*]     Memory Resource Controller <span class="keyword">for</span> Control Groups (NEW)</span><br><span class="line">        [*]       Memory Resource Controller Swap Extension (NEW)</span><br><span class="line">        [*]       Memory Resource Controller Kernel Memory accounting (EXPERIMENTAL) (NEW)</span><br><span class="line">-*- Networking support---&gt;</span><br><span class="line">      Networking Options---&gt;</span><br><span class="line">        &lt;M&gt; <span class="number">802.1</span>d Ethernet Bridging</span><br><span class="line">        &lt;*&gt; Network priority cgroup</span><br><span class="line">        [*] QoS and/or fair queueing---&gt;</span><br><span class="line">            &lt;M&gt;   Control Group Classifier</span><br><span class="line">        [*] Network packet filtering framework (Netfilter)---&gt;</span><br><span class="line">            &lt;M&gt;   Ethernet Bridge tables (ebtables) support---&gt;</span><br><span class="line">                &lt;M&gt;   ebt: mark target support (NEW)</span><br><span class="line">Device Drivers---&gt;</span><br><span class="line">    Character devices---&gt;</span><br><span class="line">        -*- Unix98 PTY support</span><br><span class="line">        [*]   Support multiple instances of devpts</span><br><span class="line">    [*] Network device support---&gt;</span><br><span class="line">        -*-   Network core driver support</span><br><span class="line">        &lt;M&gt;     Universal TUN/TAP device driver support</span><br><span class="line">Kernel Hacking---&gt;</span><br><span class="line">    [*] Debug Filesystem</span><br></pre></td></tr></table></figure></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/07/02/Linux/Gentoo-Network/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/07/01/Linux/GentooI/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-07-02 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Gentoo-Linux-Server/">Gentoo & Linux Server<span>5</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Network/">Network<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#1-Download_the_android-sdk-*_frome_Android_offical_site_2C_here_we_use_the_android-sdk_r24-4-1-linux-tgz_version"><span class="toc-article-text">1.Download the android-sdk-* frome Android offical site, here we use the android-sdk_r24.4.1-linux.tgz version.</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#2-Unpack_it_and_you_will_see_what_likes_following_3A"><span class="toc-article-text">2.Unpack it and you will see what likes following:</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#3-Update_and_Install_the_APIs_that_you_need"><span class="toc-article-text">3.Update and Install the APIs that you need.</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#PS1-Make_sure_the_KVM_work_well_which_in_the_Linux_kernel"><span class="toc-article-text">PS1.Make sure the KVM work well which in the Linux kernel</span></a>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

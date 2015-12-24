@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Gentoo Backup Strategy | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="1.AppsSome essential applications which I need1234567891011x11-misc/lxdm xf86-video-intel xf86-video-vesa xorg-x11 \greybird xfce4-meta xfce4-notifyd ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Gentoo Backup Strategy"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Gentoo Backup Strategy</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h4 id="1-Apps"><a href="#1-Apps" class="headerlink" title="1.Apps"></a>1.Apps</h4><p>Some essential applications which I need<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x11-misc/lxdm xf86-video-intel xf86-video-vesa xorg-x11 \</span><br><span class="line">greybird xfce4-meta xfce4-notifyd xfce4-panel xfce4-terminal xfce4-screenshooter xfce4-battery-plugin xfce4-power-manager xfce4-mixer xfce4-appfinder xfce4-archive-plugin xfce-extra/tumbler thunar-volman\</span><br><span class="line">thunderbird firefox google-chrome opera \</span><br><span class="line">dhcp net-misc/networkmanager nm-applet \</span><br><span class="line">smplayer alsa-utils adobe-flash media-gfx/mirage \</span><br><span class="line">virtualbox-bin virtualbox-guest-additions \</span><br><span class="line">wps-office media-fonts/symbola libreoffice gvim gedit fcitx wqy-zenhei sunpinyin \</span><br><span class="line">compiz fusion-icon emerald compiz-plugins-main compiz-plugins-extra \</span><br><span class="line">htop sudo screenfetch pciutils gentoolkit laptop-mode-tools \</span><br><span class="line">dev-util/idea-community virtual/jdk \</span><br><span class="line">net-misc/megatools</span><br></pre></td></tr></table></figure></p>
+<p>The command to install them all:</p>
+<pre><code class="bash">
+</code></pre>
+<h4 id="2-Desktop_Preference"><a href="#2-Desktop_Preference" class="headerlink" title="2.Desktop Preference"></a>2.Desktop Preference</h4><ul>
+<li>2.1 Compiz configuration</li>
+<li>2.2 Background</li>
+<li>2.3 Theme</li>
+<li>2.4 Fonts</li>
+</ul>
+<h4 id="3-Web_Browser_Preference"><a href="#3-Web_Browser_Preference" class="headerlink" title="3.Web Browser Preference"></a>3.Web Browser Preference</h4><ul>
+<li>3.1 BookMarks of Firefox &amp; Chrome</li>
+<li>3.2 Ad-block</li>
+</ul>
+<h4 id="4-Bin_2CDocument_2CData_2CWorkspace_2CTools"><a href="#4-Bin_2CDocument_2CData_2CWorkspace_2CTools" class="headerlink" title="4.Bin,Document,Data,Workspace,Tools"></a>4.Bin,Document,Data,Workspace,Tools</h4><h4 id="5-DevTools_Preference"><a href="#5-DevTools_Preference" class="headerlink" title="5.DevTools Preference"></a>5.DevTools Preference</h4><ul>
+<li>5.1 vim</li>
+<li>5.2 IDEA</li>
+<li>5.3 Shadowsocks</li>
+</ul>
+<h4 id="6-Blog"><a href="#6-Blog" class="headerlink" title="6.Blog"></a>6.Blog</h4><ul>
+<li>6.1 The content sources</li>
+<li>6.2 Themes</li>
+</ul>
+<h4 id="7-Some_specific_developed_tools"><a href="#7-Some_specific_developed_tools" class="headerlink" title="7.Some specific developed tools"></a>7.Some specific developed tools</h4><ul>
+<li>7.1 Shadowsocks</li>
+<li>7.2 Win10 on the VirtualBox</li>
+<li>7.3 Atom editor</li>
+<li>7.4 WPS Office</li>
+<li>7.5 Hadoop</li>
+<li>7.6 suder preference</li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/12/24/Linux/Introduction_To_Linux/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/12/09/Journals/20151209_log/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-12-10 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Gentoo-Linux-Server/">Gentoo & Linux Server<span>5</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#1-Apps"><span class="toc-article-text">1.Apps</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#2-Desktop_Preference"><span class="toc-article-text">2.Desktop Preference</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#3-Web_Browser_Preference"><span class="toc-article-text">3.Web Browser Preference</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#4-Bin_2CDocument_2CData_2CWorkspace_2CTools"><span class="toc-article-text">4.Bin,Document,Data,Workspace,Tools</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#5-DevTools_Preference"><span class="toc-article-text">5.DevTools Preference</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#6-Blog"><span class="toc-article-text">6.Blog</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#7-Some_specific_developed_tools"><span class="toc-article-text">7.Some specific developed tools</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

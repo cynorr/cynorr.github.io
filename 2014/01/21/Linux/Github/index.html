@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux下Github的配置与使用 | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="##简介
+github是备份代码首选工具，工作机制如下:
+working dir是本地目录，HEAD是云目录，中间的index是缓存区。若要实现本地与github上同步，首先把要同步或要修改的文件或代码在缓存区（index）整理，最后统一提交（commit）到云。
+##准备工作
+准备工作比较麻烦，但">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Linux下Github的配置与使用"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Linux下Github的配置与使用</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>##简介</p>
+<p>github是备份代码首选工具，工作机制如下:<br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/github.png" alt=""></p>
+<p>working dir是本地目录，HEAD是云目录，中间的index是缓存区。若要实现本地与github上同步，首先把要同步或要修改的文件或代码在缓存区（index）整理，最后统一提交（commit）到云。</p>
+<p>##准备工作</p>
+<p>准备工作比较麻烦，但一劳永逸.<br><strong>1.申请帐号：<a href="https://github.com/" target="_blank" rel="external">Click Here</a></strong></p>
+<ul>
+<li>邮箱：cynorr@sina.com</li>
+<li>用户名：sinorr</li>
+</ul>
+<p><strong>2.创建Repository</strong></p>
+<ul>
+<li>点击 <strong>New Repository</strong>  </li>
+<li>创建一个名为HelloWorld的Repository。</li>
+</ul>
+<p><strong>3.配置SSH keys</strong><br>在本地终端下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &#34;cynorr@sina.com&#34;    #&#24341;&#21495;&#37324;&#38754;&#22635;&#20889;&#20320;&#30340;github&#37038;&#31665;&#10;&#10;Creates a new ssh key using the provided email&#10;Generating public/private rsa key pair.&#10;Enter file in which to save the key (/home/.ssh/id_rsa): #&#30452;&#25509;&#28857;&#22238;&#36710;&#10;&#10;$ Enter passphrase (empty for no passphrase):            #&#35774;&#32622;&#23494;&#30721;&#65292;&#36825;&#26159;&#20197;&#21518;&#22312;&#32456;&#31471;&#19979;&#38142;&#25509;github&#30340;&#23494;&#30721;&#10;$ Enter same passphrase again:                              &#10;&#10;$ eval  &#34;$(ssh-agent -s)&#34;           &#10;Agetn pid xxxxx   &#10;$ ssh-add ~/.ssh/id_rsa&#10;$ gedit ~/.ssh/id_rsa.pub  #&#28982;&#21518;&#25226;&#37324;&#38754;&#30340;&#20869;&#23481;&#20840;&#36873;&#65292;&#22797;&#21046;&#21040;&#21098;&#20999;&#26495;</span><br></pre></td></tr></table></figure></p>
+<p>进入你的github主页,依次进入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#35774;&#32622; -&#62; SSH keys -&#62; Add SSH key</span><br></pre></td></tr></table></figure></p>
+<p>标题自定，将剪切板上内容粘贴进去。</p>
+<p><strong>4.全局配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &#34;sinorr&#34;         #&#24341;&#21495;&#37324;&#22635;&#33258;&#24049;github&#30340;&#29992;&#25143;&#21517;&#10;git config --global user.email cynorr@sina.com #&#30000;&#20889;github&#37038;&#31665;</span><br></pre></td></tr></table></figure></p>
+<p>##上传文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd workspace/&#10;$ git init        #&#21021;&#22987;&#21270;&#26412;&#22320;&#25991;&#20214;&#22841;&#10;$ git add HelloWorld/      #&#23558;&#25991;&#20214;&#25918;&#21040;&#32531;&#23384;&#21306;&#12290;&#10;$ git commit -m &#39;all file&#39;  #commit&#26159;&#20174;&#32531;&#23384;&#21306;&#21040;github&#19978;&#30340;&#25805;&#20316;&#38598;&#21512;&#65292;&#20363;&#22914;&#26412;&#27425;&#30340;&#25805;&#20316;&#21482;&#26159;add HelloWorld/&#10;$ git remote add test git@github.com:sinorr/HelloWorld.git   #&#25351;&#23450;&#35201;&#23384;&#30340;Repository&#10;$ git push -u test master # &#26368;&#21518;&#19968;&#27493;&#65292;&#25191;&#34892;&#21516;&#27493;&#21629;&#20196;&#12290;</span><br></pre></td></tr></table></figure>
+<p>##下载文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:sinorr/spider.git</span><br></pre></td></tr></table></figure>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2014/02/01/Linux/Github2/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2014/01/07/Distri_Dev/HashMap/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-01-21 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Fedora-Customized/">Fedora Customized<span>4</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Github/">Github<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

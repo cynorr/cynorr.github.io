@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Rsync+Sersync实现服务器数据单向触发式同步 | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="##简介触发式同步也称为实时同步,即当源端文件改变时,监控工具立刻触发同步程序,精确快速的将改变的文件推送到目标端,保证最小运行消耗的前提下实现目标端与源端统一.搭建实时同步架构是搭建多人协作平台的主要途径,也是数据备份避免无法补救灾难的重要措施.本文介绍基于rsync同步算法的触发实时同步组合Rs">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Rsync+Sersync实现服务器数据单向触发式同步"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Rsync+Sersync实现服务器数据单向触发式同步</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>##简介<br>触发式同步也称为实时同步,即当源端文件改变时,监控工具立刻触发同步程序,精确快速的将改变的文件推送到目标端,保证最小运行消耗的前提下实现目标端与源端统一.搭建实时同步架构是搭建多人协作平台的主要途径,也是数据备份避免无法补救灾难的重要措施.本文介绍基于rsync同步算法的触发实时同步组合Rsync+Sersync,实现大数量级多文件层数据高速灵敏实时同步.</p>
+<p>Rsync 是用于取代rcp的一个工具，使用Rsync 算法来使本地和远程两个主机之间的文件统一，该算法只传送源端与目标端的不同部分，而不是每次都整份传送，因此提高了同步速度。sersync是基于inotify的监听工具,可以记录下被监听目录中发生变化的（包括增加、删除、修改）具体文件或目录，源端数据发生改变时触发推送,达到实时同步。除本文介绍的组合,还有另一种主流同步组合Rsync+Inotify,两个组合主要区别在于监控触发工具Inotify和Sersync,下面阐述两个监控触发工具的不同点:</p>
+<ul>
+<li>1.Inotify只能记录下被监听的目录变化,sersync可以记录下被监听目录下具体文件变化,Inotify是对被修改的文件直属文件夹整个重新备份,造成资源浪费,而Sersync能精确到具体文夹.</li>
+<li>2.sersync是使用c++编写，Inotify为脚本语言,两者相比sersync具有更高的规范性和执行效率.</li>
+<li>3.sersync支持同时向多个服务器(vps)实时同步.<br>综上,在性能,速度,功能上Rsync+Sersync组合都优于Rsync+Inotify.</li>
+</ul>
+<p>##主要步骤<br><strong>源端:</strong>源端不需要ip地址,所以其应用范围比较广,即可以实现静态ip的服务器,也可以实现动态ip的个人主机.<br><strong>目标端:</strong>务必具备局域网和公网的IP,目标端可以是本地服务器也可以是vps.<br><strong>同步方式</strong>:支持一个源端向多个目标端同步,也支持多个源端向一个目标端同步.<br><strong>权限:</strong>源端和目标端均没有强制root权限要求,但是为了保证安全性,优先使用root权限.</p>
+<p>下面用下列配置进行方法说明:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">源端</th>
+<th style="text-align:right">目标端</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统</td>
+<td style="text-align:center">Fedora21</td>
+<td style="text-align:right">CentOS</td>
+</tr>
+<tr>
+<td>性质</td>
+<td style="text-align:center">个人主机/服务器</td>
+<td style="text-align:right">服务器/VPS</td>
+</tr>
+<tr>
+<td>权限</td>
+<td style="text-align:center">Root</td>
+<td style="text-align:right">普通用户/root</td>
+</tr>
+<tr>
+<td>IP</td>
+<td style="text-align:center">动态/静态</td>
+<td style="text-align:right">107.170.213.95</td>
+</tr>
+<tr>
+<td>路径</td>
+<td style="text-align:center">/home/user1/source/</td>
+<td style="text-align:right">/home/user2/target/</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Step1:建立源端向目标端的SSH信任,实现单向免密码直连</li>
+<li>Step2:在目标端设立监听与接收端口</li>
+<li>Step3:在源端建立实时推送</li>
+</ul>
+<h2 id="u5177_u4F53_u5B9E_u73B0"><a href="#u5177_u4F53_u5B9E_u73B0" class="headerlink" title="具体实现"></a>具体实现</h2><p>###Step1:建立源端到目标端SSH信任</p>
+<p>源端:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> </span><br><span class="line">rm -rf .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/user1/.ssh/id_rsa):   <span class="comment">#回车</span></span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):    <span class="comment">#回车</span></span><br><span class="line"><span class="built_in">eval</span> `ssh-agent`  <span class="comment">#是～键上的那个`</span></span><br><span class="line">ssh-add</span><br><span class="line"></span><br><span class="line"><span class="comment">#此时本机SSH Key已经生成,默认公钥位置: .ssh/id_rsa.pub,将其拷贝至目标端</span></span><br><span class="line">scp .ssh/id_rsa.pub user2@<span class="number">107.170</span>.<span class="number">213.95</span>:.ssh/authorized_keys  <span class="comment">#如果目标端无.ssh目录,自行在目标端建立在执行此命令</span></span><br></pre></td></tr></table></figure>
+<p>本文使用DigitalOcean虚拟机作目标端,因此除了向系统里添加公钥,还需向DigitalOcean官网设置里添加公钥,此公钥也可用于Github.</p>
+<p>###Step2:在目标端设立监听与接收端口<br>登录至目标端:</p>
+<ul>
+<li>2.1关闭SELINUX</li>
+<li>2.2关闭ip防火墙</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">su  <span class="comment">#需要借用root权限</span></span><br><span class="line">vim /etc/selinux/config  </span><br><span class="line"></span><br><span class="line"><span class="comment">#找到以下两行并注释掉:</span></span><br><span class="line">SELINUX=enforcing</span><br><span class="line">SELINUXTYPE=targeted </span><br><span class="line"></span><br><span class="line"><span class="comment">#添加下列一行:</span></span><br><span class="line">SELINUX=disabled</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#关闭ip防火墙</span></span><br><span class="line">systemctl stop firewalld.service (暂时关闭)</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service(永久关闭)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>2.3安装Rsync</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install rsync -y  #&#23433;&#35013;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>2.4配置rsync文件<br>配置参数是关键步骤,务必仔细.</strong>rsync的配置文件分全局参数和模块参数,其中模块就是指仓库,一个库只允许一个源端同步,但是rsync可以建立多个库,实现多个源端同时向一个目标端同步.每个库主要由库名,存放路径,库管理员组成.全局参数决定rsync运行的维护者和性能.参数文件具体如下:<br>文件存放位置: <strong>/etc/rsyncd.conf</strong>,如果没自动生成,请手动创建</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#全局参数</span></span><br><span class="line"> uid = root </span><br><span class="line"> gid = root</span><br><span class="line"> use chroot = yes </span><br><span class="line"> max connections = <span class="number">4</span></span><br><span class="line"> <span class="built_in">log</span> file = /home/user2/<span class="built_in">log</span>       <span class="comment"># &lt;-----日志文件,用于调试,路径自设</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#模块,可以设置多个</span></span><br><span class="line"> [myhub1]                         <span class="comment"># &lt;-----(重要)库名,作源端参数</span></span><br><span class="line"> path = /home/cyno/target/        <span class="comment"># &lt;-----库位置,打开读写权限</span></span><br><span class="line"> comment = PC back up             <span class="comment"># &lt;-----库说明</span></span><br><span class="line"> ignore errors = yes                </span><br><span class="line"> <span class="built_in">read</span> only = no                   <span class="comment"># &lt;-----(重要)关闭只读</span></span><br><span class="line"> auth users = admin1              <span class="comment"># &lt;-----(重要)管理员姓名,下一步为管理员设置密码,作源端参数</span></span><br><span class="line"> secrets file = /etc/rsyncd.secret<span class="comment"># &lt;-----(重要)存储管理员和密码,做源端参数</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>2.5设置库管理员密码</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#34;admin1:1234&#34;  &#62;&#62; /etc/rsyncd.secret # &#60;-----&#36335;&#24452;&#20026;&#37197;&#32622;&#25991;&#20214;&#37324;&#30340;secrets file&#10;                                          # &#60;-----&#26684;&#24335;&#20026;&#34;name:key&#34;,&#20013;&#38388;&#29992;&#20882;&#21495;&#38548;&#24320;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>2.6配置文件设置权限</strong><br>否则rsync会因安全问题启动失败.两个配置文件的读写权只属于uid和gid用户,本次uid和gid用户设为root所以配置文件的读写权管理者为root,如果uid和gid用户为某个普通用户,则读写权限只属于该普通用户.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 600 rsyncd.conf rsyncd.secret</span><br></pre></td></tr></table></figure>
+<ul>
+<li>2.7启动目标端rsync监听</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su&#10;rsync --daemon --config=/etc/rsyncd.conf   #&#21487;&#20197;&#28155;&#21152;&#30340;&#24320;&#26426;&#33258;&#21551;&#21160;</span><br></pre></td></tr></table></figure>
+<p>###Step3:在源端建立实时推送</p>
+<ul>
+<li>3.1安装rsync和配置文件:<br>源端安装rsync与目标端不同,目标端安装rsync是为了建立仓库和传送,需要配置仓库参数,而源端安装rsync只为传送,只需配置全局变量.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#23433;&#35013;&#10;sudo yum install rsync -y</span><br></pre></td></tr></table></figure>
+<pre><code>配置文件路径(/etc/rsyncd.conf),内容如下:
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#20840;&#23616;&#21442;&#25968;&#10; uid = root       &#10; gid = root&#10; use chroot = yes &#10; max connections = 4&#10; log file = /home/user2/log  #&#26085;&#24535;&#25991;&#20214;,&#29992;&#20110;&#35843;&#35797;,&#36335;&#24452;&#33258;&#35774;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3.2安装Sersync:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://sersync.googlecode.com/files/sersync2.<span class="number">5.4</span>_64bit_binary_stable_final.tar.gz <span class="comment">#需要翻墙</span></span><br><span class="line">tar -zxvf sersync2.<span class="number">5.4</span>_64bit_binary_stable_final.tar.gz   </span><br><span class="line"></span><br><span class="line"><span class="comment">#得到GUN-linux-x86文件夹(很奇怪的命名),文件夹里只有两个文件,参数文件*confxml.xml*和可执行文件*sersync2*.</span></span><br><span class="line"></span><br><span class="line">mv GUN-Linux-x86 /uer/<span class="built_in">local</span>/sersync</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>3.3配置Sersync参数文件<br>配置参数是关键步骤,务必仔细.</strong>参数文件很长,但是需要设置的地方却很少,主要实现和Step2的目标仓库端口进行对接.为了方便观看,本文只列出需要修改的地方,内容如下:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;sersync&gt;</span><br><span class="line">	&lt;localpath watch=<span class="string">"/home/user1/source/"</span>&gt;    <span class="comment"># &lt;---源端需要同步的文件夹</span></span><br><span class="line">	    &lt;remote ip=<span class="string">"107.170.213.95"</span> name=<span class="string">"myhub1"</span>/&gt; <span class="comment"># &lt;---目标端Ip,目标端模块name,与Step2.4模块名统一</span></span><br><span class="line">	    &lt;!--&lt;remote ip=<span class="string">"192.168.8.39"</span> name=<span class="string">"tongbu"</span>/&gt;--&gt;  <span class="comment"># &lt;---可以设置多个目标端,多份备份,</span></span><br><span class="line">	    &lt;!--&lt;remote ip=<span class="string">"192.168.8.40"</span> name=<span class="string">"tongbu"</span>/&gt;--&gt;</span><br><span class="line">	&lt;/localpath&gt;</span><br><span class="line">	&lt;rsync&gt;</span><br><span class="line">	    &lt;commonParams params=<span class="string">"-artuz"</span>/&gt;</span><br><span class="line">	    &lt;auth start=<span class="string">"true"</span> users=<span class="string">"admin1"</span> passwordfile=<span class="string">"/etc/rsync.pas"</span>/&gt;  <span class="comment"># &lt;---users为库管理员,与Step2.4库管理员统一,passwordfile为该管理员的密码,每个密码一个文件,详见Step3.4</span></span><br><span class="line">	    &lt;userDefinedPort start=<span class="string">"false"</span> port=<span class="string">"874"</span>/&gt;&lt;!-- port=<span class="number">874</span> --&gt;</span><br><span class="line">	    &lt;timeout start=<span class="string">"false"</span> time=<span class="string">"100"</span>/&gt;&lt;!-- timeout=<span class="number">100</span> --&gt;</span><br><span class="line">	    &lt;ssh start=<span class="string">"false"</span>/&gt;</span><br><span class="line">	&lt;/rsync&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>3.4配置库管理员密码文件</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#34;1234&#34; &#62;&#62; /etc/rsync.pas  # &#60;-----&#23494;&#30721;&#19982;Step2.5&#32479;&#19968;&#10;                               # &#60;-----&#23494;&#30721;&#25991;&#20214;&#36335;&#24452;&#19982;Step2.4 passwordfile&#32479;&#19968;&#10;&#10;chmod 600 /etc/rsync.pas       # &#60;-----(&#37325;&#35201;)&#35774;&#32622;&#26435;&#38480;,&#21542;&#21017;sersync&#20250;&#22240;&#23433;&#20840;&#38382;&#39064;&#26080;&#27861;&#21551;&#21160;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3.5启动Sersync</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#可以添加到开机自启动</span></span><br><span class="line">sudo /usr/<span class="built_in">local</span>/sersync/sersync2 -r <span class="operator">-d</span> -o  /usr/<span class="built_in">local</span>/sersync/confxml.xml</span><br></pre></td></tr></table></figure>
+<p>###Step4:测试<br>在源端向source文件夹下,添加或修改文件,观察目标端target文件夹内容变化.</p>
+<p>##参考</p>
+<ul>
+<li>1.rsync参数:<a href="http://www.cnblogs.com/mchina/p/2829944.html" target="_blank" rel="external">CentOS 6.3下rsync服务器的安装与配置</a></li>
+<li>2.sersync应用:<a href="http://code.google.com/p/sersync/" target="_blank" rel="external">sersync - Google Code</a></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/07/01/Linux/GentooI/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/06/16/Linux/VMware/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-06-26 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Tech-Tools/">Tech & Tools<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/rsync-sersync/">rsync + sersync<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

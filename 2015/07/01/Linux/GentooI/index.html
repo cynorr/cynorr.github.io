@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Gentoo I :Overview and Quick Installation | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="IntructionOverview
+Gentoo is a fast, modern mate-distrubution with a clean and flexible design, which is build around free software and doesn’t hide f">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Gentoo I :Overview and Quick Installation"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Gentoo I :Overview and Quick Installation</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="Intruction"><a href="#Intruction" class="headerlink" title="Intruction"></a>Intruction</h2><p><strong>Overview</strong></p>
+<p>Gentoo is a fast, modern mate-distrubution with a clean and flexible design, which is build around free software and doesn’t hide from its user what is beneath the hood. Portage, the package maintance system which the Gentoo use, is written in Python, meaning the user can view and modify the source code. Gentoo packaging system uses source code and configuring Gentoo happens with regular text file. In other words, openness everwhere. Welcome to the world of choice and performance.</p>
+<p><strong>Quick Installation</strong></p>
+<p>In the process of installation, we are provided with GCC, bash and some specific tools, which makes fresh man daunted. In order to help fresh man build their confidence, this paper provide a quick installing tutorial, following which we can build a light version of Gentoo in 2 hours.</p>
+<p>Good Luck!</p>
+<h2 id="Installation_Structrue"><a href="#Installation_Structrue" class="headerlink" title="Installation Structrue"></a>Installation Structrue</h2><p><strong>Light Version List</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>——Configure——</strong></th>
+<th style="text-align:center"><strong>——Value——</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Boot Media</td>
+<td style="text-align:center">Minial installation CD</td>
+</tr>
+<tr>
+<td style="text-align:center">Stage Archives</td>
+<td style="text-align:center">stage3</td>
+</tr>
+<tr>
+<td style="text-align:center">Boot</td>
+<td style="text-align:center">grub2</td>
+</tr>
+<tr>
+<td style="text-align:center">Partitions</td>
+<td style="text-align:center">MBR</td>
+</tr>
+<tr>
+<td style="text-align:center">Init</td>
+<td style="text-align:center">openRC</td>
+</tr>
+<tr>
+<td style="text-align:center">Desktop</td>
+<td style="text-align:center">xfce</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Preparation</strong></p>
+<ul>
+<li>Bootable CD</li>
+<li>U disk with stage3</li>
+<li>Ethernet Network</li>
+</ul>
+<p><strong>Steps</strong></p>
+<ul>
+<li>1.File System: After step 1, we will have base linux environment and chroot</li>
+<li>2.Configure the System: After step 2, most necessary configuration files will have been configured</li>
+<li>3.Portage &amp; Kernel: After step 3, the portage is ready to use and the linux kernel is installed</li>
+<li>4.Bootloader: After step 4, we can boot the gentoo without the Installation CD</li>
+<li>5.Desktop: After step 5, we will have graphical environment and xfce desktop environment</li>
+</ul>
+<hr>
+<h2 id="Step1_3A_File_System"><a href="#Step1_3A_File_System" class="headerlink" title="Step1: File System"></a>Step1: File System</h2><p><strong>Preparing the disk</strong></p>
+<p>Firstly, we split the full disk into several partitions using MBR partitioning technology.</p>
+<p><code>fdisk</code> is a popular and powerful tool to split the disk into partitions. Fire up <code>fdisk</code> aginst the disk (in our example, we use /dev/sda)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # fdisk /dev/sda</span><br></pre></td></tr></table></figure></p>
+<p>type <code>p</code> to display the disks’ current partition configuration<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help): p&#10;Disk /dev/sda: 240 heads, 63 sectors, 2184 cylinders&#10;Units = cylinders of 15120 * 512 bytes&#10;&#10;   Device Boot    Start       End    Blocks   Id  System&#10;/dev/sda1   *         1        14    105808+  83  Linux&#10;/dev/sda2            15        49    264600   82  Linux swap&#10;/dev/sda3            50        70    158760   83  Linux&#10;/dev/sda4            71      2184  15981840    5  Extended</span><br></pre></td></tr></table></figure></p>
+<p>First remove all existing partitions from the disk. Type <code>d</code> to delete a partition. For instance, to delete an existing /dev/sda1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help): d&#10;Partition number (1-4): 1</span><br></pre></td></tr></table></figure></p>
+<p>First create a very small BIOS boot partition. Type <code>n</code> to create a new partition, then <code>p</code> to select a primary partition, followed <code>1</code> to select the first primary partition. Make sure it starts from 2048 and hit <code>enter</code>. When prompted for the last sector , type <code>+128M</code> to create a partion 128 Mbyte in size:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help): n&#10;Command action&#10;  e   extended&#10;  p   primary partition (1-4)&#10;p&#10;Partition number (1-4): 1&#10;First sector (64-10486533532, default 64): 2048&#10;Last sector, +sectors +size&#123;M,K,G&#125; (4096-10486533532, default 10486533532): +128M</span><br></pre></td></tr></table></figure></p>
+<p>Type <code>a</code> to toggle the bootable flag on a partition and select <code>1</code>. After pressing <code>p</code>, notice that an <strong>*</strong> is placed in <strong>Boot</strong> column.</p>
+<p>Then, create the root partition. To create root partition, type <code>n</code> to create a new partition, then <code>p</code> to tell <code>fdisk</code> to create a primary partition. Then type <code>2</code> to create the second primary partition, <strong>/dev/sda2</strong>. When prompted for the first sector, hit <code>Enter</code>. When prompted for the last sector, hit <code>Enter</code> to create a partition that takes up the rest of the remaining space on the disk. After completing these steps, type <code>p</code> should display a partition table that looks similar to this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help): p&#10;Disk /dev/sda: 30.0 GB, 30005821440 bytes&#10;240 heads, 63 sectors/track, 3876 cylinders&#10;Units = cylinders of 15120 * 512 = 7741440 bytes&#10;&#10;   Device Boot    Start       End    Blocks   Id  System&#10;/dev/sda1   *          1       14    105808+  83  Linux&#10;/dev/sda2            15      3876  28690200   83  Linux</span><br></pre></td></tr></table></figure></p>
+<p>To save the partition loyout and exit <code>fdisk</code>, type <code>w</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Command (m for help): w</span><br></pre></td></tr></table></figure></p>
+<p>Finally, make the boot partition (/dev/sda1) in ext2 and root partition (/dev/sda2) in ext4:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # make.ext2 /dev/sda1&#10;root # make.ext4 /dev/sda2</span><br></pre></td></tr></table></figure></p>
+<p><strong>Installing the Stage3</strong><br>First mount the disk and U disk with stage3, type <code>fdisk -l</code> to check the U disk partition( our example is /dev/sdb1)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sda2 /mnt/gentoo&#10;&#10;mkdir /mnt/gentoo/boot&#10;mount /dev/sda1 /mnt/gentoo/boot&#10;&#10;mkdir /mnt/gentoo/usb&#10;mount /dev/sdb1 /mnt/gentoo/usb</span><br></pre></td></tr></table></figure></p>
+<p>Then copy the stage3 file to root directory and unpack in root directory<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # cd /mnt/gentoo/&#10;root # cp usb/stage3-*.tar.bz2 ./&#10;root # tar xvjpf starge3-*.tar.bz2</span><br></pre></td></tr></table></figure></p>
+<p><strong>Chroot</strong><br>We need to copy the network configuration file and mount some specfic system partition before chrooting.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # cp -L /etc/resolv.conf /mnt/gentoo/etc/&#10;root # mount -t proc proc /mnt/gentoo/proc&#10;root # mount --rbind /sys /mnt/gentoo/sys&#10;root # mount --rbind /dev /mnt/gentoo/dev</span><br></pre></td></tr></table></figure></p>
+<p>Then chroot and reload the system environment variables<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # chroot /mnt/gentoo /bin/bash&#10;root # source /etc/profile</span><br></pre></td></tr></table></figure></p>
+<h2 id="Step2_Configuring_the_System"><a href="#Step2_Configuring_the_System" class="headerlink" title="Step2 Configuring the System"></a>Step2 Configuring the System</h2><p>Set the password<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># passwd</span></span><br></pre></td></tr></table></figure></p>
+<p>To optimize Gentoo, it is possible to set a couple of variables which impact Portage behavior. All those variables can be set as environment variables. To keep the settings, Portage reads in the <strong>/etc/portage/make.conf</strong> file, a configuration file for Portage.</p>
+<p>Fire up an editor (without <code>vim</code> here, we use <code>nano</code>) to alter the optimization variables.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # nano -w /etc/portage/make.conf</span><br></pre></td></tr></table></figure></p>
+<p><strong>Configuring the compile options</strong></p>
+<p>A first setting <code>-march=</code> flag, which specifies the name of the target architecture. A common used value is <code>native</code> as that tell the compiler to select the target architecture of current system.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CFLAGS=&#34;-march=native -O2 -pipe&#34;&#10;CXXFLAGS=&#34;$&#123;CFLAGS&#125;&#34;</span><br></pre></td></tr></table></figure></p>
+<p>The <code>MAKEOPTS</code> variable defines how many parallel compilations should occur when installing a package. A good choice is the number threads in the system plus one. For instance, the hyperthread i5-3230M with 4 threads( 2 cores), should set <code>5</code> parallel compilations.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MAKEOPTS=&#34;-j5&#34;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Configuring the USE flag</strong><br><code>USE</code> is one of the most powerful variables Gentoo provides to its users. Several programmes can be compiled with or without optional support for certain items. Most of <code>xfce</code> desktop users will want to set the following:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE=&#34;X dbus jpeg lock session startup-notification thunar udev -gnome -kde -minimal -qt4</span><br></pre></td></tr></table></figure></p>
+<p><strong>Graphic Configuration</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VIDEO_CARDS=&#34;intel nvidia&#34; # Don&#39;t add i915 or i965, which would cause issue on slim&#10;INPUT_DEVICES=&#34;evdev&#34;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Selecting mirrors</strong><br>In order to download source code quickly it is recommended to select a fast mirror. we should surf Gentoo mirror list and search for a mirror that is close to the system’s physical location.<br>First back to boot installing CD environment, which provided a nice tool called <code>mirrorselect</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # exit</span><br></pre></td></tr></table></figure></p>
+<p>then select the fast mirror by <code>direction key</code> and <code>Enter</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # mirror -i -o &#62;&#62; /mnt/gentoo/etc/portage/make.conf&#10;root # mirror -i -r -o &#62;&#62; /mnt/gentoo/etc/portage/make.conf</span><br></pre></td></tr></table></figure></p>
+<p>Final chroot again<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # chroot /mnt/gentoo /bin/bash&#10;root # source /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p><strong>Select Profile &amp; Locale</strong><br>We select <code>default/linux/amd64/13.0/desktop</code> without <code>gnome</code> or <code>kde</code>, since we will use <code>xfce</code> desktop.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # eselect profile list&#10;root # eselect profile set 3</span><br></pre></td></tr></table></figure></p>
+<p>It is now time to set the system-wide locale settings. We Strongly suggest to use at least one UTF-8 locale because some applications may require it. Here, we use <code>en_US.utf-8</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # eselect locale list&#10;root # eselect locale set 239</span><br></pre></td></tr></table></figure></p>
+<p><strong>Configuring the Network</strong><br>In this tutorial, we use <code>dhcp</code>. We specfic the dhcp settings right now and install <code>dhcp</code> after syncing the portage tree.<br>First check the net port by typing <code>ifconfig</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # ifconfig&#10;&#10;enp2s0: flags=4163&#60;UP,BROADCAST,RUNNING,MULTICAST&#62;  mtu 1500&#10;        inet 192.168.1.101  netmask 255.255.255.0  broadcast 192.168.1.255&#10;        inet6 fe80::fabc:12ff:fe80:ada3  prefixlen 64  scopeid 0x20&#60;link&#62;&#10;        ether f8:bc:12:80:ad:a3  txqueuelen 1000  (Ethernet)&#10;        RX packets 81407  bytes 116649996 (111.2 MiB)&#10;        RX errors 0  dropped 0  overruns 0  frame 0&#10;        TX packets 46215  bytes 3370975 (3.2 MiB)&#10;        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0&#10;&#10;lo: flags=73&#60;UP,LOOPBACK,RUNNING&#62;  mtu 65536&#10;        inet 127.0.0.1  netmask 255.0.0.0&#10;        inet6 ::1  prefixlen 128  scopeid 0x10&#60;host&#62;&#10;        loop  txqueuelen 0  (Local Loopback)&#10;        RX packets 3144  bytes 1874421 (1.7 MiB)&#10;        RX errors 0  dropped 0  overruns 0  frame 0&#10;        TX packets 3144  bytes 1874421 (1.7 MiB)&#10;        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure></p>
+<p>The <code>enp2s0</code> is the Ethernet port flag, set the connecting method as <code>dhcp</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # echo &#34;config_enp2s0=`dhcp`&#34; &#62; /etc/conf.d/net</span><br></pre></td></tr></table></figure></p>
+<p>To have the network interfaces activated at boot, they need to be added to the default runlevel.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # cd /etc/init.d/&#10;root # ln -s net.lo net.enp2s0&#10;root # rc-update add net.enp2s0 default</span><br></pre></td></tr></table></figure></p>
+<p><strong>Configuring the fstab</strong><br>Under Linux, all partitions used by the system must be listed in <strong>/etc/fstab</strong>, the <strong>/boot</strong> and <strong>/root</strong> partitions must be mounted automatically.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano -w /etc/fstab</span><br></pre></td></tr></table></figure></p>
+<p>Below is a example of an <strong>/etc/fstab</strong> file:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/sda1   /boot        ext2    defaults,noatime     0 2&#10;/dev/sda2   /            ext4    noatime              0 1&#10;&#10;/dev/cdrom  /mnt/cdrom   auto    noauto,user          0 0</span><br></pre></td></tr></table></figure></p>
+<h2 id="Step3_3A_Portage__26amp_3B_Kernel"><a href="#Step3_3A_Portage__26amp_3B_Kernel" class="headerlink" title="Step3: Portage &amp; Kernel"></a>Step3: Portage &amp; Kernel</h2><p><strong>Installing a portage snapshot</strong><br>A Portage snapshot is a collection file that inform portage what software title are availabe to use, which profiles the adminintractor can select, etc.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # emerge-webrsync&#10;root # emerge --sync</span><br></pre></td></tr></table></figure></p>
+<p><strong>Configuring the Kernel</strong><br>First installing the source:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # emerge gentoo-sources</span><br></pre></td></tr></table></figure></p>
+<p>We use <code>genkernel</code> to configure the kernel to automatically build the kernel right here, and more information and knowledge about kernel will be following chapter.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # emerge genkernel&#10;root # genkernel all</span><br></pre></td></tr></table></figure></p>
+<h2 id="Step4_3A_Bootloader"><a href="#Step4_3A_Bootloader" class="headerlink" title="Step4: Bootloader"></a>Step4: Bootloader</h2><p>The bootloader is responsible for firing up the Linux Kernel upon boot-without it, the system would not know how to proceed when the power button has been pressed.</p>
+<p>GRUB2 is provided through the <code>sys-boot/grub</code> package:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # emerge grub</span><br></pre></td></tr></table></figure></p>
+<p>Next, install the necessary GRUB2 files in <strong>/boot/grub</strong>. Assuming the first disk is <strong>/dev/sda</strong>, the following command will do this :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # grub2-install /dev/sda</span><br></pre></td></tr></table></figure></p>
+<p>(Optional) To generate the final GRUB2 configuration, run the <code>grub2-mkconfig</code> command:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # grub2-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure></p>
+<p>Reboot directly, and the installing CD will umount all mounted partitions automatically.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # reboot</span><br></pre></td></tr></table></figure></p>
+<h2 id="Step5_3A_Desktop"><a href="#Step5_3A_Desktop" class="headerlink" title="Step5: Desktop"></a>Step5: Desktop</h2><p>At first, we should install X-server. Xorg is the X Window server which allows users to have a graphical environment.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # emerge xorg-drivers&#10;root # emerge xorg-x11</span><br></pre></td></tr></table></figure></p>
+<p><code>Xfce</code> is a fast lightweight but full-featured desktop environment.<br><strong>xfce</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # emerge xfce4-meta xfce4-notifyd xfce4-panel xfce4-terminal</span><br></pre></td></tr></table></figure></p>
+<p><strong>lxdm loginer</strong><br><code>lxdm</code> is one of the login manager, Simple Login Managert.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # emerge lxde-base/lxdm</span><br></pre></td></tr></table></figure></p>
+<p><strong>Making lxdm / xfce autoboot</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # vim /etc/conf.d/xdm</span><br></pre></td></tr></table></figure></p>
+<p>Set <code>DISPLAYMANAGER</code> as <code>lxdm</code>, and add xdm to autoboot list:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # rc-update add xdm default</span><br></pre></td></tr></table></figure></p>
+<p>Install <code>dbus</code> and set it autoboot, otherwise slim can’t wake xfce up.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # emerge dbus&#10;root # rc-update add dbus default&#10;root # /etc/init.d/dbus start</span><br></pre></td></tr></table></figure></p>
+<p>Final make lxdm launch xfce, specify the configurations file of lxdm.<br>Following are some necessary settings of <code>/etc/lxdm/lxdm.conf</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session=/usr/bin/startxfce4&#10;autologin=cyno</span><br></pre></td></tr></table></figure></p>
+<h2 id="Step6_3A_Add_non-root_user"><a href="#Step6_3A_Add_non-root_user" class="headerlink" title="Step6: Add non-root user"></a>Step6: Add non-root user</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # useradd -d /home/cyno -m cyno&#10;root # passwd cyno&#10;root # usermod -G wheel,audio cyno&#10;root # gpasswd -a cyno wheel&#10;root # chmod +s /bin/su</span><br></pre></td></tr></table></figure>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/07/02/Linux/Gentoo_Android_SDK/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/06/26/Linux/sync/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-07-01 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Gentoo-Linux-Server/">Gentoo & Linux Server<span>5</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Gentoo-Tutorial/">Gentoo Tutorial<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Intruction"><span class="toc-article-text">Intruction</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Installation_Structrue"><span class="toc-article-text">Installation Structrue</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Step1_3A_File_System"><span class="toc-article-text">Step1: File System</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Step2_Configuring_the_System"><span class="toc-article-text">Step2 Configuring the System</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Step3_3A_Portage__26amp_3B_Kernel"><span class="toc-article-text">Step3: Portage & Kernel</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Step4_3A_Bootloader"><span class="toc-article-text">Step4: Bootloader</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Step5_3A_Desktop"><span class="toc-article-text">Step5: Desktop</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Step6_3A_Add_non-root_user"><span class="toc-article-text">Step6: Add non-root user</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
