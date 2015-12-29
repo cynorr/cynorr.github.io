@@ -116,7 +116,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">source</span> /etc/profile</span><br><span class="line">&gt; scala --version</span><br><span class="line"></span><br><span class="line">Scala code runner version <span class="number">2.10</span>.<span class="number">4</span> -- Copyright <span class="number">2002</span>-<span class="number">2013</span>, LAMP/EPFL</span><br></pre></td></tr></table></figure>
 <p>Final, do the same for all other machines.</p>
 <hr>
-<h3 id="Configure_SSH_Key-Based_Authentication_on_Each_Machine"><a href="#Configure_SSH_Key-Based_Authentication_on_Each_Machine" class="headerlink" title="Configure SSH Key-Based Authentication on Each Machine"></a>Configure SSH Key-Based Authentication on Each Machine</h3><p>The need for SSH Key-Based authentication is required so that the master node can then login (without requiring a password ) to slave nodes to Start/Stop them. Assuming we have 3 machines, all of which have turn firewall ( likes selinux and iptable) off. Assume the followint is the list of IP of three machines, whose IP can be seen by command <code>ifconfig</code></p>
+<h3 id="Configure_SSH_Key-Based_Authentication"><a href="#Configure_SSH_Key-Based_Authentication" class="headerlink" title="Configure SSH Key-Based Authentication"></a>Configure SSH Key-Based Authentication</h3><p>The need for SSH Key-Based authentication is required so that the master node can then login (without requiring a password ) to slave nodes to Start/Stop them. Assuming we have 3 machines, all of which have turn firewall ( likes selinux and iptable) off. Assume the followint is the list of IP of three machines, whose IP can be seen by command <code>ifconfig</code></p>
 <table>
 <thead>
 <tr>
@@ -146,7 +146,7 @@
 <p>10.Final distribute the file to each machine’s authorized key store.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/.ssh/authorized_keys user@hadoop2:.ssh/authorized_keys&#10;scp ~/.ssh/authorized_keys user@hadoop3:.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
 <p>Now you can test it by login in any node. If it will not require password, you have finish this step.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62; ssh user@hadoop1</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="Setting_up_Distributed_File_System_and_Yarn"><a href="#Setting_up_Distributed_File_System_and_Yarn" class="headerlink" title="Setting up Distributed File System and Yarn"></a>Setting up Distributed File System and Yarn</h3><p>11.Download</p>
+<p>11.Download</p>
 	  
 	</div>
 
