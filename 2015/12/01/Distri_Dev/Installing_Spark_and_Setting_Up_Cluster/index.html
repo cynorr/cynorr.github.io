@@ -103,42 +103,30 @@
 <li>Spark-1.4.0</li>
 </ul>
 <p>To interact with <strong>Hadoop Distributed File System (HDFS)</strong>, we need to use a Spark version that is built against the same version of Hadoop as your cluster. We select Spark-1.4.0 with pre-built Hadoop-2.4.0 .</p>
-<h4 id="Setting_up_JDK_environment"><a href="#Setting_up_JDK_environment" class="headerlink" title="Setting up JDK environment"></a>Setting up JDK environment</h4><ul>
-<li><ol>
-<li>Download <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">jdk-7u79-linux-x64.tar.gz</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62; wget http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="Setting_up_JDK_environment"><a href="#Setting_up_JDK_environment" class="headerlink" title="Setting up JDK environment"></a>Setting up JDK environment</h4><ol>
+<li><p>Download <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">jdk-7u79-linux-x64.tar.gz</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62; wget http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Extract the file of jdk tarball to <code>/usr/local</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo tar -zxvf  jdk-<span class="number">7</span>u79-linux-x64.tar.gz -C /usr/<span class="built_in">local</span>/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Add the following variables to <code>/etc/profile</code> .</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.<span class="number">7.0</span>_79</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-</li>
-<li><ol>
-<li>Extract the file of jdk tarball to <code>/usr/local</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo tar -zxvf  jdk-<span class="number">7</span>u79-linux-x64.tar.gz -C /usr/<span class="built_in">local</span>/</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><ol>
-<li>Add the following variables to <code>/etc/profile</code> .<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.<span class="number">7.0</span>_79</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
 <p>Now, fresh the environment variables and we will have the jdk environment.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">source</span> /etc/profile</span><br><span class="line">&gt; java -version</span><br><span class="line"></span><br><span class="line">java version <span class="string">"1.7.0_79"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build <span class="number">1.7</span>.<span class="number">0</span>_79-b15)</span><br><span class="line">Java HotSpot(TM) <span class="number">64</span>-Bit Server VM (build <span class="number">24.79</span>-b02, mixed mode)</span><br></pre></td></tr></table></figure>
-<h4 id="Installing_Scala_language"><a href="#Installing_Scala_language" class="headerlink" title="Installing Scala language"></a>Installing Scala language</h4><ul>
-<li><ol>
-<li>Download <a href="http://www.scala-lang.org/download/2.10.4.html" target="_blank" rel="external">scala-2.10.4.tgz</a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; wget http://www.scala-lang.org/files/archive/scala-<span class="number">2.10</span>.<span class="number">4</span>.tgz</span><br></pre></td></tr></table></figure>
+<h4 id="Installing_Scala_language"><a href="#Installing_Scala_language" class="headerlink" title="Installing Scala language"></a>Installing Scala language</h4><ol>
+<li><p>Download <a href="http://www.scala-lang.org/download/2.10.4.html" target="_blank" rel="external">scala-2.10.4.tgz</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; wget http://www.scala-lang.org/files/archive/scala-<span class="number">2.10</span>.<span class="number">4</span>.tgz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Extract the file of tarball to <code>/usr/local</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf scala-2.10.4.tgz -C /usr/local</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Add the following variables to <code>/etc/profile</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> SCALA_HOME=/usr/<span class="built_in">local</span>/scala-<span class="number">2.10</span>.<span class="number">4</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$&#123;SCALA_HOME&#125;</span>/bin</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-</li>
-<li><ol>
-<li>Extract the file of tarball to <code>/usr/local</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf scala-2.10.4.tgz -C /usr/local</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><ol>
-<li>Add the following variables to <code>/etc/profile</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> SCALA_HOME=/usr/<span class="built_in">local</span>/scala-<span class="number">2.10</span>.<span class="number">4</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$&#123;SCALA_HOME&#125;</span>/bin</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
 <p>Fresh the environment variable as what we did with jdk and we have scala too.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">source</span> /etc/profile</span><br><span class="line">&gt; scala --version</span><br><span class="line"></span><br><span class="line">Scala code runner version <span class="number">2.10</span>.<span class="number">4</span> -- Copyright <span class="number">2002</span>-<span class="number">2013</span>, LAMP/EPFL</span><br></pre></td></tr></table></figure>
 <p>Final, do the same for all other machines.</p>
@@ -165,27 +153,17 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li><ol>
-<li>Configure domain resolution to all nodes. We just need add the following lines to <code>/etc/hosts</code> for all three machine.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">192.168</span>.<span class="number">1.101</span>  hadoop1</span><br><span class="line"><span class="number">192.168</span>.<span class="number">1.102</span>  hadoop2</span><br><span class="line"><span class="number">192.168</span>.<span class="number">1.103</span>  hadoop3</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>Configure domain resolution to all nodes. We just need add the following lines to <code>/etc/hosts</code> for all three machine.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">192.168</span>.<span class="number">1.101</span>  hadoop1</span><br><span class="line"><span class="number">192.168</span>.<span class="number">1.102</span>  hadoop2</span><br><span class="line"><span class="number">192.168</span>.<span class="number">1.103</span>  hadoop3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Generate SSH Key of three machines. Type the following command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh-keygen</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-</li>
-<li><ol>
-<li>Generate SSH Key of three machines. Type the following command<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh-keygen</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
 <p>then type several <code>Enter</code>, you should have the SSH-Key in <code>~/.ssh/id_rsa.pub</code>. And do the same for other two machines.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62; ssh user@hadoop2&#10;&#62; ssh-keygen&#10;&#62; exit&#10;&#10;&#62; ssh user@hadoop3&#10;&#62; ssh-keygen&#10;&#62; exit</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>9.Then gather them to one file.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62; cat ~/.ssh/id_dsa.pub &#62;&#62; ~/.ssh/authorized_keys&#10;&#10;&#62; scp user@hadoop2:.ssh/id_dsa.pub ~/.ssh/hadoop2.pub&#10;&#62; cat ~/.ssh/hadoop2.pub &#62;&#62; ~/.ssh/authorized_keys&#10;&#10;&#62; scp user@hadoop3:.ssh/id_dsa.pub ~/.ssh/hadoop3.pub&#10;&#62; cat ~/.ssh/hadoop2.pub &#62;&#62; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>10.Final distribute the file to each machine’s authorized key store.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/.ssh/authorized_keys user@hadoop2:.ssh/authorized_keys&#10;scp ~/.ssh/authorized_keys user@hadoop3:.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<p>9.Then gather them to one file.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62; cat ~/.ssh/id_dsa.pub &#62;&#62; ~/.ssh/authorized_keys&#10;&#10;&#62; scp user@hadoop2:.ssh/id_dsa.pub ~/.ssh/hadoop2.pub&#10;&#62; cat ~/.ssh/hadoop2.pub &#62;&#62; ~/.ssh/authorized_keys&#10;&#10;&#62; scp user@hadoop3:.ssh/id_dsa.pub ~/.ssh/hadoop3.pub&#10;&#62; cat ~/.ssh/hadoop2.pub &#62;&#62; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>10.Final distribute the file to each machine’s authorized key store.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/.ssh/authorized_keys user@hadoop2:.ssh/authorized_keys&#10;scp ~/.ssh/authorized_keys user@hadoop3:.ssh/authorized_keys</span><br></pre></td></tr></table></figure></p>
 <p>Now you can test it by login in any node. If it will not require password, you have finish this step.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#62; ssh user@hadoop1</span><br></pre></td></tr></table></figure></p>
 <h4 id="Setting_up_Distributed_File_System_and_Yarn"><a href="#Setting_up_Distributed_File_System_and_Yarn" class="headerlink" title="Setting up Distributed File System and Yarn"></a>Setting up Distributed File System and Yarn</h4><ol>
 <li>Download</li>
