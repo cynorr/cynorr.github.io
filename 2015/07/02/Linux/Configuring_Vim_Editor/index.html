@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Configuring Vim Editor | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="my vimrc1syntax on&amp;#10;set number&amp;#10;set tabstop=4&amp;#10;set shiftwidth=4&amp;#10;&amp;#10;set autoindent #&amp;#33258;&amp;#21160;&amp;#32553;&amp;#36827;&amp;#10;inoremap &amp;#123;">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Configuring Vim Editor"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Configuring Vim Editor</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h3 id="my_vimrc"><a href="#my_vimrc" class="headerlink" title="my vimrc"></a>my vimrc</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">syntax on&#10;set number&#10;set tabstop=4&#10;set shiftwidth=4&#10;&#10;set autoindent #&#33258;&#21160;&#32553;&#36827;&#10;inoremap &#123; &#123;&#60;Enter&#62;&#60;Tab&#62;&#60;Enter&#62;&#60;Backspace&#62;&#125;&#60;Esc&#62;kA     #&#39;&#123;&#39;&#33258;&#21160;&#34917;&#20840;</span><br></pre></td></tr></table></figure>
+<p>inoremap { {}kA<br>注:inormap是替换的命令,后面的替换前面,既用{}替换{,中间里面直接用键名字代替.kA是光标撤回的位置,以替换后的最后一排为参照点,k是向上,j是向下,和vim的操作命令一样.A是本行末尾,I是开头.</p>
+<hr>
+<h3 id="Most_useful_shortcuts"><a href="#Most_useful_shortcuts" class="headerlink" title="Most useful shortcuts"></a>Most useful shortcuts</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34; -----------------   Author: Ruchee&#10;&#34; -----------------    Email: my@ruchee.com&#10;&#34; -----------------  WebSite: http://www.ruchee.com&#10;&#34; -----------------     Date: 2012-05-01&#10;&#34; Ctrl + H                   --&#20809;&#26631;&#31227;&#24403;&#21069;&#34892;&#34892;&#39318;&#10;&#34; Ctrl + J                   --&#20809;&#26631;&#31227;&#19979;&#19968;&#34892;&#34892;&#39318;&#10;&#34; Ctrl + K                   --&#20809;&#26631;&#31227;&#19978;&#19968;&#34892;&#34892;&#23614;&#10;&#34; Ctrl + L                   --&#20809;&#26631;&#31227;&#24403;&#21069;&#34892;&#34892;&#23614;&#10;&#34; Ctrl + C                   --&#32534;&#35793; [&#25903;&#25345;C/C++&#12289;Java&#12289;Haskell]&#10;&#34; Ctrl + R                   --&#36816;&#34892; [&#25903;&#25345;C/C++&#12289;Java&#12289;Haskell&#12289;Lua&#12289;Perl&#12289;Python&#12289;Ruby]&#10;&#34; Ctrl + ]                   --&#36716;&#21040;&#20989;&#25968;&#23450;&#20041;&#10;&#34; Ctrl + T                   --&#36820;&#22238;&#35843;&#29992;&#20989;&#25968;&#10;&#34; Ctrl + E                   --&#19968;&#27493;&#21152;&#36733;&#35821;&#27861;&#27169;&#26495;&#21644;&#20316;&#32773;&#12289;&#26102;&#38388;&#20449;&#24687;&#10;&#10;&#34; &#60;C-P&#62;                      --&#21333;&#35789;&#34917;&#20840;&#10;&#34; &#60;C-X&#62;&#60;C-L&#62;                 --&#25972;&#34892;&#34917;&#20840;&#10;&#34; Tab&#38190;                      --&#25554;&#20837;&#27169;&#24335;&#19979;&#30340;&#20840;&#21151;&#33021;&#35821;&#27861;&#32467;&#26500;&#34917;&#20840; [snipMate&#25554;&#20214;]&#10;&#34; Shift + Insert             --&#21521;Vim&#20013;&#31896;&#36148;&#20174;&#21035;&#22788;&#22797;&#21046;&#30340;&#20869;&#23481;&#10;&#10;&#34; u [&#23567;&#20889;]                   --&#21333;&#27493;&#22797;&#21407; [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;&#34; U [&#22823;&#20889;]                   --&#25972;&#34892;&#22797;&#21407; [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;&#10;&#34; jj                         --&#20445;&#23384;&#25991;&#20214;&#24182;&#30041;&#22312;&#25554;&#20837;&#27169;&#24335; [&#25554;&#20837;&#27169;&#24335;]&#10;&#34; kk                         --&#36820;&#22238;Normal&#27169;&#24335; [&#25554;&#20837;&#27169;&#24335;]&#10;&#34; nt                         --&#25171;&#24320;NERDTree [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;&#34; tl                         --&#25171;&#24320;TagList [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;&#10;&#34; za                         --&#25171;&#24320;&#25110;&#20851;&#38381;&#24403;&#21069;&#25240;&#21472;&#10;&#34; zM                         --&#20851;&#38381;&#25152;&#26377;&#25240;&#21472;&#10;&#34; zR                         --&#25171;&#24320;&#25152;&#26377;&#25240;&#21472;&#10;&#10;&#34; :set syntax=cpp            --&#25163;&#21160;&#36873;&#25321;&#35821;&#27861;&#39640;&#20142; [&#25110; :set filetype=cpp]&#10;&#10;&#34; :%!xxd                     --&#36716;&#20648;&#20108;&#36827;&#21046;&#25991;&#20214;&#65292;&#20197;&#21313;&#20845;&#36827;&#21046;&#24418;&#24335;&#26174;&#31034;&#10;&#34; :%!xxd -r                  --&#36824;&#21407;&#20108;&#36827;&#21046;&#25991;&#20214;&#10;&#10;&#10;&#34; ---------- &#20027;&#35201;&#25554;&#20214;&#35814;&#32454;&#29992;&#27861;&#35828;&#26126; ---------------------&#10;&#10;&#34; :Tlist                     --&#21628;&#20986;&#21464;&#37327;&#21644;&#20989;&#25968;&#21015;&#34920; [TagList&#25554;&#20214;]&#10;&#34; :LoadTemplate              --&#21628;&#20986;&#35821;&#27861;&#27169;&#26495; [Load_Template&#25554;&#20214;]&#10;&#34; :AuthorInfoDetect          --&#28155;&#21152;&#20316;&#32773;&#12289;&#26102;&#38388;&#31561;&#20449;&#24687; [NERD_commenter &#38;&#38; authorinfo&#25554;&#20214;]&#10;&#10;&#34; ---------- a.vim [&#33258;&#21160;&#20999;&#25442;C/C++&#21516;&#21517;&#22836;&#25991;&#20214;] ----------&#10;&#34;&#10;&#34; :A                         --&#20999;&#25442;&#21516;&#21517;&#22836;&#25991;&#20214;&#24182;&#29420;&#21344;&#25972;&#20010;&#23631;&#24149;&#10;&#34; :AS                        --&#20999;&#25442;&#21516;&#21517;&#22836;&#25991;&#20214;&#24182;&#22402;&#30452;&#20998;&#23631;&#65292;&#22836;&#25991;&#20214;&#22312;&#19978;&#10;&#34; :AV                        --&#20999;&#25442;&#21516;&#21517;&#22836;&#25991;&#20214;&#24182;&#27700;&#24179;&#20998;&#21106;&#65292;&#22836;&#25991;&#20214;&#22312;&#24038;&#10;&#10;&#34; ---------- NERDTree [&#26234;&#33021;&#25991;&#20214;&#27983;&#35272;&#22120;] ----------------&#10;&#34;&#10;&#34; :NERDTree                  --&#21551;&#21160;NERDTree&#25554;&#20214;&#10;&#34; o [&#23567;&#20889;]                   --&#20999;&#25442;&#24403;&#21069;&#25991;&#20214;&#25110;&#30446;&#24405;&#30340;&#25171;&#24320;&#12289;&#20851;&#38381;&#29366;&#24577;&#10;&#34; u                          --&#25171;&#24320;&#19978;&#23618;&#30446;&#24405;&#10;&#34; p [&#23567;&#20889;]                   --&#36820;&#22238;&#19978;&#23618;&#30446;&#24405;&#10;&#34; P [&#22823;&#20889;]                   --&#36820;&#22238;&#26681;&#30446;&#24405;&#10;&#34; K                          --&#36716;&#21040;&#24403;&#21069;&#30446;&#24405;&#31532;&#19968;&#20010;&#33410;&#28857;&#10;&#34; J                          --&#36716;&#21040;&#24403;&#21069;&#30446;&#24405;&#26368;&#21518;&#30340;&#33410;&#28857;&#10;&#34; m                          --&#26174;&#31034;&#25991;&#20214;&#31995;&#32479;&#33756;&#21333; [&#22686;&#12289;&#21024;&#12289;&#31227;]&#10;&#34; ?                          --&#24377;&#20986;&#24110;&#21161;&#33756;&#21333;&#10;&#34; q                          --&#36864;&#20986;&#35813;&#25554;&#20214;&#10;&#10;&#10;&#34; &#23558;&#25152;&#26377;&#20197;.html&#32467;&#23614;&#30340;&#25991;&#26723;&#20197;Django Template&#35821;&#27861;&#36827;&#34892;&#28210;&#26579;&#10;&#34; &#26412;&#37197;&#32622;&#35821;&#21477;&#24517;&#39035;&#25918;&#22312;&#25152;&#26377;&#37197;&#32622;&#30340;&#26368;&#21069;&#38754;&#10;au BufNewFile,BufRead *.html setf htmldjango&#10;&#10;colorscheme elflord          &#34; &#30528;&#33394;&#27169;&#24335;&#10;set guifont=Monaco:h10       &#34; &#23383;&#20307; &#38;&#38; &#23383;&#21495;&#10;set tabstop=4                &#34; &#35774;&#32622;tab&#38190;&#30340;&#23485;&#24230;&#10;set shiftwidth=4             &#34; &#25442;&#34892;&#26102;&#34892;&#38388;&#20132;&#38169;&#20351;&#29992;4&#20010;&#31354;&#26684;&#10;set autoindent               &#34; &#33258;&#21160;&#23545;&#40784;&#10;set backspace=2              &#34; &#35774;&#32622;&#36864;&#26684;&#38190;&#21487;&#29992;&#10;set cindent shiftwidth=4     &#34; &#33258;&#21160;&#32553;&#36827;4&#31354;&#26684;&#10;set smartindent              &#34; &#26234;&#33021;&#33258;&#21160;&#32553;&#36827;&#10;set ai!                      &#34; &#35774;&#32622;&#33258;&#21160;&#32553;&#36827;&#10;set nu!                      &#34; &#26174;&#31034;&#34892;&#21495;&#10;&#34;set showmatch               &#34; &#26174;&#31034;&#25324;&#21495;&#37197;&#23545;&#24773;&#20917;&#10;set mouse=a                  &#34; &#21551;&#29992;&#40736;&#26631;&#10;set ruler                    &#34; &#21491;&#19979;&#35282;&#26174;&#31034;&#20809;&#26631;&#20301;&#32622;&#30340;&#29366;&#24577;&#34892;&#10;set incsearch                &#34; &#24320;&#21551;&#23454;&#26102;&#25628;&#32034;&#21151;&#33021;&#10;set hlsearch                 &#34; &#24320;&#21551;&#39640;&#20142;&#26174;&#31034;&#32467;&#26524;&#10;set nowrapscan               &#34; &#25628;&#32034;&#21040;&#25991;&#20214;&#20004;&#31471;&#26102;&#19981;&#37325;&#26032;&#25628;&#32034;&#10;set nocompatible             &#34; &#20851;&#38381;&#20860;&#23481;&#27169;&#24335;&#10;set vb t_vb=                 &#34; &#20851;&#38381;&#25552;&#31034;&#38899;&#10;&#34;set cursorline              &#34; &#31361;&#20986;&#26174;&#31034;&#24403;&#21069;&#34892;&#10;set hidden                   &#34; &#20801;&#35768;&#22312;&#26377;&#26410;&#20445;&#23384;&#30340;&#20462;&#25913;&#26102;&#20999;&#25442;&#32531;&#20914;&#21306;&#10;set list                     &#34; &#26174;&#31034;Tab&#31526;&#65292;&#20351;&#29992;&#19968;&#39640;&#20142;&#31446;&#32447;&#20195;&#26367;&#10;set listchars=tab:\|\ ,&#10;&#10;syntax enable                &#34; &#25171;&#24320;&#35821;&#27861;&#39640;&#20142;&#10;syntax on                    &#34; &#24320;&#21551;&#25991;&#20214;&#31867;&#22411;&#20390;&#27979;&#10;filetype indent on           &#34; &#38024;&#23545;&#19981;&#21516;&#30340;&#25991;&#20214;&#31867;&#22411;&#37319;&#29992;&#19981;&#21516;&#30340;&#32553;&#36827;&#26684;&#24335;&#10;filetype plugin on           &#34; &#38024;&#23545;&#19981;&#21516;&#30340;&#25991;&#20214;&#31867;&#22411;&#21152;&#36733;&#23545;&#24212;&#30340;&#25554;&#20214;&#10;filetype plugin indent on    &#34; &#21551;&#29992;&#33258;&#21160;&#34917;&#20840;&#10;&#10;set writebackup              &#34; &#35774;&#32622;&#26080;&#22791;&#20221;&#25991;&#20214;&#10;set nobackup&#10;set autochdir                &#34; &#35774;&#23450;&#25991;&#20214;&#27983;&#35272;&#22120;&#30446;&#24405;&#20026;&#24403;&#21069;&#30446;&#24405;&#10;&#34;set nowrap                  &#34; &#35774;&#32622;&#19981;&#33258;&#21160;&#25442;&#34892;&#10;set foldmethod=syntax        &#34; &#36873;&#25321;&#20195;&#30721;&#25240;&#21472;&#31867;&#22411;&#10;set foldlevel=100            &#34; &#31105;&#27490;&#33258;&#21160;&#25240;&#21472;&#10;&#10;set laststatus=2             &#34; &#24320;&#21551;&#29366;&#24577;&#26639;&#20449;&#24687;&#10;set cmdheight=2              &#34; &#21629;&#20196;&#34892;&#30340;&#39640;&#24230;&#65292;&#40664;&#35748;&#20026;1&#65292;&#36825;&#37324;&#35774;&#20026;2&#10;&#10;&#34; &#27599;&#34892;&#36229;&#36807;80&#20010;&#30340;&#23383;&#31526;&#29992;&#19979;&#21010;&#32447;&#26631;&#31034;&#10;au BufRead,BufNewFile *.s,*.asm,*.h,*.c,*.cpp,*.cc,*.java,*.cs,*.erl,*.hs,*.sh,*.lua,*.pl,*.pm,*.php,*.py,*.rb,*.erb,*.vim,*.js,*.css,*.xml,*.html,*.xhtml 2match Underlined /.\%81v/&#10;&#10;&#10;&#34; &#35774;&#32622;&#32534;&#30721;&#10;set fenc=utf-8&#10;set encoding=utf-8&#10;set fileencodings=utf-8,gbk,cp936,latin-1&#10;&#10;&#10;&#34; For Haskell&#10;:let hs_highlight_delimiters=1            &#34; &#39640;&#20142;&#23450;&#30028;&#31526;&#10;:let hs_highlight_boolean=1               &#34; &#25226;True&#21644;False&#35782;&#21035;&#20026;&#20851;&#38190;&#23383;&#10;:let hs_highlight_types=1                 &#34; &#25226;&#22522;&#26412;&#31867;&#22411;&#30340;&#21517;&#23383;&#35782;&#21035;&#20026;&#20851;&#38190;&#23383;&#10;:let hs_highlight_more_types=1            &#34; &#25226;&#26356;&#22810;&#24120;&#29992;&#31867;&#22411;&#35782;&#21035;&#20026;&#20851;&#38190;&#23383;&#10;:let hs_highlight_debug=1                 &#34; &#39640;&#20142;&#35843;&#35797;&#20989;&#25968;&#30340;&#21517;&#23383;&#10;:let hs_allow_hash_operator=1             &#34; &#38459;&#27490;&#25226;#&#39640;&#20142;&#20026;&#38169;&#35823;&#10;&#10;&#10;&#34; ======= &#24341;&#21495; &#38;&#38; &#25324;&#21495;&#33258;&#21160;&#21305;&#37197; ======= &#34;&#10;&#10;:inoremap ( ()&#60;ESC&#62;i&#10;&#10;:inoremap ) &#60;c-r&#62;=ClosePair(&#39;)&#39;)&#60;CR&#62;&#10;&#10;:inoremap &#123; &#123;&#125;&#60;ESC&#62;i&#10;&#10;:inoremap &#125; &#60;c-r&#62;=ClosePair(&#39;&#125;&#39;)&#60;CR&#62;&#10;&#10;:inoremap [ []&#60;ESC&#62;i&#10;&#10;:inoremap ] &#60;c-r&#62;=ClosePair(&#39;]&#39;)&#60;CR&#62;&#10;&#10;&#34;:inoremap &#60; &#60;&#62;&#60;ESC&#62;i&#10;&#10;&#34;:inoremap &#62; &#60;c-r&#62;=ClosePair(&#39;&#62;&#39;)&#60;CR&#62;&#10;&#10;:inoremap &#34; &#34;&#34;&#60;ESC&#62;i&#10;&#10;:inoremap &#39; &#39;&#39;&#60;ESC&#62;i&#10;&#10;:inoremap ` ``&#60;ESC&#62;i&#10;&#10;function ClosePair(char)&#10;    if getline(&#39;.&#39;)[col(&#39;.&#39;) - 1] == a:char&#10;        return &#34;\&#60;Right&#62;&#34;&#10;    else&#10;        return a:char&#10;    endif&#10;endf&#10;&#10;&#10;&#34; MiniBufExplorer     &#22810;&#20010;&#25991;&#20214;&#20999;&#25442; &#21487;&#20351;&#29992;&#40736;&#26631;&#21452;&#20987;&#30456;&#24212;&#25991;&#20214;&#21517;&#36827;&#34892;&#20999;&#25442;&#10;let g:miniBufExplMapWindowNavVim=1&#10;let g:miniBufExplMapWindowNavArrows=1&#10;let g:miniBufExplMapCTabSwitchBufs=1&#10;let g:miniBufExplModSelTarget=1&#10;&#10;&#34; :Tlist              &#35843;&#29992;TagList&#10;let Tlist_Show_One_File=1                    &#34; &#21482;&#26174;&#31034;&#24403;&#21069;&#25991;&#20214;&#30340;tags&#10;let Tlist_Exit_OnlyWindow=1                  &#34; &#22914;&#26524;Taglist&#31383;&#21475;&#26159;&#26368;&#21518;&#19968;&#20010;&#31383;&#21475;&#21017;&#36864;&#20986;Vim&#10;let Tlist_Use_Right_Window=1                 &#34; &#22312;&#21491;&#20391;&#31383;&#21475;&#20013;&#26174;&#31034;&#10;let Tlist_File_Fold_Auto_Close=1             &#34; &#33258;&#21160;&#25240;&#21472;&#10;&#10;&#34; TxtBrowser          &#39640;&#20142;TXT&#25991;&#26412;&#25991;&#20214;&#10;au BufRead,BufNewFile *.txt setlocal ft=txt&#10;&#10;&#34; :LoadTemplate       &#26681;&#25454;&#25991;&#20214;&#21518;&#32512;&#33258;&#21160;&#21152;&#36733;&#27169;&#26495;&#10;let g:template_path=&#39;/home/ruchee/.vim/template/&#39;&#10;&#10;&#34; :AuthorInfoDetect   &#33258;&#21160;&#28155;&#21152;&#20316;&#32773;&#12289;&#26102;&#38388;&#31561;&#20449;&#24687;&#65292;&#26412;&#36136;&#26159;NERD_commenter &#38;&#38; authorinfo&#30340;&#32467;&#21512;&#10;let g:vimrc_author=&#39;Ruchee&#39;&#10;let g:vimrc_email=&#39;my@ruchee.com&#39;&#10;let g:vimrc_homepage=&#39;http://www.ruchee.com&#39;&#10;&#10;&#34; Ctrl + H            &#23558;&#20809;&#26631;&#31227;&#21040;&#24403;&#21069;&#34892;&#30340;&#34892;&#39318;&#10;imap &#60;c-h&#62; &#60;ESC&#62;I&#10;&#10;&#34; Ctrl + J            &#23558;&#20809;&#26631;&#31227;&#21040;&#19979;&#19968;&#34892;&#30340;&#34892;&#39318;&#10;imap &#60;c-j&#62; &#60;ESC&#62;jI&#10;&#10;&#34; Ctrl + K            &#23558;&#20809;&#26631;&#31227;&#21040;&#19978;&#19968;&#34892;&#30340;&#26411;&#23614;&#10;imap &#60;c-k&#62; &#60;ESC&#62;kA&#10;&#10;&#34; Ctrl + L            &#23558;&#20809;&#26631;&#31227;&#21040;&#24403;&#21069;&#34892;&#30340;&#34892;&#23614;&#10;imap &#60;c-l&#62; &#60;ESC&#62;A&#10;&#10;&#34; Ctrl + E            &#19968;&#27493;&#21152;&#36733;&#35821;&#27861;&#27169;&#26495;&#21644;&#20316;&#32773;&#12289;&#26102;&#38388;&#20449;&#24687;&#10;map &#60;c-e&#62; &#60;ESC&#62;:LoadTemplate&#60;CR&#62;&#60;ESC&#62;:AuthorInfoDetect&#60;CR&#62;&#60;ESC&#62;Gi&#10;imap &#60;c-e&#62; &#60;ESC&#62;:LoadTemplate&#60;CR&#62;&#60;ESC&#62;:AuthorInfoDetect&#60;CR&#62;&#60;ESC&#62;Gi&#10;vmap &#60;c-e&#62; &#60;ESC&#62;:LoadTemplate&#60;CR&#62;&#60;ESC&#62;:AuthorInfoDetect&#60;CR&#62;&#60;ESC&#62;Gi&#10;&#10;&#34; jj                  &#20445;&#23384;&#25991;&#20214;&#24182;&#30041;&#22312;&#25554;&#20837;&#27169;&#24335; [&#25554;&#20837;&#27169;&#24335;]&#10;imap jj &#60;ESC&#62;:w&#60;CR&#62;li&#10;&#10;&#34; kk                  &#36820;&#22238;Normal&#27169;&#24335; [&#25554;&#20837;&#27169;&#24335;]&#10;imap kk &#60;ESC&#62;l&#10;&#10;&#34; nt                  &#25171;&#24320;NERDTree [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;map nt :NERDTree&#60;CR&#62;&#10;&#10;&#34; tl                  &#25171;&#24320;Taglist [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;map tl :Tlist&#60;CR&#62;&#60;c-l&#62;&#10;&#10;&#10;&#34; ======= &#32534;&#35793; &#38;&#38; &#36816;&#34892; ======= &#34;&#10;&#10;&#34; &#32534;&#35793;&#28304;&#25991;&#20214;&#10;func! CompileCode()&#10;        exec &#34;w&#34;&#10;        if &#38;filetype == &#34;c&#34;&#10;            exec &#34;!gcc -Wall -std=c99 %&#60;.c -o %&#60;&#34;&#10;        elseif &#38;filetype == &#34;cpp&#34;&#10;            exec &#34;!g++ -Wall -std=c++98 %&#60;.cpp -o %&#60;&#34;&#10;        elseif &#38;filetype == &#34;java&#34;&#10;            exec &#34;!javac %&#60;.java&#34;&#10;        elseif &#38;filetype == &#34;haskell&#34;&#10;            exec &#34;!ghc --make %&#60;.hs -o %&#60;&#34;&#10;        elseif &#38;filetype == &#34;lua&#34;&#10;            exec &#34;!lua %&#60;.lua&#34;&#10;        elseif &#38;filetype == &#34;perl&#34;&#10;            exec &#34;!perl %&#60;.pl&#34;&#10;        elseif &#38;filetype == &#34;python&#34;&#10;            exec &#34;!python %&#60;.py&#34;&#10;        elseif &#38;filetype == &#34;ruby&#34;&#10;            exec &#34;!ruby %&#60;.rb&#34;&#10;        endif&#10;endfunc&#10;&#10;&#34; &#36816;&#34892;&#21487;&#25191;&#34892;&#25991;&#20214;&#10;func! RunCode()&#10;        exec &#34;w&#34;&#10;        if &#38;filetype == &#34;c&#34; || &#38;filetype == &#34;cpp&#34; || &#38;filetype == &#34;haskell&#34;&#10;            exec &#34;! ./%&#60;&#34;&#10;        elseif &#38;filetype == &#34;java&#34;&#10;            exec &#34;!java %&#60;&#34;&#10;        elseif &#38;filetype == &#34;lua&#34;&#10;            exec &#34;!lua %&#60;.lua&#34;&#10;        elseif &#38;filetype == &#34;perl&#34;&#10;            exec &#34;!perl %&#60;.pl&#34;&#10;        elseif &#38;filetype == &#34;python&#34;&#10;            exec &#34;!python %&#60;.py&#34;&#10;        elseif &#38;filetype == &#34;ruby&#34;&#10;            exec &#34;!ruby %&#60;.rb&#34;&#10;        endif&#10;endfunc&#10;&#34;&#19979;&#38754;&#30340;&#35821;&#21477;&#21487;&#20197;&#24456;&#26041;&#20415;&#22320;&#23454;&#29616;&#32534;&#35793;&#21644;&#36816;&#34892;&#10;&#34; Ctrl + C &#19968;&#38190;&#20445;&#23384;&#12289;&#32534;&#35793;&#10;map &#60;c-c&#62; :call CompileCode()&#60;CR&#62;&#10;imap &#60;c-c&#62; &#60;ESC&#62;:call CompileCode()&#60;CR&#62;&#10;vmap &#60;c-c&#62; &#60;ESC&#62;:call CompileCode()&#60;CR&#62;&#10;&#10;&#34; Ctrl + R &#19968;&#38190;&#20445;&#23384;&#12289;&#36816;&#34892;&#10;map &#60;c-r&#62; :call RunCode()&#60;CR&#62;&#10;imap &#60;c-r&#62; &#60;ESC&#62;:call RunCode()&#60;CR&#62;&#10;vmap &#60;c-r&#62; &#60;ESC&#62;:call RunCode()&#60;CR&#62;</span><br></pre></td></tr></table></figure>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/07/02/Linux/Gentoo_Android_SDK/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/07/02/Linux/Gentoo-Network/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-07-02 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/Gentoo-Linux-Server/">Gentoo & Linux Server<span>12</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Network/">Network<span>4</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#my_vimrc"><span class="toc-article-text">my vimrc</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Most_useful_shortcuts"><span class="toc-article-text">Most useful shortcuts</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2016 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

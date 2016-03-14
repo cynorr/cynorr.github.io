@@ -94,8 +94,8 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
-			<div class="date"> 2015-12-24 </div>
-			<div class="article-title"><a href="/2015/12/24/Linux/Gentoo-Troubleshooting/" >A branch of Gentoo troubleshooting</a></div>						
+			<div class="date"> 2015-12-30 </div>
+			<div class="article-title"><a href="/2015/12/30/Linux/Gentoo-Troubleshooting/" >A branch of Gentoo troubleshooting</a></div>						
 		</h3>
 	
 
@@ -119,10 +119,49 @@
 <h3 id="10-_VirtualBox_kernel_is_not_runnint"><a href="#10-_VirtualBox_kernel_is_not_runnint" class="headerlink" title="10. VirtualBox kernel is not runnint"></a>10. VirtualBox kernel is not runnint</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root #modprobe vboxdrv&#10;root #modprobe vboxnetadp&#10;root #modprobe vboxnetflt</span><br></pre></td></tr></table></figure>
 <h3 id="11-_Themes_3A_Apperance_Icons_Fonts"><a href="#11-_Themes_3A_Apperance_Icons_Fonts" class="headerlink" title="11. Themes: Apperance Icons Fonts"></a>11. Themes: Apperance Icons Fonts</h3><p>Theme: GreyBird<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge greybird</span></span><br></pre></td></tr></table></figure></p>
 <p>Icons: Yosemite Osx xfce, the package of which is in my BaiduCloud. Download it and unpackage it to <code>/usr/share/icons/</code><br>Fonts: URW Gothic L Book</p>
+<h3 id="12-Run_command_as_login_shell"><a href="#12-Run_command_as_login_shell" class="headerlink" title="12.Run command as login shell"></a>12.Run command as login shell</h3><p>Preferences -&gt; General<br>Active <code>Run command as login shell</code></p>
 
 	
 	</div>
-  <a type="button" href="/2015/12/24/Linux/Gentoo-Troubleshooting/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2015/12/30/Linux/Gentoo-Troubleshooting/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-12-30 </div>
+			<div class="article-title"><a href="/2015/12/30/Journals/20151230_log/" ></a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h3 id="ThunderBird_u4E2D_u6587_u6392_u7248_u8BBE_u7F6E"><a href="#ThunderBird_u4E2D_u6587_u6392_u7248_u8BBE_u7F6E" class="headerlink" title="ThunderBird中文排版设置"></a>ThunderBird中文排版设置</h3><p>默认的ThunderBird排版设置不适合中文邮件，我们在ThunderBird按照缩进等排好版后发送，接收方看到的确实无缩进，断行错乱的邮件。导致该问题的主要问题是中文字体和发送格式，下面是正确的配置方法。</p>
+<p>1.修改发送邮件编码集<br>Edit -&gt; Preferences -&gt; Advanced -&gt; -General -&gt; Config Editor<br>搜索：mailnews.send_default_charset,并修改为UTF-8</p>
+<p><img src="/home/cyno/Pictures/Blog/Screenshot_2015-12-30_13-34-07.png" alt="image"></p>
+<p>2.字体改成中文，例如文泉雅黑<br>Edit -&gt; Preferences -&gt; Composition -&gt; General<br>Font : WenQuanYiZen Hei Sharp</p>
+<p>3.设置排版形式<br>Edit -&gt; Preferences -&gt; Composition -&gt; General -&gt; Send Options<br>Text Format: Send the message in both plain text and HTML</p>
+<hr>
+<h3 id="u6536_u4FE1_u9891_u7387"><a href="#u6536_u4FE1_u9891_u7387" class="headerlink" title="收信频率"></a>收信频率</h3><ol>
+<li>Edit -&gt; Account Settings -&gt; Server Settings<br>Check for new messages every 1 minutes<br>默认是10分钟检查一次，改成1分钟</li>
+</ol>
+<h3 id="u6700_u5C0F_u5316_u5230_u6258_u76D8"><a href="#u6700_u5C0F_u5316_u5230_u6258_u76D8" class="headerlink" title="最小化到托盘"></a>最小化到托盘</h3><ol>
+<li>Tools -&gt; Add-Ons -&gt; Get Add-ons<br>搜索： MinTray,点击下载就好，Mozilla系列的插件全部要翻墙下载，翻墙的设置选项在<br>Edit -&gt; Preferences -&gt; Advanced -&gt; Network<br>里，翻墙方法自理。</li>
+</ol>
+<hr>
+<h3 id="VirtualBox_Host/Guest__u5171_u4EAB_u526A_u5207_u7248"><a href="#VirtualBox_Host/Guest__u5171_u4EAB_u526A_u5207_u7248" class="headerlink" title="VirtualBox Host/Guest 共享剪切版"></a>VirtualBox Host/Guest 共享剪切版</h3><p>常规高级里共享粘贴板已经选中双向，但还是不能复制粘贴，因为没有设置使用主机I/O缓存，方法如下：</p>
+<p>1.Machine Setting -&gt; Storage -&gt; Storage Tree<br>点击Controller，右面会出现Attributes属性，勾选<code>Use Host I/0 Cache</code></p>
+<p>2.Storage Tree下单击虚拟机的硬盘(即vdi文件),比如<code>win_10.vdi</code>.勾选右面Attributes里<code>Solid-state Drive</code>选项.</p>
+<p>3.重启生效</p>
+
+	
+	</div>
+  <a type="button" href="/2015/12/30/Journals/20151230_log/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -161,7 +200,7 @@
   <div class="row">
 	
 	
-		<h4 id="1-Apps"><a href="#1-Apps" class="headerlink" title="1.Apps"></a>1.Apps</h4><p>Some essential applications which I need<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x11-misc/lxdm xf86-video-intel xf86-video-vesa xorg-x11 \</span><br><span class="line">greybird xfce4-meta xfce4-notifyd xfce4-panel xfce4-terminal xfce4-screenshooter xfce4-battery-plugin xfce4-power-manager xfce4-mixer xfce4-appfinder xfce4-archive-plugin xfce-extra/tumbler thunar-volman\</span><br><span class="line">thunderbird firefox google-chrome opera \</span><br><span class="line">dhcp net-misc/networkmanager nm-applet \</span><br><span class="line">smplayer alsa-utils adobe-flash media-gfx/mirage \</span><br><span class="line">virtualbox-bin virtualbox-guest-additions \</span><br><span class="line">wps-office media-fonts/symbola libreoffice gvim gedit fcitx wqy-zenhei sunpinyin \</span><br><span class="line">compiz fusion-icon emerald compiz-plugins-main compiz-plugins-extra \</span><br><span class="line">htop sudo screenfetch pciutils gentoolkit laptop-mode-tools \</span><br><span class="line">dev-util/idea-community virtual/jdk \</span><br><span class="line">net-misc/megatools</span><br></pre></td></tr></table></figure></p>
+		<h4 id="1-Apps"><a href="#1-Apps" class="headerlink" title="1.Apps"></a>1.Apps</h4><p>Some essential applications which I need<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">x11-misc/lxdm xf86-video-intel xf86-video-vesa xorg-x11 \</span><br><span class="line">greybird xfce4-meta xfce4-notifyd xfce4-panel xfce4-terminal xfce4-screenshooter xfce4-battery-plugin xfce4-power-manager xfce4-mixer xfce4-appfinder xfce4-archive-plugin xfce-extra/tumbler thunar-volman xfce4-weather-plugin \</span><br><span class="line">thunderbird firefox google-chrome opera \</span><br><span class="line">dhcp net-misc/networkmanager nm-applet \</span><br><span class="line">smplayer alsa-utils adobe-flash media-gfx/mirage \</span><br><span class="line">virtualbox-bin virtualbox-guest-additions \</span><br><span class="line">wps-office media-fonts/symbola libreoffice gvim gedit fcitx wqy-zenhei sunpinyin \</span><br><span class="line">compiz fusion-icon emerald compiz-plugins-main compiz-plugins-extra \</span><br><span class="line">htop sudo screenfetch pciutils gentoolkit laptop-mode-tools \</span><br><span class="line">dev-util/idea-community virtual/jdk \</span><br><span class="line">net-misc/megatools</span><br></pre></td></tr></table></figure></p>
 <p>The command to install them all:</p>
 <pre><code class="bash">
 </code></pre>
@@ -535,36 +574,6 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2015-07-02 </div>
-			<div class="article-title"><a href="/2015/07/02/Linux/Gentoo-Network/" >Gentoo II NetWork -- Ethernet, Wireless, Shadowsocks</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>It is easy to config the Network for most desktop with just single Ethernet interface, but not easy for laptop with both Ethernet and Wireless interface. Because Wifi supplicant has some conflict with dhcpcd, we should pay more attention to them.</p>
-<h2 id="Ethernet__26amp_3B_26amp_3B_Wireless"><a href="#Ethernet__26amp_3B_26amp_3B_Wireless" class="headerlink" title="Ethernet &amp;&amp; Wireless"></a>Ethernet &amp;&amp; Wireless</h2><p>If no requirement for static IP address, we prefer DHCP that can obtain it automatically. <code>dhcp</code> is a popular client that is capable of handing both IPv4 and IPv6 configurations.<br>Firstly install the <code>dhcp</code>, rather than ‘dhcpcd’, which has conflits with <code>NetWorkManager</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge dhcp</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>Important</strong>: Don’t add anything to <code>/etc/conf.d/net</code>, and ‘NetworkManager<code>will set</code>dhcp` default;</p>
-<p>Then, set the symbol of ethernet and wireless.<br><strong>This is the necessary step.</strong> Without symbol, the <code>NetworkManager</code> would fail to start.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # cd /etc/ini.t&#10;root # ln -s net.lo net.enp2s0&#10;root # ln -s net.lo net.wlp3s0</span><br></pre></td></tr></table></figure></p>
-<p><strong>Important</strong>: Don’t add ethernet and wireless to any runlevel, <code>NetworkManager</code> will call them automatically;</p>
-<h2 id="GUI"><a href="#GUI" class="headerlink" title="GUI"></a>GUI</h2><p>Both Wicd and NetworkManager are greatful fraphical client on desktop environment, and we prefer Networkmanager. Though wicd is powerful, it has not plugin for panel. However, Networkmanager has a panel client <code>nm-applet</code> as a button in panel, which looks concise.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge networkmanager</span></span><br><span class="line">root <span class="comment"># emerge nm-applet</span></span><br><span class="line">root <span class="comment"># rc-update add NetworkManager default</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h2><p>Don’t use the shadowsocks-libev in default gentoo portage, which need specify either Ethernet or Wireless manually. The shadowsocks in <code>pip</code> is prefered one.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge dev-python/pip</span></span><br><span class="line">root <span class="comment"># pip install shadowsocks</span></span><br></pre></td></tr></table></figure></p>
-<p>Then set the shadowsocks configuration <code>/etc/shadowsocks.json</code> like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;        &#34;server&#34;:&#34;128.199.226.255&#34;,&#10;        &#34;server_port&#34;:8388,&#10;        &#34;local_port&#34;:1080,&#10;        &#34;password&#34;:&#34;262524&#34;,&#10;        &#34;timeout&#34;:600,&#10;        &#34;method&#34;:&#34;aes-256-cfb&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Launch shadowsocks<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># ssclient -c /etc/shadowsocks.json</span></span><br></pre></td></tr></table></figure></p>
-
-	
-	</div>
-  <a type="button" href="/2015/07/02/Linux/Gentoo-Network/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-07-02 </div>
 			<div class="article-title"><a href="/2015/07/02/Linux/Gentoo_Android_SDK/" >Gentoo Develop Tools -- Android SDK</a></div>						
 		</h3>
 	
@@ -605,6 +614,61 @@
 	
 	</div>
   <a type="button" href="/2015/07/02/Linux/Gentoo_Android_SDK/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-07-02 </div>
+			<div class="article-title"><a href="/2015/07/02/Linux/Configuring_Vim_Editor/" >Configuring Vim Editor</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h3 id="my_vimrc"><a href="#my_vimrc" class="headerlink" title="my vimrc"></a>my vimrc</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">syntax on&#10;set number&#10;set tabstop=4&#10;set shiftwidth=4&#10;&#10;set autoindent #&#33258;&#21160;&#32553;&#36827;&#10;inoremap &#123; &#123;&#60;Enter&#62;&#60;Tab&#62;&#60;Enter&#62;&#60;Backspace&#62;&#125;&#60;Esc&#62;kA     #&#39;&#123;&#39;&#33258;&#21160;&#34917;&#20840;</span><br></pre></td></tr></table></figure>
+<p>inoremap { {}kA<br>注:inormap是替换的命令,后面的替换前面,既用{}替换{,中间里面直接用键名字代替.kA是光标撤回的位置,以替换后的最后一排为参照点,k是向上,j是向下,和vim的操作命令一样.A是本行末尾,I是开头.</p>
+<hr>
+<h3 id="Most_useful_shortcuts"><a href="#Most_useful_shortcuts" class="headerlink" title="Most useful shortcuts"></a>Most useful shortcuts</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34; -----------------   Author: Ruchee&#10;&#34; -----------------    Email: my@ruchee.com&#10;&#34; -----------------  WebSite: http://www.ruchee.com&#10;&#34; -----------------     Date: 2012-05-01&#10;&#34; Ctrl + H                   --&#20809;&#26631;&#31227;&#24403;&#21069;&#34892;&#34892;&#39318;&#10;&#34; Ctrl + J                   --&#20809;&#26631;&#31227;&#19979;&#19968;&#34892;&#34892;&#39318;&#10;&#34; Ctrl + K                   --&#20809;&#26631;&#31227;&#19978;&#19968;&#34892;&#34892;&#23614;&#10;&#34; Ctrl + L                   --&#20809;&#26631;&#31227;&#24403;&#21069;&#34892;&#34892;&#23614;&#10;&#34; Ctrl + C                   --&#32534;&#35793; [&#25903;&#25345;C/C++&#12289;Java&#12289;Haskell]&#10;&#34; Ctrl + R                   --&#36816;&#34892; [&#25903;&#25345;C/C++&#12289;Java&#12289;Haskell&#12289;Lua&#12289;Perl&#12289;Python&#12289;Ruby]&#10;&#34; Ctrl + ]                   --&#36716;&#21040;&#20989;&#25968;&#23450;&#20041;&#10;&#34; Ctrl + T                   --&#36820;&#22238;&#35843;&#29992;&#20989;&#25968;&#10;&#34; Ctrl + E                   --&#19968;&#27493;&#21152;&#36733;&#35821;&#27861;&#27169;&#26495;&#21644;&#20316;&#32773;&#12289;&#26102;&#38388;&#20449;&#24687;&#10;&#10;&#34; &#60;C-P&#62;                      --&#21333;&#35789;&#34917;&#20840;&#10;&#34; &#60;C-X&#62;&#60;C-L&#62;                 --&#25972;&#34892;&#34917;&#20840;&#10;&#34; Tab&#38190;                      --&#25554;&#20837;&#27169;&#24335;&#19979;&#30340;&#20840;&#21151;&#33021;&#35821;&#27861;&#32467;&#26500;&#34917;&#20840; [snipMate&#25554;&#20214;]&#10;&#34; Shift + Insert             --&#21521;Vim&#20013;&#31896;&#36148;&#20174;&#21035;&#22788;&#22797;&#21046;&#30340;&#20869;&#23481;&#10;&#10;&#34; u [&#23567;&#20889;]                   --&#21333;&#27493;&#22797;&#21407; [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;&#34; U [&#22823;&#20889;]                   --&#25972;&#34892;&#22797;&#21407; [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;&#10;&#34; jj                         --&#20445;&#23384;&#25991;&#20214;&#24182;&#30041;&#22312;&#25554;&#20837;&#27169;&#24335; [&#25554;&#20837;&#27169;&#24335;]&#10;&#34; kk                         --&#36820;&#22238;Normal&#27169;&#24335; [&#25554;&#20837;&#27169;&#24335;]&#10;&#34; nt                         --&#25171;&#24320;NERDTree [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;&#34; tl                         --&#25171;&#24320;TagList [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;&#10;&#34; za                         --&#25171;&#24320;&#25110;&#20851;&#38381;&#24403;&#21069;&#25240;&#21472;&#10;&#34; zM                         --&#20851;&#38381;&#25152;&#26377;&#25240;&#21472;&#10;&#34; zR                         --&#25171;&#24320;&#25152;&#26377;&#25240;&#21472;&#10;&#10;&#34; :set syntax=cpp            --&#25163;&#21160;&#36873;&#25321;&#35821;&#27861;&#39640;&#20142; [&#25110; :set filetype=cpp]&#10;&#10;&#34; :%!xxd                     --&#36716;&#20648;&#20108;&#36827;&#21046;&#25991;&#20214;&#65292;&#20197;&#21313;&#20845;&#36827;&#21046;&#24418;&#24335;&#26174;&#31034;&#10;&#34; :%!xxd -r                  --&#36824;&#21407;&#20108;&#36827;&#21046;&#25991;&#20214;&#10;&#10;&#10;&#34; ---------- &#20027;&#35201;&#25554;&#20214;&#35814;&#32454;&#29992;&#27861;&#35828;&#26126; ---------------------&#10;&#10;&#34; :Tlist                     --&#21628;&#20986;&#21464;&#37327;&#21644;&#20989;&#25968;&#21015;&#34920; [TagList&#25554;&#20214;]&#10;&#34; :LoadTemplate              --&#21628;&#20986;&#35821;&#27861;&#27169;&#26495; [Load_Template&#25554;&#20214;]&#10;&#34; :AuthorInfoDetect          --&#28155;&#21152;&#20316;&#32773;&#12289;&#26102;&#38388;&#31561;&#20449;&#24687; [NERD_commenter &#38;&#38; authorinfo&#25554;&#20214;]&#10;&#10;&#34; ---------- a.vim [&#33258;&#21160;&#20999;&#25442;C/C++&#21516;&#21517;&#22836;&#25991;&#20214;] ----------&#10;&#34;&#10;&#34; :A                         --&#20999;&#25442;&#21516;&#21517;&#22836;&#25991;&#20214;&#24182;&#29420;&#21344;&#25972;&#20010;&#23631;&#24149;&#10;&#34; :AS                        --&#20999;&#25442;&#21516;&#21517;&#22836;&#25991;&#20214;&#24182;&#22402;&#30452;&#20998;&#23631;&#65292;&#22836;&#25991;&#20214;&#22312;&#19978;&#10;&#34; :AV                        --&#20999;&#25442;&#21516;&#21517;&#22836;&#25991;&#20214;&#24182;&#27700;&#24179;&#20998;&#21106;&#65292;&#22836;&#25991;&#20214;&#22312;&#24038;&#10;&#10;&#34; ---------- NERDTree [&#26234;&#33021;&#25991;&#20214;&#27983;&#35272;&#22120;] ----------------&#10;&#34;&#10;&#34; :NERDTree                  --&#21551;&#21160;NERDTree&#25554;&#20214;&#10;&#34; o [&#23567;&#20889;]                   --&#20999;&#25442;&#24403;&#21069;&#25991;&#20214;&#25110;&#30446;&#24405;&#30340;&#25171;&#24320;&#12289;&#20851;&#38381;&#29366;&#24577;&#10;&#34; u                          --&#25171;&#24320;&#19978;&#23618;&#30446;&#24405;&#10;&#34; p [&#23567;&#20889;]                   --&#36820;&#22238;&#19978;&#23618;&#30446;&#24405;&#10;&#34; P [&#22823;&#20889;]                   --&#36820;&#22238;&#26681;&#30446;&#24405;&#10;&#34; K                          --&#36716;&#21040;&#24403;&#21069;&#30446;&#24405;&#31532;&#19968;&#20010;&#33410;&#28857;&#10;&#34; J                          --&#36716;&#21040;&#24403;&#21069;&#30446;&#24405;&#26368;&#21518;&#30340;&#33410;&#28857;&#10;&#34; m                          --&#26174;&#31034;&#25991;&#20214;&#31995;&#32479;&#33756;&#21333; [&#22686;&#12289;&#21024;&#12289;&#31227;]&#10;&#34; ?                          --&#24377;&#20986;&#24110;&#21161;&#33756;&#21333;&#10;&#34; q                          --&#36864;&#20986;&#35813;&#25554;&#20214;&#10;&#10;&#10;&#34; &#23558;&#25152;&#26377;&#20197;.html&#32467;&#23614;&#30340;&#25991;&#26723;&#20197;Django Template&#35821;&#27861;&#36827;&#34892;&#28210;&#26579;&#10;&#34; &#26412;&#37197;&#32622;&#35821;&#21477;&#24517;&#39035;&#25918;&#22312;&#25152;&#26377;&#37197;&#32622;&#30340;&#26368;&#21069;&#38754;&#10;au BufNewFile,BufRead *.html setf htmldjango&#10;&#10;colorscheme elflord          &#34; &#30528;&#33394;&#27169;&#24335;&#10;set guifont=Monaco:h10       &#34; &#23383;&#20307; &#38;&#38; &#23383;&#21495;&#10;set tabstop=4                &#34; &#35774;&#32622;tab&#38190;&#30340;&#23485;&#24230;&#10;set shiftwidth=4             &#34; &#25442;&#34892;&#26102;&#34892;&#38388;&#20132;&#38169;&#20351;&#29992;4&#20010;&#31354;&#26684;&#10;set autoindent               &#34; &#33258;&#21160;&#23545;&#40784;&#10;set backspace=2              &#34; &#35774;&#32622;&#36864;&#26684;&#38190;&#21487;&#29992;&#10;set cindent shiftwidth=4     &#34; &#33258;&#21160;&#32553;&#36827;4&#31354;&#26684;&#10;set smartindent              &#34; &#26234;&#33021;&#33258;&#21160;&#32553;&#36827;&#10;set ai!                      &#34; &#35774;&#32622;&#33258;&#21160;&#32553;&#36827;&#10;set nu!                      &#34; &#26174;&#31034;&#34892;&#21495;&#10;&#34;set showmatch               &#34; &#26174;&#31034;&#25324;&#21495;&#37197;&#23545;&#24773;&#20917;&#10;set mouse=a                  &#34; &#21551;&#29992;&#40736;&#26631;&#10;set ruler                    &#34; &#21491;&#19979;&#35282;&#26174;&#31034;&#20809;&#26631;&#20301;&#32622;&#30340;&#29366;&#24577;&#34892;&#10;set incsearch                &#34; &#24320;&#21551;&#23454;&#26102;&#25628;&#32034;&#21151;&#33021;&#10;set hlsearch                 &#34; &#24320;&#21551;&#39640;&#20142;&#26174;&#31034;&#32467;&#26524;&#10;set nowrapscan               &#34; &#25628;&#32034;&#21040;&#25991;&#20214;&#20004;&#31471;&#26102;&#19981;&#37325;&#26032;&#25628;&#32034;&#10;set nocompatible             &#34; &#20851;&#38381;&#20860;&#23481;&#27169;&#24335;&#10;set vb t_vb=                 &#34; &#20851;&#38381;&#25552;&#31034;&#38899;&#10;&#34;set cursorline              &#34; &#31361;&#20986;&#26174;&#31034;&#24403;&#21069;&#34892;&#10;set hidden                   &#34; &#20801;&#35768;&#22312;&#26377;&#26410;&#20445;&#23384;&#30340;&#20462;&#25913;&#26102;&#20999;&#25442;&#32531;&#20914;&#21306;&#10;set list                     &#34; &#26174;&#31034;Tab&#31526;&#65292;&#20351;&#29992;&#19968;&#39640;&#20142;&#31446;&#32447;&#20195;&#26367;&#10;set listchars=tab:\|\ ,&#10;&#10;syntax enable                &#34; &#25171;&#24320;&#35821;&#27861;&#39640;&#20142;&#10;syntax on                    &#34; &#24320;&#21551;&#25991;&#20214;&#31867;&#22411;&#20390;&#27979;&#10;filetype indent on           &#34; &#38024;&#23545;&#19981;&#21516;&#30340;&#25991;&#20214;&#31867;&#22411;&#37319;&#29992;&#19981;&#21516;&#30340;&#32553;&#36827;&#26684;&#24335;&#10;filetype plugin on           &#34; &#38024;&#23545;&#19981;&#21516;&#30340;&#25991;&#20214;&#31867;&#22411;&#21152;&#36733;&#23545;&#24212;&#30340;&#25554;&#20214;&#10;filetype plugin indent on    &#34; &#21551;&#29992;&#33258;&#21160;&#34917;&#20840;&#10;&#10;set writebackup              &#34; &#35774;&#32622;&#26080;&#22791;&#20221;&#25991;&#20214;&#10;set nobackup&#10;set autochdir                &#34; &#35774;&#23450;&#25991;&#20214;&#27983;&#35272;&#22120;&#30446;&#24405;&#20026;&#24403;&#21069;&#30446;&#24405;&#10;&#34;set nowrap                  &#34; &#35774;&#32622;&#19981;&#33258;&#21160;&#25442;&#34892;&#10;set foldmethod=syntax        &#34; &#36873;&#25321;&#20195;&#30721;&#25240;&#21472;&#31867;&#22411;&#10;set foldlevel=100            &#34; &#31105;&#27490;&#33258;&#21160;&#25240;&#21472;&#10;&#10;set laststatus=2             &#34; &#24320;&#21551;&#29366;&#24577;&#26639;&#20449;&#24687;&#10;set cmdheight=2              &#34; &#21629;&#20196;&#34892;&#30340;&#39640;&#24230;&#65292;&#40664;&#35748;&#20026;1&#65292;&#36825;&#37324;&#35774;&#20026;2&#10;&#10;&#34; &#27599;&#34892;&#36229;&#36807;80&#20010;&#30340;&#23383;&#31526;&#29992;&#19979;&#21010;&#32447;&#26631;&#31034;&#10;au BufRead,BufNewFile *.s,*.asm,*.h,*.c,*.cpp,*.cc,*.java,*.cs,*.erl,*.hs,*.sh,*.lua,*.pl,*.pm,*.php,*.py,*.rb,*.erb,*.vim,*.js,*.css,*.xml,*.html,*.xhtml 2match Underlined /.\%81v/&#10;&#10;&#10;&#34; &#35774;&#32622;&#32534;&#30721;&#10;set fenc=utf-8&#10;set encoding=utf-8&#10;set fileencodings=utf-8,gbk,cp936,latin-1&#10;&#10;&#10;&#34; For Haskell&#10;:let hs_highlight_delimiters=1            &#34; &#39640;&#20142;&#23450;&#30028;&#31526;&#10;:let hs_highlight_boolean=1               &#34; &#25226;True&#21644;False&#35782;&#21035;&#20026;&#20851;&#38190;&#23383;&#10;:let hs_highlight_types=1                 &#34; &#25226;&#22522;&#26412;&#31867;&#22411;&#30340;&#21517;&#23383;&#35782;&#21035;&#20026;&#20851;&#38190;&#23383;&#10;:let hs_highlight_more_types=1            &#34; &#25226;&#26356;&#22810;&#24120;&#29992;&#31867;&#22411;&#35782;&#21035;&#20026;&#20851;&#38190;&#23383;&#10;:let hs_highlight_debug=1                 &#34; &#39640;&#20142;&#35843;&#35797;&#20989;&#25968;&#30340;&#21517;&#23383;&#10;:let hs_allow_hash_operator=1             &#34; &#38459;&#27490;&#25226;#&#39640;&#20142;&#20026;&#38169;&#35823;&#10;&#10;&#10;&#34; ======= &#24341;&#21495; &#38;&#38; &#25324;&#21495;&#33258;&#21160;&#21305;&#37197; ======= &#34;&#10;&#10;:inoremap ( ()&#60;ESC&#62;i&#10;&#10;:inoremap ) &#60;c-r&#62;=ClosePair(&#39;)&#39;)&#60;CR&#62;&#10;&#10;:inoremap &#123; &#123;&#125;&#60;ESC&#62;i&#10;&#10;:inoremap &#125; &#60;c-r&#62;=ClosePair(&#39;&#125;&#39;)&#60;CR&#62;&#10;&#10;:inoremap [ []&#60;ESC&#62;i&#10;&#10;:inoremap ] &#60;c-r&#62;=ClosePair(&#39;]&#39;)&#60;CR&#62;&#10;&#10;&#34;:inoremap &#60; &#60;&#62;&#60;ESC&#62;i&#10;&#10;&#34;:inoremap &#62; &#60;c-r&#62;=ClosePair(&#39;&#62;&#39;)&#60;CR&#62;&#10;&#10;:inoremap &#34; &#34;&#34;&#60;ESC&#62;i&#10;&#10;:inoremap &#39; &#39;&#39;&#60;ESC&#62;i&#10;&#10;:inoremap ` ``&#60;ESC&#62;i&#10;&#10;function ClosePair(char)&#10;    if getline(&#39;.&#39;)[col(&#39;.&#39;) - 1] == a:char&#10;        return &#34;\&#60;Right&#62;&#34;&#10;    else&#10;        return a:char&#10;    endif&#10;endf&#10;&#10;&#10;&#34; MiniBufExplorer     &#22810;&#20010;&#25991;&#20214;&#20999;&#25442; &#21487;&#20351;&#29992;&#40736;&#26631;&#21452;&#20987;&#30456;&#24212;&#25991;&#20214;&#21517;&#36827;&#34892;&#20999;&#25442;&#10;let g:miniBufExplMapWindowNavVim=1&#10;let g:miniBufExplMapWindowNavArrows=1&#10;let g:miniBufExplMapCTabSwitchBufs=1&#10;let g:miniBufExplModSelTarget=1&#10;&#10;&#34; :Tlist              &#35843;&#29992;TagList&#10;let Tlist_Show_One_File=1                    &#34; &#21482;&#26174;&#31034;&#24403;&#21069;&#25991;&#20214;&#30340;tags&#10;let Tlist_Exit_OnlyWindow=1                  &#34; &#22914;&#26524;Taglist&#31383;&#21475;&#26159;&#26368;&#21518;&#19968;&#20010;&#31383;&#21475;&#21017;&#36864;&#20986;Vim&#10;let Tlist_Use_Right_Window=1                 &#34; &#22312;&#21491;&#20391;&#31383;&#21475;&#20013;&#26174;&#31034;&#10;let Tlist_File_Fold_Auto_Close=1             &#34; &#33258;&#21160;&#25240;&#21472;&#10;&#10;&#34; TxtBrowser          &#39640;&#20142;TXT&#25991;&#26412;&#25991;&#20214;&#10;au BufRead,BufNewFile *.txt setlocal ft=txt&#10;&#10;&#34; :LoadTemplate       &#26681;&#25454;&#25991;&#20214;&#21518;&#32512;&#33258;&#21160;&#21152;&#36733;&#27169;&#26495;&#10;let g:template_path=&#39;/home/ruchee/.vim/template/&#39;&#10;&#10;&#34; :AuthorInfoDetect   &#33258;&#21160;&#28155;&#21152;&#20316;&#32773;&#12289;&#26102;&#38388;&#31561;&#20449;&#24687;&#65292;&#26412;&#36136;&#26159;NERD_commenter &#38;&#38; authorinfo&#30340;&#32467;&#21512;&#10;let g:vimrc_author=&#39;Ruchee&#39;&#10;let g:vimrc_email=&#39;my@ruchee.com&#39;&#10;let g:vimrc_homepage=&#39;http://www.ruchee.com&#39;&#10;&#10;&#34; Ctrl + H            &#23558;&#20809;&#26631;&#31227;&#21040;&#24403;&#21069;&#34892;&#30340;&#34892;&#39318;&#10;imap &#60;c-h&#62; &#60;ESC&#62;I&#10;&#10;&#34; Ctrl + J            &#23558;&#20809;&#26631;&#31227;&#21040;&#19979;&#19968;&#34892;&#30340;&#34892;&#39318;&#10;imap &#60;c-j&#62; &#60;ESC&#62;jI&#10;&#10;&#34; Ctrl + K            &#23558;&#20809;&#26631;&#31227;&#21040;&#19978;&#19968;&#34892;&#30340;&#26411;&#23614;&#10;imap &#60;c-k&#62; &#60;ESC&#62;kA&#10;&#10;&#34; Ctrl + L            &#23558;&#20809;&#26631;&#31227;&#21040;&#24403;&#21069;&#34892;&#30340;&#34892;&#23614;&#10;imap &#60;c-l&#62; &#60;ESC&#62;A&#10;&#10;&#34; Ctrl + E            &#19968;&#27493;&#21152;&#36733;&#35821;&#27861;&#27169;&#26495;&#21644;&#20316;&#32773;&#12289;&#26102;&#38388;&#20449;&#24687;&#10;map &#60;c-e&#62; &#60;ESC&#62;:LoadTemplate&#60;CR&#62;&#60;ESC&#62;:AuthorInfoDetect&#60;CR&#62;&#60;ESC&#62;Gi&#10;imap &#60;c-e&#62; &#60;ESC&#62;:LoadTemplate&#60;CR&#62;&#60;ESC&#62;:AuthorInfoDetect&#60;CR&#62;&#60;ESC&#62;Gi&#10;vmap &#60;c-e&#62; &#60;ESC&#62;:LoadTemplate&#60;CR&#62;&#60;ESC&#62;:AuthorInfoDetect&#60;CR&#62;&#60;ESC&#62;Gi&#10;&#10;&#34; jj                  &#20445;&#23384;&#25991;&#20214;&#24182;&#30041;&#22312;&#25554;&#20837;&#27169;&#24335; [&#25554;&#20837;&#27169;&#24335;]&#10;imap jj &#60;ESC&#62;:w&#60;CR&#62;li&#10;&#10;&#34; kk                  &#36820;&#22238;Normal&#27169;&#24335; [&#25554;&#20837;&#27169;&#24335;]&#10;imap kk &#60;ESC&#62;l&#10;&#10;&#34; nt                  &#25171;&#24320;NERDTree [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;map nt :NERDTree&#60;CR&#62;&#10;&#10;&#34; tl                  &#25171;&#24320;Taglist [&#38750;&#25554;&#20837;&#27169;&#24335;]&#10;map tl :Tlist&#60;CR&#62;&#60;c-l&#62;&#10;&#10;&#10;&#34; ======= &#32534;&#35793; &#38;&#38; &#36816;&#34892; ======= &#34;&#10;&#10;&#34; &#32534;&#35793;&#28304;&#25991;&#20214;&#10;func! CompileCode()&#10;        exec &#34;w&#34;&#10;        if &#38;filetype == &#34;c&#34;&#10;            exec &#34;!gcc -Wall -std=c99 %&#60;.c -o %&#60;&#34;&#10;        elseif &#38;filetype == &#34;cpp&#34;&#10;            exec &#34;!g++ -Wall -std=c++98 %&#60;.cpp -o %&#60;&#34;&#10;        elseif &#38;filetype == &#34;java&#34;&#10;            exec &#34;!javac %&#60;.java&#34;&#10;        elseif &#38;filetype == &#34;haskell&#34;&#10;            exec &#34;!ghc --make %&#60;.hs -o %&#60;&#34;&#10;        elseif &#38;filetype == &#34;lua&#34;&#10;            exec &#34;!lua %&#60;.lua&#34;&#10;        elseif &#38;filetype == &#34;perl&#34;&#10;            exec &#34;!perl %&#60;.pl&#34;&#10;        elseif &#38;filetype == &#34;python&#34;&#10;            exec &#34;!python %&#60;.py&#34;&#10;        elseif &#38;filetype == &#34;ruby&#34;&#10;            exec &#34;!ruby %&#60;.rb&#34;&#10;        endif&#10;endfunc&#10;&#10;&#34; &#36816;&#34892;&#21487;&#25191;&#34892;&#25991;&#20214;&#10;func! RunCode()&#10;        exec &#34;w&#34;&#10;        if &#38;filetype == &#34;c&#34; || &#38;filetype == &#34;cpp&#34; || &#38;filetype == &#34;haskell&#34;&#10;            exec &#34;! ./%&#60;&#34;&#10;        elseif &#38;filetype == &#34;java&#34;&#10;            exec &#34;!java %&#60;&#34;&#10;        elseif &#38;filetype == &#34;lua&#34;&#10;            exec &#34;!lua %&#60;.lua&#34;&#10;        elseif &#38;filetype == &#34;perl&#34;&#10;            exec &#34;!perl %&#60;.pl&#34;&#10;        elseif &#38;filetype == &#34;python&#34;&#10;            exec &#34;!python %&#60;.py&#34;&#10;        elseif &#38;filetype == &#34;ruby&#34;&#10;            exec &#34;!ruby %&#60;.rb&#34;&#10;        endif&#10;endfunc&#10;&#34;&#19979;&#38754;&#30340;&#35821;&#21477;&#21487;&#20197;&#24456;&#26041;&#20415;&#22320;&#23454;&#29616;&#32534;&#35793;&#21644;&#36816;&#34892;&#10;&#34; Ctrl + C &#19968;&#38190;&#20445;&#23384;&#12289;&#32534;&#35793;&#10;map &#60;c-c&#62; :call CompileCode()&#60;CR&#62;&#10;imap &#60;c-c&#62; &#60;ESC&#62;:call CompileCode()&#60;CR&#62;&#10;vmap &#60;c-c&#62; &#60;ESC&#62;:call CompileCode()&#60;CR&#62;&#10;&#10;&#34; Ctrl + R &#19968;&#38190;&#20445;&#23384;&#12289;&#36816;&#34892;&#10;map &#60;c-r&#62; :call RunCode()&#60;CR&#62;&#10;imap &#60;c-r&#62; &#60;ESC&#62;:call RunCode()&#60;CR&#62;&#10;vmap &#60;c-r&#62; &#60;ESC&#62;:call RunCode()&#60;CR&#62;</span><br></pre></td></tr></table></figure>
+
+	
+	</div>
+  <a type="button" href="/2015/07/02/Linux/Configuring_Vim_Editor/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-07-02 </div>
+			<div class="article-title"><a href="/2015/07/02/Linux/Gentoo-Network/" >Gentoo II NetWork -- Ethernet, Wireless, Shadowsocks</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>It is easy to config the Network for most desktop with just single Ethernet interface, but not easy for laptop with both Ethernet and Wireless interface. Because Wifi supplicant has some conflict with dhcpcd, we should pay more attention to them.</p>
+<h2 id="Ethernet__26amp_3B_26amp_3B_Wireless"><a href="#Ethernet__26amp_3B_26amp_3B_Wireless" class="headerlink" title="Ethernet &amp;&amp; Wireless"></a>Ethernet &amp;&amp; Wireless</h2><p>If no requirement for static IP address, we prefer DHCP that can obtain it automatically. <code>dhcp</code> is a popular client that is capable of handing both IPv4 and IPv6 configurations.<br>Firstly install the <code>dhcp</code>, rather than ‘dhcpcd’, which has conflits with <code>NetWorkManager</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge dhcp</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Important</strong>: Don’t add anything to <code>/etc/conf.d/net</code>, and ‘NetworkManager<code>will set</code>dhcp` default;</p>
+<p>Then, set the symbol of ethernet and wireless.<br><strong>This is the necessary step.</strong> Without symbol, the <code>NetworkManager</code> would fail to start.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # cd /etc/ini.t&#10;root # ln -s net.lo net.enp2s0&#10;root # ln -s net.lo net.wlp3s0</span><br></pre></td></tr></table></figure></p>
+<p><strong>Important</strong>: Don’t add ethernet and wireless to any runlevel, <code>NetworkManager</code> will call them automatically;</p>
+<h2 id="GUI"><a href="#GUI" class="headerlink" title="GUI"></a>GUI</h2><p>Both Wicd and NetworkManager are greatful graphical client on desktop environment, and we prefer Networkmanager. Though wicd is powerful, it has not plugin for panel. However, Networkmanager has a panel client <code>nm-applet</code> as a button in panel, which looks concise.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge networkmanager</span></span><br><span class="line">root <span class="comment"># emerge nm-applet</span></span><br><span class="line">root <span class="comment"># rc-update add NetworkManager default</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h2><p>Don’t use the shadowsocks-libev in default gentoo portage, which need specify either Ethernet or Wireless manually. The shadowsocks in <code>pip</code> is prefered one.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge dev-python/pip</span></span><br><span class="line">root <span class="comment"># pip install shadowsocks</span></span><br></pre></td></tr></table></figure></p>
+<p>Then set the shadowsocks configuration <code>/etc/shadowsocks.json</code> like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;        &#34;server&#34;:&#34;128.199.226.255&#34;,&#10;        &#34;server_port&#34;:8388,&#10;        &#34;local_port&#34;:1080,&#10;        &#34;password&#34;:&#34;262524&#34;,&#10;        &#34;timeout&#34;:600,&#10;        &#34;method&#34;:&#34;aes-256-cfb&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Launch shadowsocks<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># ssclient -c /etc/shadowsocks.json</span></span><br></pre></td></tr></table></figure></p>
+
+	
+	</div>
+  <a type="button" href="/2015/07/02/Linux/Gentoo-Network/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -798,14 +862,14 @@
 </ul>
 <h2 id="u5177_u4F53_u5B9E_u73B0"><a href="#u5177_u4F53_u5B9E_u73B0" class="headerlink" title="具体实现"></a>具体实现</h2><p>###Step1:建立源端到目标端SSH信任</p>
 <p>源端:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> </span><br><span class="line">rm -rf .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/user1/.ssh/id_rsa):   <span class="comment">#回车</span></span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):    <span class="comment">#回车</span></span><br><span class="line"><span class="built_in">eval</span> `ssh-agent`  <span class="comment">#是～键上的那个`</span></span><br><span class="line">ssh-add</span><br><span class="line"></span><br><span class="line"><span class="comment">#此时本机SSH Key已经生成,默认公钥位置: .ssh/id_rsa.pub,将其拷贝至目标端</span></span><br><span class="line">scp .ssh/id_rsa.pub user2@<span class="number">107.170</span>.<span class="number">213.95</span>:.ssh/authorized_keys  <span class="comment">#如果目标端无.ssh目录,自行在目标端建立在执行此命令</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br><span class="line">rm -rf .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/user1/.ssh/id_rsa):   <span class="comment">#回车</span></span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):    <span class="comment">#回车</span></span><br><span class="line"><span class="built_in">eval</span> `ssh-agent`  <span class="comment">#是～键上的那个`</span></span><br><span class="line">ssh-add</span><br><span class="line"></span><br><span class="line"><span class="comment">#此时本机SSH Key已经生成,默认公钥位置: .ssh/id_rsa.pub,将其拷贝至目标端</span></span><br><span class="line">scp .ssh/id_rsa.pub user2@<span class="number">107.170</span>.<span class="number">213.95</span>:.ssh/authorized_keys  <span class="comment">#如果目标端无.ssh目录,自行在目标端建立在执行此命令</span></span><br></pre></td></tr></table></figure>
 <p>本文使用DigitalOcean虚拟机作目标端,因此除了向系统里添加公钥,还需向DigitalOcean官网设置里添加公钥,此公钥也可用于Github.</p>
 <p>###Step2:在目标端设立监听与接收端口<br>登录至目标端:</p>
 <ul>
 <li>2.1关闭SELINUX</li>
 <li>2.2关闭ip防火墙</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">su  <span class="comment">#需要借用root权限</span></span><br><span class="line">vim /etc/selinux/config  </span><br><span class="line"></span><br><span class="line"><span class="comment">#找到以下两行并注释掉:</span></span><br><span class="line">SELINUX=enforcing</span><br><span class="line">SELINUXTYPE=targeted </span><br><span class="line"></span><br><span class="line"><span class="comment">#添加下列一行:</span></span><br><span class="line">SELINUX=disabled</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#关闭ip防火墙</span></span><br><span class="line">systemctl stop firewalld.service (暂时关闭)</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service(永久关闭)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">su  <span class="comment">#需要借用root权限</span></span><br><span class="line">vim /etc/selinux/config  </span><br><span class="line"></span><br><span class="line"><span class="comment">#找到以下两行并注释掉:</span></span><br><span class="line">SELINUX=enforcing</span><br><span class="line">SELINUXTYPE=targeted</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加下列一行:</span></span><br><span class="line">SELINUX=disabled</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#关闭ip防火墙</span></span><br><span class="line">systemctl stop firewalld.service (暂时关闭)</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld.service(永久关闭)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>2.3安装Rsync</li>
 </ul>
@@ -813,7 +877,7 @@
 <ul>
 <li><strong>2.4配置rsync文件<br>配置参数是关键步骤,务必仔细.</strong>rsync的配置文件分全局参数和模块参数,其中模块就是指仓库,一个库只允许一个源端同步,但是rsync可以建立多个库,实现多个源端同时向一个目标端同步.每个库主要由库名,存放路径,库管理员组成.全局参数决定rsync运行的维护者和性能.参数文件具体如下:<br>文件存放位置: <strong>/etc/rsyncd.conf</strong>,如果没自动生成,请手动创建</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#全局参数</span></span><br><span class="line"> uid = root </span><br><span class="line"> gid = root</span><br><span class="line"> use chroot = yes </span><br><span class="line"> max connections = <span class="number">4</span></span><br><span class="line"> <span class="built_in">log</span> file = /home/user2/<span class="built_in">log</span>       <span class="comment"># &lt;-----日志文件,用于调试,路径自设</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#模块,可以设置多个</span></span><br><span class="line"> [myhub1]                         <span class="comment"># &lt;-----(重要)库名,作源端参数</span></span><br><span class="line"> path = /home/cyno/target/        <span class="comment"># &lt;-----库位置,打开读写权限</span></span><br><span class="line"> comment = PC back up             <span class="comment"># &lt;-----库说明</span></span><br><span class="line"> ignore errors = yes                </span><br><span class="line"> <span class="built_in">read</span> only = no                   <span class="comment"># &lt;-----(重要)关闭只读</span></span><br><span class="line"> auth users = admin1              <span class="comment"># &lt;-----(重要)管理员姓名,下一步为管理员设置密码,作源端参数</span></span><br><span class="line"> secrets file = /etc/rsyncd.secret<span class="comment"># &lt;-----(重要)存储管理员和密码,做源端参数</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#全局参数</span></span><br><span class="line"> uid = root</span><br><span class="line"> gid = root</span><br><span class="line"> use chroot = yes</span><br><span class="line"> max connections = <span class="number">4</span></span><br><span class="line"> <span class="built_in">log</span> file = /home/user2/<span class="built_in">log</span>       <span class="comment"># &lt;-----日志文件,用于调试,路径自设</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#模块,可以设置多个</span></span><br><span class="line"> [myhub1]                         <span class="comment"># &lt;-----(重要)库名,作源端参数</span></span><br><span class="line"> path = /home/cyno/target/        <span class="comment"># &lt;-----库位置,打开读写权限</span></span><br><span class="line"> comment = PC back up             <span class="comment"># &lt;-----库说明</span></span><br><span class="line"> ignore errors = yes                </span><br><span class="line"> <span class="built_in">read</span> only = no                   <span class="comment"># &lt;-----(重要)关闭只读</span></span><br><span class="line"> auth users = admin1              <span class="comment"># &lt;-----(重要)管理员姓名,下一步为管理员设置密码,作源端参数</span></span><br><span class="line"> secrets file = /etc/rsyncd.secret<span class="comment"># &lt;-----(重要)存储管理员和密码,做源端参数</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>2.5设置库管理员密码</strong></li>
 </ul>
@@ -832,7 +896,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#23433;&#35013;&#10;sudo yum install rsync -y</span><br></pre></td></tr></table></figure>
 <pre><code>配置文件路径(/etc/rsyncd.conf),内容如下:
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#20840;&#23616;&#21442;&#25968;&#10; uid = root       &#10; gid = root&#10; use chroot = yes &#10; max connections = 4&#10; log file = /home/user2/log  #&#26085;&#24535;&#25991;&#20214;,&#29992;&#20110;&#35843;&#35797;,&#36335;&#24452;&#33258;&#35774;</span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#20840;&#23616;&#21442;&#25968;&#10; uid = root       &#10; gid = root&#10; use chroot = yes&#10; max connections = 4&#10; log file = /home/user2/log  #&#26085;&#24535;&#25991;&#20214;,&#29992;&#20110;&#35843;&#35797;,&#36335;&#24452;&#33258;&#35774;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>3.2安装Sersync:</li>
 </ul>
@@ -885,7 +949,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su&#10;#&#23433;&#35013;gtk&#10;yum install gtk* -y&#10;locate pk-gtk-module.so&#10;&#62; /usr/lib/gtk-2.0/modules/pk-gtk-module.so #&#26681;&#25454;&#26597;&#25214;,&#30830;&#23450;gtk-2.0&#30446;&#24405;&#10;&#10;#&#28155;&#21152;modules&#36335;&#24452;&#10;vim /etc/ld.so.conf.d/gtk-2.0.conf #&#26032;&#24314;gtk-2.0-conf&#25991;&#20214;&#10;/usr/lib/gtk-2.0/modules               #&#28155;&#21152;modules&#30446;&#24405;&#10;ldconfig</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>链接kernel headers</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su&#10;#&#26597;&#25214;linux version&#30446;&#24405;&#10;locate version.h | more&#10;&#62; /usr/include/linux/version.h&#10;&#10;ln -s /usr/include/linux/version.h /lib/modules/3.17.04.fc21.x86_64/build/include/linux/ &#10;#&#19978;&#25991;build&#26159;/usr/src/kernel/3.17.04.fc21.x86_64&#30340;&#38142;&#25509;,&#22914;&#26524;&#22833;&#25928;&#38738;&#37325;&#24314;&#38142;&#25509;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su&#10;#&#26597;&#25214;linux version&#30446;&#24405;&#10;locate version.h | more&#10;&#62; /usr/include/linux/version.h&#10;&#10;ln -s /usr/include/linux/version.h /lib/modules/3.17.04.fc21.x86_64/build/include/linux/&#10;#&#19978;&#25991;build&#26159;/usr/src/kernel/3.17.04.fc21.x86_64&#30340;&#38142;&#25509;,&#22914;&#26524;&#22833;&#25928;&#38738;&#37325;&#24314;&#38142;&#25509;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>##安装VMware<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x VMware-Workstation-Full-11.1.2-2780323.x86_64.bundle&#10;su&#10;./VMware-Workstation-Full-11.1.2-2780323.x86_64.bundle</span><br></pre></td></tr></table></figure></p>
@@ -953,6 +1017,58 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2014-05-02 </div>
+			<div class="article-title"><a href="/2014/05/02/TopicModel/TopicModel1/" >TopicModel(1):主题模型概述</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h3 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h3><p>&#160;&#160; &#160; &#160; 主题模型，顾名思义，就是对文字中隐含主题的一种建模方法。还是上面的例子，“苹果”这个词的背后既包含是苹果公司这样一个主题，也包括了水果的主题。当我们和第一句进行比较时，苹果公司这个主题就和“乔布斯”所代表的主题匹配上了，因而我们认为它们是相关的。</p>
+<p>&#160;&#160; &#160; &#160; 在这里，我们先定义一下主题究竟是什么。主题就是一个概念、一个方面。它表现为一系列相关的词语。比如一个文章如果涉及到“百度”这个主题，那么“中文搜索”、“李彦宏”等词语就会以较高的频率出现，而如果涉及到“IBM”这个主题，那么“笔记本”等就会出现的很频繁。如果用数学来描述一下的话，<strong>主题就是词汇表上词语的条件概率分布</strong>。与主题关系越密切的词语，它的条件概率越大，反之则越小。</p>
+<p>例如：</p>
+<table>
+<thead>
+<tr>
+<th>与百度有关</th>
+<th>与IBM有关</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p(中文搜索 I 百度)= 0.2</td>
+<td>p(中文搜索 I IBM) = 0.0000001</td>
+</tr>
+<tr>
+<td>p(李彦宏 I 百度) = 0.15</td>
+<td>p（李彦宏 I IBM） = 0.0000001</td>
+</tr>
+<tr>
+<td>p(笔记本 I 百度） = 0.0000001)</td>
+<td>p（笔记本 I IBM）= 0.2</td>
+</tr>
+</tbody>
+</table>
+<p>&#160;&#160; &#160; &#160; 通俗来说，一个主题就好像一个“桶”，它装了若干出现概率较高的词语。这些词语和这个主题有很强的相关性，或者说，正是这些词语共同定义了这个主题。对于一段话来说，有些词语可以出自这个“桶”，有些可能来自那个“桶”，一段文本往往是若干个主题的杂合体。我们举个简单的例子，见下图<br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/topicmodel1.jpe" alt=""></p>
+<h3 id="u5DE5_u4F5C_u539F_u7406_uFF1A_u751F_u6210_u6A21_u578B"><a href="#u5DE5_u4F5C_u539F_u7406_uFF1A_u751F_u6210_u6A21_u578B" class="headerlink" title="工作原理：生成模型"></a>工作原理：生成模型</h3><p>&#160;&#160; &#160; &#160; 首先，我们用生成模型的视角来看文档和主题这两件事。所谓生成模型，就是说，我们认为一篇文章的每个词都是通过“<strong>以一定概率选择了某个主题，并从这个主题中以一定概率选择某个词语</strong>”这样一个过程得到的。那么，如果我们要生成一篇文档，它里面的每个词语出现的概率为：<br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/topicmodel2.jpe" alt=""></p>
+<p>&#160;&#160; &#160; &#160;<br>下面举一个汪峰写歌词的例子:</p>
+<p><img src="http://7xjfxk.com1.z0.glb.clouddn.com/topicmodel4.png" alt=""></p>
+<p>&#160;&#160; &#160; &#160;<br>主题模型的主要思想就是在文章和词语直接加了一层主题，然后训练文章下的主题分布和主题下的词语分布。</p>
+<h3 id="u4E3B_u9898_u6A21_u578B_u601D_u60F3_u6F14_u53D8"><a href="#u4E3B_u9898_u6A21_u578B_u601D_u60F3_u6F14_u53D8" class="headerlink" title="主题模型思想演变"></a>主题模型思想演变</h3><p>&#160;&#160; &#160; &#160;<br>下面我们用几个简单的图片简介主题模型思想演变的过程，图片来自百度沈志勇的ppt《主题模型简介》。<br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/TopicModel/topicmodel5.jpe" alt=""><br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/TopicModel/topicmodel6.jpe" alt=""><br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/TopicModel/topicmodel7.jpe" alt=""><br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/TopicModel/topicmodel8.jpe" alt=""><br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/TopicModel/topicmodel9.png" alt=""><br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/TopicModel/topicmodel10.jpe" alt=""></p>
+
+	
+	</div>
+  <a type="button" href="/2014/05/02/TopicModel/TopicModel1/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2014-02-01 </div>
 			<div class="article-title"><a href="/2014/02/01/Linux/Github2/" >Github使用详解</a></div>						
 		</h3>
@@ -969,11 +1085,11 @@
 <p>假设工作区中有main.cpp和ReadMe两个文件,需要把工作区同步到Git,并且新建模块function.cpp.</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -A #&#28155;&#21152;&#25152;&#26377;&#25991;&#20214;&#21040;&#26242;&#23384;&#21306;&#10;git commit -m &#39;Main Function&#39; #&#25552;&#20132;&#25991;&#20214;&#21040;Git&#30446;&#24405;&#10;git status #&#26597;&#30475;&#23558;&#35201;&#25552;&#20132;&#30340;&#25805;&#20316;&#10;&#10;git remote add origin git@github.com:cynorr/Test.git #Test.git&#30340;&#36828;&#31243;&#31471;&#10;git push -u origin master #&#25512;&#36865;&#21040;Test&#25152;&#26377;&#20998;&#25903;,-u&#21442;&#25968;&#30340;&#20316;&#29992;&#26159;&#21516;&#26102;&#26356;&#26032;&#20027;&#20998;&#25903;&#21644;&#32487;&#25215;&#20027;&#20998;&#25903;&#30340;&#25152;&#26377;&#20998;&#25903;</span><br></pre></td></tr></table></figure>
-<p>至此,主函数的同步已经完成,下面添加模块function.cpp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim function.cpp #&#22312;&#24037;&#20316;&#21306;&#21019;&#24314;&#27169;&#22359;function.cpp,&#27169;&#22359;&#20869;&#23481;&#33258;&#23450;,&#26412;&#25991;&#21482;&#20316;&#28436;&#31034;&#10;git checkout -b func #&#26032;&#24314;&#26412;&#22320;func&#20998;&#25903;,&#24182;&#20999;&#25442;&#21040;func&#20998;&#25903;&#10;git remote origin func #&#26032;&#24314;Git func&#20998;&#25903;&#10;&#10;git add function.cpp  &#10;git commit -m &#39;New Function&#39; &#10;git push origin func #&#23558;&#26032;&#24314;&#27169;&#22359;&#25512;&#36865;&#21040;func&#20998;&#25903;&#10;&#10;git checkout master&#10;git merge func #&#21512;&#24182;func&#20998;&#25903;&#21040;&#20027;&#20998;&#25903;&#10;git push origin master #&#25226;&#21512;&#24182;&#30340;&#20998;&#25903;&#25512;&#36865;&#21040;&#20113;&#10;&#10;git branch -D func&#10;git push origin :func #&#21024;&#38500;&#26412;&#22320;&#21644;Git&#19978;&#30340;func&#20998;&#25903;</span><br></pre></td></tr></table></figure></p>
+<p>至此,主函数的同步已经完成,下面添加模块function.cpp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim function.cpp #&#22312;&#24037;&#20316;&#21306;&#21019;&#24314;&#27169;&#22359;function.cpp,&#27169;&#22359;&#20869;&#23481;&#33258;&#23450;,&#26412;&#25991;&#21482;&#20316;&#28436;&#31034;&#10;git checkout -b func #&#26032;&#24314;&#26412;&#22320;func&#20998;&#25903;,&#24182;&#20999;&#25442;&#21040;func&#20998;&#25903;&#10;git remote origin func #&#26032;&#24314;Git func&#20998;&#25903;&#10;&#10;git add function.cpp  &#10;git commit -m &#39;New Function&#39;&#10;git push origin func #&#23558;&#26032;&#24314;&#27169;&#22359;&#25512;&#36865;&#21040;func&#20998;&#25903;&#10;&#10;git checkout master&#10;git merge func #&#21512;&#24182;func&#20998;&#25903;&#21040;&#20027;&#20998;&#25903;&#10;git push origin master #&#25226;&#21512;&#24182;&#30340;&#20998;&#25903;&#25512;&#36865;&#21040;&#20113;&#10;&#10;git branch -D func&#10;git push origin :func #&#21024;&#38500;&#26412;&#22320;&#21644;Git&#19978;&#30340;func&#20998;&#25903;</span><br></pre></td></tr></table></figure></p>
 <p>##操作解析</p>
 <p>###工作区状态<br>查看工作区操作和文件状态用命令<strong>git status</strong>.<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;Untracked files: #Git&#26080;&#22788;&#29702;&#25805;&#20316;&#30340;&#25991;&#20214;&#10;&#9;&#25991;&#20214;&#21015;&#34920;:&#10;&#9;helloworld.cpp&#10;&#9;...&#10;&#10;Changes to be committed #Git&#24050;&#22788;&#29702;&#20294;&#26410;&#25552;&#20132;&#30340;&#22788;&#29702;&#25805;&#20316;&#10;&#9;&#25805;&#20316;&#21015;&#34920;:&#10;&#9;new file:   .gitignore   #&#22686;&#21152;&#25805;&#20316;&#10;&#9;new file:   Firefox_wallpaper.png&#10;&#9;deleted:    nohup.out    #&#21024;&#38500;&#25805;&#20316;&#10;&#10;nothing to commit, working directory clean #&#22788;&#29702;&#24182;&#25552;&#20132;&#23436;&#25104;,&#31561;&#24453;&#25512;&#36865;&#29366;&#24577;</span><br></pre></td></tr></table></figure></p>
 <p>###筛选<br>在与.git文件夹同级的目录中新建<strong>.gitignore</strong>文件,内容自定:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.gitignore   #&#21516;&#27493;&#26102;&#24573;&#30053;.gitignore&#25991;&#20214;&#10;bin/         #&#21516;&#27493;&#26102;&#24573;&#30053;&#30446;&#24405;&#19979;&#25152;&#26377;bin&#25991;&#20214;&#22841;&#21450;&#23376;&#25991;&#20214;(&#22841;)&#10;*.class   &#9; #&#21516;&#27493;&#26102;&#24573;&#30053;&#25152;&#26377;&#21518;&#32512;&#20026;.class&#30340;&#25991;&#20214;</span><br></pre></td></tr></table></figure></p>
-<p>###增<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git add -A   <span class="comment">#stages All  </span></span><br><span class="line">			 <span class="comment">#本地和Git完全同步</span></span><br><span class="line"></span><br><span class="line">git add .    <span class="comment">#stages new and modified, without deleted</span></span><br><span class="line">    		 <span class="comment">#Git只增不减,本地修改/增加文件Git同步,本地删除文件git不删除 </span></span><br><span class="line"></span><br><span class="line">git add -u   <span class="comment">#stages modified and deleted, without new</span></span><br><span class="line">			 <span class="comment">#Git只减不增,本地修改/删除文件Git同步,本地新建文件Git不新建</span></span><br></pre></td></tr></table></figure></p>
+<p>###增<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git add -A   <span class="comment">#stages All  </span></span><br><span class="line">			 <span class="comment">#本地和Git完全同步</span></span><br><span class="line"></span><br><span class="line">git add .    <span class="comment">#stages new and modified, without deleted</span></span><br><span class="line">    		 <span class="comment">#Git只增不减,本地修改/增加文件Git同步,本地删除文件git不删除</span></span><br><span class="line"></span><br><span class="line">git add -u   <span class="comment">#stages modified and deleted, without new</span></span><br><span class="line">			 <span class="comment">#Git只减不增,本地修改/删除文件Git同步,本地新建文件Git不新建</span></span><br></pre></td></tr></table></figure></p>
 <p>###删<br>主要区别在于参数<strong>–cached</strong>,本参数决定是否将本地的文件随Git一同删除<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#git rm file/path 前提是git里存在file/path</span></span><br><span class="line"></span><br><span class="line">git rm --cached  readme.txt  <span class="comment">#只删除git里的readme.txt</span></span><br><span class="line">git rm readme.txt <span class="comment">#删除本地和git里的readme.txt</span></span><br></pre></td></tr></table></figure></p>
 <p>###提交<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m  &#39;This is my second modified&#39;  &#9;#-m&#21442;&#25968;&#21518;&#38754;&#26159;&#26412;&#27425;&#25552;&#20132;&#30340;&#35299;&#37322;&#20449;&#24687;,&#19981;&#38480;&#26684;&#24335;&#21487;&#26377;&#31354;&#26684;&#10;git commit -am  = git add u + git commit -m     #&#20004;&#27493;&#21512;&#24182;&#25104;&#19968;&#27493;,&#21482;&#20943;&#19981;&#22686;</span><br></pre></td></tr></table></figure></p>
 <p>###对比<br>本地与Git的对比主要用<strong>git diff</strong>,该命令的使用方法非常灵活,我们只要记住原始命令,即可以查看目前本地与Git的不同处.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff&#10;git diff --stat</span><br></pre></td></tr></table></figure></p>
@@ -981,7 +1097,7 @@
 <pre><code>* 1.创建新分支前确保主分支已经完整最新,满足新分支的基础需求.
 * 2.新分支尽量减少对pull过来的主分支部分进行删改(否则合并时会处问题).
 * 3.逐个添加新分支与合并,同时建多个新分支合并时容易发生冲突.
-</code></pre><p>新建分支:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#26465;&#20214;:&#36828;&#31243;&#31471;test&#23384;&#22312;(&#36828;&#31243;&#31471;&#26159;&#26412;&#22320;&#21644;Git&#20132;&#20114;&#30340;&#26725;&#26753;,&#19968;&#33324;&#19968;&#20010;Git&#21482;&#38656;&#35201;&#19968;&#20010;&#36828;&#31243;&#31471;)&#10;git remote add test git@github.com/cynorr:Test.git &#10;&#10;&#10;git branch host #&#26032;&#24314;host&#20998;&#25903;&#10;git push test host #host&#20998;&#25903;&#21516;&#27493;&#21040;Git&#10;&#10;git checkout host #&#20999;&#25442;&#21040;host&#20998;&#25903;&#10;git branch    #&#26597;&#30475;&#25152;&#22312;&#20998;&#25903;&#10;&#10;git push test host #&#23545;&#26032;&#20998;&#25903;&#36827;&#34892;&#20462;&#25913;&#25805;&#20316;&#10;git branch -D host #&#21024;&#38500;&#26412;&#22320;host&#20998;&#25903;&#10;git push test :host #&#21024;&#38500;Git host&#20998;&#25903;</span><br></pre></td></tr></table></figure></p>
+</code></pre><p>新建分支:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#26465;&#20214;:&#36828;&#31243;&#31471;test&#23384;&#22312;(&#36828;&#31243;&#31471;&#26159;&#26412;&#22320;&#21644;Git&#20132;&#20114;&#30340;&#26725;&#26753;,&#19968;&#33324;&#19968;&#20010;Git&#21482;&#38656;&#35201;&#19968;&#20010;&#36828;&#31243;&#31471;)&#10;git remote add test git@github.com/cynorr:Test.git&#10;&#10;&#10;git branch host #&#26032;&#24314;host&#20998;&#25903;&#10;git push test host #host&#20998;&#25903;&#21516;&#27493;&#21040;Git&#10;&#10;git checkout host #&#20999;&#25442;&#21040;host&#20998;&#25903;&#10;git branch    #&#26597;&#30475;&#25152;&#22312;&#20998;&#25903;&#10;&#10;git push test host #&#23545;&#26032;&#20998;&#25903;&#36827;&#34892;&#20462;&#25913;&#25805;&#20316;&#10;git branch -D host #&#21024;&#38500;&#26412;&#22320;host&#20998;&#25903;&#10;git push test :host #&#21024;&#38500;Git host&#20998;&#25903;</span><br></pre></td></tr></table></figure></p>
 <p>合并:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master #&#20999;&#25442;&#21040;&#20027;&#20998;&#25903;&#21518;&#25165;&#33021;&#36827;&#34892;&#21512;&#24182;&#10;git merge host&#10;&#10;#&#26032;&#21512;&#24182;&#21040;&#20027;&#20998;&#25903;&#21518;,&#26032;&#21518;&#20998;&#25903;&#24050;&#27809;&#29992;,&#23558;&#20854;&#21024;&#38500;&#10;git push test :host</span><br></pre></td></tr></table></figure></p>
 <p>###远程库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com/cynorr:Test.git #&#28155;&#21152;&#36828;&#31243;&#24211;&#10;git remote rename origin test #&#37325;&#21629;&#21517;&#36828;&#31243;&#24211;&#10;git remote -v #&#36828;&#31243;&#24211;&#35814;&#32454;&#20449;&#24687;&#10;git remote rm test #&#21024;&#38500;&#36828;&#31243;&#24211;</span><br></pre></td></tr></table></figure></p>
 
@@ -1005,11 +1121,9 @@
   <div class="row">
 	
 	
-		<p>##简介</p>
-<p>github是备份代码首选工具，工作机制如下:<br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/github.png" alt=""></p>
+		<h2 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h2><p>github是备份代码首选工具，工作机制如下:<br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/github.png" alt=""></p>
 <p>working dir是本地目录，HEAD是云目录，中间的index是缓存区。若要实现本地与github上同步，首先把要同步或要修改的文件或代码在缓存区（index）整理，最后统一提交（commit）到云。</p>
-<p>##准备工作</p>
-<p>准备工作比较麻烦，但一劳永逸.<br><strong>1.申请帐号：<a href="https://github.com/" target="_blank" rel="external">Click Here</a></strong></p>
+<h2 id="u51C6_u5907_u5DE5_u4F5C"><a href="#u51C6_u5907_u5DE5_u4F5C" class="headerlink" title="准备工作"></a>准备工作</h2><p>准备工作比较麻烦，但一劳永逸.<br><strong>1.申请帐号：<a href="https://github.com/" target="_blank" rel="external">Click Here</a></strong></p>
 <ul>
 <li>邮箱：cynorr@sina.com</li>
 <li>用户名：sinorr</li>
@@ -1060,7 +1174,7 @@
 <p>##初始化方法</p>
 <ul>
 <li><p>初始化函数:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数1</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> capacity = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (capacity &lt; initialCapacity)</span><br><span class="line">            capacity &lt;&lt;= <span class="number">1</span>;                                 <span class="comment">//容量以2的倍数增加</span></span><br><span class="line">  </span><br><span class="line">        <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">        threshold = (<span class="keyword">int</span>)(capacity * loadFactor); <span class="comment">//阈值</span></span><br><span class="line">        table = <span class="keyword">new</span> Entry[capacity];</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构造函数2</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(initialCapacity, DEFAULT_LOAD_FACTOR);  <span class="comment">//用默认的加载加载因子调用构造函数1,默认加载因子为.0.75</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数1</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> capacity = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (capacity &lt; initialCapacity)</span><br><span class="line">            capacity &lt;&lt;= <span class="number">1</span>;                                 <span class="comment">//容量以2的倍数增加</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">        threshold = (<span class="keyword">int</span>)(capacity * loadFactor); <span class="comment">//阈值</span></span><br><span class="line">        table = <span class="keyword">new</span> Entry[capacity];</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构造函数2</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(initialCapacity, DEFAULT_LOAD_FACTOR);  <span class="comment">//用默认的加载加载因子调用构造函数1,默认加载因子为.0.75</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>例子:<br>假设对象实际大小为size,则初始化函数为:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;...&gt; hashmap = <span class="keyword">new</span> HashMap&lt;...&gt;(size/<span class="number">0.75</span>); <span class="comment">//0.75为默认加载因子</span></span><br></pre></td></tr></table></figure>
@@ -1141,17 +1255,13 @@
 		<h4>Categories</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/catetories/Fedora-Customized/">Fedora Customized<span>4</span></a></li>
+			<li><a href="/catetories/Gentoo-Linux-Server/">Gentoo &amp; Linux Server<span>12</span></a></li>
 		
-			<li><a href="/catetories/Gentoo-Linux-Server/">Gentoo &amp; Linux Server<span>5</span></a></li>
+			<li><a href="/catetories/Journal/">Journal<span>9</span></a></li>
 		
-			<li><a href="/catetories/Java-Pro/">Java Pro<span>1</span></a></li>
+			<li><a href="/catetories/主题模型/">主题模型<span>1</span></a></li>
 		
-			<li><a href="/catetories/Journal/">Journal<span>8</span></a></li>
-		
-			<li><a href="/catetories/Spark-Tutorial/">Spark Tutorial<span>1</span></a></li>
-		
-			<li><a href="/catetories/Tech-Tools/">Tech &amp; Tools<span>2</span></a></li>
+			<li><a href="/catetories/云计算/">云计算<span>2</span></a></li>
 		
 		</ul>
 	</div>
@@ -1163,7 +1273,10 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/GithubPages/" class="b">GithubPages<span>1</span>
+			<li><a href="/tags/Network/" class="b">Network<span>4</span>
+			</a></li>
+		
+			<li><a href="/tags/hexo/" class="b">hexo<span>1</span>
 			</a></li>
 		
 			<li><a href="/tags/Github/" class="b">Github<span>2</span>
@@ -1172,25 +1285,22 @@
 			<li><a href="/tags/Fedora/" class="b">Fedora<span>1</span>
 			</a></li>
 		
-			<li><a href="/tags/HashMap原理/" class="b">HashMap原理<span>1</span>
+			<li><a href="/tags/rsync-sersync/" class="b">rsync + sersync<span>1</span>
 			</a></li>
 		
-			<li><a href="/tags/hexo/" class="b">hexo<span>1</span>
+			<li><a href="/tags/Gentoo-Tutorial/" class="b">Gentoo Tutorial<span>1</span>
 			</a></li>
 		
 			<li><a href="/tags/VMware虚拟机/" class="b">VMware虚拟机<span>1</span>
 			</a></li>
 		
-			<li><a href="/tags/Network/" class="b">Network<span>2</span>
+			<li><a href="/tags/HashMap原理/" class="b">HashMap原理<span>1</span>
+			</a></li>
+		
+			<li><a href="/tags/GithubPages/" class="b">GithubPages<span>1</span>
 			</a></li>
 		
 			<li><a href="/tags/用户管理/" class="b">用户管理<span>1</span>
-			</a></li>
-		
-			<li><a href="/tags/rsync-sersync/" class="b">rsync + sersync<span>1</span>
-			</a></li>
-		
-			<li><a href="/tags/Gentoo-Tutorial/" class="b">Gentoo Tutorial<span>1</span>
 			</a></li>
 		
 		 
@@ -1205,7 +1315,11 @@
   <ul class="entry list-unstyled">
     
       <li>
-        <a href="/2015/12/24/Linux/Gentoo-Troubleshooting/" ><i class="fa fa-file-o"></i>A branch of Gentoo troubles...</a>
+        <a href="/2015/12/30/Linux/Gentoo-Troubleshooting/" ><i class="fa fa-file-o"></i>A branch of Gentoo troubles...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/12/30/Journals/20151230_log/" ><i class="fa fa-file-o"></i>...</a>
       </li>
     
       <li>
@@ -1218,10 +1332,6 @@
     
       <li>
         <a href="/2015/12/09/Journals/20151209_log/" ><i class="fa fa-file-o"></i>Log_2015-12-09 -- Xunlei on...</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/04/Journals/20151204_log/" ><i class="fa fa-file-o"></i>Log_2015-12-04 -- Java_VF2...</a>
       </li>
     
   </ul>
@@ -1238,7 +1348,7 @@
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2015 张端风
+  &copy; 2016 张端风
   
 </p>
  </footer>

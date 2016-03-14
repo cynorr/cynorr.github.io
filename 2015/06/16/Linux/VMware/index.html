@@ -104,7 +104,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su&#10;#&#23433;&#35013;gtk&#10;yum install gtk* -y&#10;locate pk-gtk-module.so&#10;&#62; /usr/lib/gtk-2.0/modules/pk-gtk-module.so #&#26681;&#25454;&#26597;&#25214;,&#30830;&#23450;gtk-2.0&#30446;&#24405;&#10;&#10;#&#28155;&#21152;modules&#36335;&#24452;&#10;vim /etc/ld.so.conf.d/gtk-2.0.conf #&#26032;&#24314;gtk-2.0-conf&#25991;&#20214;&#10;/usr/lib/gtk-2.0/modules               #&#28155;&#21152;modules&#30446;&#24405;&#10;ldconfig</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>链接kernel headers</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su&#10;#&#26597;&#25214;linux version&#30446;&#24405;&#10;locate version.h | more&#10;&#62; /usr/include/linux/version.h&#10;&#10;ln -s /usr/include/linux/version.h /lib/modules/3.17.04.fc21.x86_64/build/include/linux/ &#10;#&#19978;&#25991;build&#26159;/usr/src/kernel/3.17.04.fc21.x86_64&#30340;&#38142;&#25509;,&#22914;&#26524;&#22833;&#25928;&#38738;&#37325;&#24314;&#38142;&#25509;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su&#10;#&#26597;&#25214;linux version&#30446;&#24405;&#10;locate version.h | more&#10;&#62; /usr/include/linux/version.h&#10;&#10;ln -s /usr/include/linux/version.h /lib/modules/3.17.04.fc21.x86_64/build/include/linux/&#10;#&#19978;&#25991;build&#26159;/usr/src/kernel/3.17.04.fc21.x86_64&#30340;&#38142;&#25509;,&#22914;&#26524;&#22833;&#25928;&#38738;&#37325;&#24314;&#38142;&#25509;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>##安装VMware<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x VMware-Workstation-Full-11.1.2-2780323.x86_64.bundle&#10;su&#10;./VMware-Workstation-Full-11.1.2-2780323.x86_64.bundle</span><br></pre></td></tr></table></figure></p>
@@ -162,7 +162,7 @@
     <ul id="categorys" class="tag_box list-unstyled collapse in">
           
   <li>
-    <li><a href="/catetories/Fedora-Customized/">Fedora Customized<span>4</span></a></li>
+    <li><a href="/catetories/Gentoo-Linux-Server/">Gentoo & Linux Server<span>12</span></a></li>
   </li>
 
     </ul>
@@ -200,7 +200,7 @@
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2015 张端风
+  &copy; 2016 张端风
   
 </p>
  </footer>
