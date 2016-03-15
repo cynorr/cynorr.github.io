@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>从地址角度看C++多态性 | Cynote</title>
+  <meta name="author" content="张端风">
+  
+  <meta name="description" content="简介&amp;#160;&amp;#160; &amp;#160; &amp;#160;多态性可以简单地概括为“一个接口，多种方法”，程序在运行时才决定调用的函数，它是面向对象编程领域的核心概念。多态与非多态的实质区别就是函数地址是早绑定还是晚绑定。为了方便理解，我们将早绑定看作编译时绑定，晚绑定是运行时绑定。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="从地址角度看C++多态性"/>
+  <meta property="og:site_name" content="Cynote"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Cynote</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 从地址角度看C++多态性</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h3 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a>简介</h3><p>&#160;&#160; &#160; &#160;<br>多态性可以简单地概括为“一个接口，多种方法”，程序在运行时才决定调用的函数，它是面向对象编程领域的核心概念。多态与非多态的实质区别就是函数地址是早绑定还是晚绑定。为了方便理解，我们将早绑定看作编译时绑定，晚绑定是运行时绑定。<br><a id="more"></a><br>先看个例题</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">class</span> A</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">int</span> a</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;<span class="built_in">printf</span>(<span class="string">"This is A::f"</span>);&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">g</span><span class="params">()</span></span>&#123;<span class="built_in">printf</span>(<span class="string">"This is A::g"</span>);&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> B : <span class="keyword">public</span> A</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;<span class="built_in">printf</span>(<span class="string">"This is B::f"</span>);&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">g</span><span class="params">()</span></span>&#123;<span class="built_in">printf</span>(<span class="string">"This is B::g"</span>);&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    B b;</span><br><span class="line">    A* pa = &amp;b;</span><br><span class="line">    pa-&gt;f();</span><br><span class="line">    pa-&gt;g();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果就是This is A::f和This is B::g.题解与原理如下</p>
+<h3 id="u591A_u6001_u5B9E_u73B0_u539F_u7406"><a href="#u591A_u6001_u5B9E_u73B0_u539F_u7406" class="headerlink" title="多态实现原理"></a>多态实现原理</h3><p>&#160;&#160; &#160; &#160;<br>虚函数在c++中的实现机制就是用虚表vtbl和虚指针vptr，是每个类用了一个虚表，每个类的对象用了一个虚指针。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> A</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">int</span> a</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;<span class="built_in">printf</span>(<span class="string">"This is A::f"</span>);&#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">g</span><span class="params">()</span></span>&#123;<span class="built_in">printf</span>(<span class="string">"This is A::g"</span>);&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> B : <span class="keyword">public</span> A</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;<span class="built_in">printf</span>(<span class="string">"This is B::f"</span>);&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">g</span><span class="params">()</span></span>&#123;<span class="built_in">printf</span>(<span class="string">"This is B::g"</span>);&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>因为A有virtual void g（），所以编译器为A类准备了一个虚表vtableA，内容如下：</p>
+<table>
+<thead>
+<tr>
+<th>A::g 的地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>B因为继承了A，所以编译器也为B准备了一个虚表vtableB。因为B::ｇ是重写了的，所以B的虚表的g放的是B::g的入口地址。内容如下：</p>
+<table>
+<thead>
+<tr>
+<th>B::g 的地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>当实例类B时（如B b），编译器分配空间时，除了A的int a，B的成员int b；以外，还分配了一个虚指针vptr，指向B的虚表vtableB（虚指针vptr一般为对象入口地址，是编译器而定）。b的布局如下：</p>
+<table>
+<thead>
+<tr>
+<th>vptr ： 指向B的虚表vtableB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int a： 继承A的成员</td>
+</tr>
+<tr>
+<td><em>A::f: 继承A的f函数（已隐藏)</em></td>
+</tr>
+<tr>
+<td>int b： B成员</td>
+</tr>
+<tr>
+<td>B::f: B的f函数</td>
+</tr>
+</tbody>
+</table>
+<p>当如下语句的时候：<br>A* pa = &bB;</p>
+<p>&#160;&#160; &#160; &#160;<br>pa的结构就是A的布局。即pa只能访问的到b对象的前三项，访问不到后面B子类特有的两项。因为A::f函数与B::f函数同名，所以当子类B实例化时，A::f被隐藏。</p>
+<p>&#160;&#160; &#160; &#160;<br>而pa结构是A布局，不包含子类B特有函数f，即A::f不被隐藏，所以此时pa指向的f函数为A::f。也可以用固定偏移量解释。所以pa-&gt;f()输出为”This is A::f”。</p>
+<p>&#160;&#160; &#160; &#160;<br>当pa-&gt;g()时，g为一个声明的virtual是一个声明为virtual的成员函数，放在B的虚表中，所以调用的是B的g函数。所以pa-&gt;g()输出为”This is B::g”。</p>
+<p>下面我们讲解一下虚表中虚函数地址的调用方法</p>
+<h3 id="u865A_u51FD_u6570_u5730_u5740_u8C03_u7528"><a href="#u865A_u51FD_u6570_u5730_u5740_u8C03_u7528" class="headerlink" title="虚函数地址调用"></a>虚函数地址调用</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">class</span> A&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"A::fun"</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fun2</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"A::fun2"</span>&lt;&lt;endl;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> B : <span class="keyword">public</span> A&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"B::fun"</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">fun2</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"B::fun2"</span>&lt;&lt;endl;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">void</span>(A::*fun)();<span class="comment">//定义一个函数指针</span></span><br><span class="line">    A* p=<span class="keyword">new</span> B;</span><br><span class="line">    fun=&amp;A::fun;</span><br><span class="line"></span><br><span class="line">    (p-&gt;* fun)();</span><br><span class="line">    fun=&amp;A::fun2;</span><br><span class="line">    (p-&gt;* fun)();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你能估算出结果吗？如果你估算出的结果是A::fun和A::fun2，呵呵，恭喜恭喜，你中圈套了。其实真正的结果是B::fun和B::fun2，如果你想不通就接着往下看。给个提示，&amp;A::fun和&amp;A::fun2是真正获得了虚函数的地址吗？<br>首先我们回到第二部分，通过段实作代码，得到一个“通用”的获得虚函数地址的方法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//将上面“虚函数示例代码2”添加在这里</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CallVirtualFun</span><span class="params">(<span class="keyword">void</span>*pThis,intindex=<span class="number">0</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">void</span>(*funptr)(<span class="keyword">void</span>*);</span><br><span class="line">    <span class="keyword">long</span> lVptrAddr;</span><br><span class="line">    <span class="built_in">memcpy</span>(&amp;lVptrAddr,pThis,<span class="number">4</span>);</span><br><span class="line">    <span class="built_in">memcpy</span>(&amp;funptr,<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">long</span>*&gt;(lVptrAddr)+index,<span class="number">4</span>);</span><br><span class="line">    funptr(pThis);<span class="comment">//调用</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    A* p = <span class="keyword">new</span> B;</span><br><span class="line">    CallVirtualFun(p);<span class="comment">//调用虚函数p-&gt;fun()</span></span><br><span class="line">    CallVirtualFun(p,<span class="number">1</span>);<span class="comment">//调用虚函数p-&gt;fun2()</span></span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们拥有一个“通用”的<code>CallVirtualFun</code>方法。<br>这个通用方法和第三部分开始处的代码有何联系呢？联系很大。由于A::fun（）和A::fun2（）是虚函数，所以&amp;A::fun和&amp;A::fun2获得的不是函数的地址，而是一段间接获得虚函数地址的一段代码的地址，我们形象地把这段代码看作那段CallVirtualFun。编译器在编译时，会提供类似于CallVirtualFun这样的代码，当你调用虚函数时，其实就是先调用的那段类似CallVirtualFun的代码，通过这段代码，获得虚函数地址后，最后调用虚函数，这样就真正保证了多态性。同时大家都说虚函数的效率低，其原因就是，在调用虚函数之前，还调用了获得虚函数地址的代码。</p>
+<h4 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h4><ul>
+<li>blog.csdn.net/hackbuteer1/article/details/7475622con</li>
+<li><a href="http://blog.chinaunix.net/uid-7396260-id-2056657.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-7396260-id-2056657.html</a></li>
+<li><a href="http://baike.baidu.com/link?url=g5ysnPiRUwyQnTAdmJ6nECgT4yOUrPO4OCfsHca-m0wcNeaCsdKxyg79OJozJEcaq3OaWpFPxq1Zxq2XXMfMRq" target="_blank" rel="external">http://baike.baidu.com/link?url=g5ysnPiRUwyQnTAdmJ6nECgT4yOUrPO4OCfsHca-m0wcNeaCsdKxyg79OJozJEcaq3OaWpFPxq1Zxq2XXMfMRq</a><br><em>
+</em></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2014/10/10/Linux/GithubPages/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2014/05/02/TopicModel/TopicModel1/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2014-06-15 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/catetories/数据结构-算法/">数据结构&算法<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/多态性/">多态性<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#u7B80_u4ECB"><span class="toc-article-text">简介</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#u591A_u6001_u5B9E_u73B0_u539F_u7406"><span class="toc-article-text">多态实现原理</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#u865A_u51FD_u6570_u5730_u5740_u8C03_u7528"><span class="toc-article-text">虚函数地址调用</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#u53C2_u8003"><span class="toc-article-text">参考</span></a></li></ol></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2016 张端风
+  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
