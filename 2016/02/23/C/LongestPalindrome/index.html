@@ -6,7 +6,7 @@
   <title>字符串-最长回文子串 | Cynote</title>
   <meta name="author" content="张端风">
   
-  <meta name="description" content="题意给出一个只由小写英文字符a,b,c…y,z组成的字符串S,求S中最长回文串。开门见山，目前求最长回文子串最优的方法为Manacher算法，时间复杂度O(N);">
+  <meta name="description" content="题意给出一个由英文字符组成的字符串S,求S中最长回文串。开门见山，目前求最长回文子串最优的方法为Manacher算法，时间复杂度O(N);">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -95,7 +95,7 @@
 	<div class="mypage">		
 	  		
 
-	  <h3 id="u9898_u610F"><a href="#u9898_u610F" class="headerlink" title="题意"></a>题意</h3><p>给出一个只由小写英文字符a,b,c…y,z组成的字符串S,求S中最长回文串。开门见山，目前求最长回文子串最优的方法为Manacher算法，时间复杂度O(N);<br><a id="more"></a></p>
+	  <h3 id="u9898_u610F"><a href="#u9898_u610F" class="headerlink" title="题意"></a>题意</h3><p>给出一个由英文字符组成的字符串S,求S中最长回文串。开门见山，目前求最长回文子串最优的方法为Manacher算法，时间复杂度O(N);<br><a id="more"></a></p>
 <h3 id="Manacher_u7B97_u6CD5_u8BE6_u89E3"><a href="#Manacher_u7B97_u6CD5_u8BE6_u89E3" class="headerlink" title="Manacher算法详解"></a>Manacher算法详解</h3><h4 id="1-_u5B57_u7B26_u4E32_u957F_u5EA6_u5947_u5076_u7EDF_u4E00_u5904_u7406"><a href="#1-_u5B57_u7B26_u4E32_u957F_u5EA6_u5947_u5076_u7EDF_u4E00_u5904_u7406" class="headerlink" title="1.字符串长度奇偶统一处理"></a>1.字符串长度奇偶统一处理</h4><p>&#160;&#160; &#160; &#160;<br>首先，Manacher算法提供了一种巧妙地办法，将长度为奇数的回文串和长度为偶数的回文串一起考虑，具体做法是，在原字符串的每个相邻两个字符中间插入一个分隔符，同时在首尾也要添加一个分隔符，分隔符的要求是不在原串中出现，一般情况下可以用#号。下面举一个例子：<br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/manacher1.png" alt=""></p>
 <h4 id="2-Len_u6570_u7EC4_u7B80_u4ECB"><a href="#2-Len_u6570_u7EC4_u7B80_u4ECB" class="headerlink" title="2.Len数组简介"></a>2.Len数组简介</h4><p>&#160;&#160; &#160; &#160;<br>Manacher算法用一个辅助数组Len[i]表示以字符T[i]为中心的最长回文字串的最右字符到T[i]的长度，比如以T[i]为中心的最长回文字串是T[l,r],那么Len[i]=r-i+1。</p>
 <p>&#160;&#160; &#160; &#160; 对于上面的例子，可以得出Len[i]数组为:<br><img src="http://7xjfxk.com1.z0.glb.clouddn.com/manacher2.png" alt=""></p>
