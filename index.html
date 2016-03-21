@@ -94,6 +94,49 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2016-02-23 </div>
+			<div class="article-title"><a href="/2016/02/23/C/LongestPalindrome/" >字符串-最长回文子串</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h3 id="u9898_u610F"><a href="#u9898_u610F" class="headerlink" title="题意"></a>题意</h3><p>给出一个只由小写英文字符a,b,c…y,z组成的字符串S,求S中最长回文串。开门见山，目前求最长回文子串最优的方法为Manacher算法，时间复杂度O(N);<br>
+	
+	</div>
+  <a type="button" href="/2016/02/23/C/LongestPalindrome/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2016-02-17 </div>
+			<div class="article-title"><a href="/2016/02/17/C/max_sub_matrix/" >HDU1559-最大子矩阵(限子矩阵长宽)</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h3 id="u9898_u76EE"><a href="#u9898_u76EE" class="headerlink" title="题目"></a>题目</h3><p>原题链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1559">http://acm.hdu.edu.cn/showproblem.php?pid=1559</a></p>
+<p>给你一个m×n的整数矩阵，在上面找一个x×y的子矩阵，使子矩阵中所有元素的和最大。<br>
+	
+	</div>
+  <a type="button" href="/2016/02/17/C/max_sub_matrix/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2016-02-15 </div>
 			<div class="article-title"><a href="/2016/02/15/C/WordLadder/" >LeetCode127——WordLadder题解</a></div>						
 		</h3>
@@ -595,6 +638,36 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2015-07-02 </div>
+			<div class="article-title"><a href="/2015/07/02/Linux/Gentoo-Network/" >Gentoo II NetWork -- Ethernet, Wireless, Shadowsocks</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>It is easy to config the Network for most desktop with just single Ethernet interface, but not easy for laptop with both Ethernet and Wireless interface. Because Wifi supplicant has some conflict with dhcpcd, we should pay more attention to them.</p>
+<h2 id="Ethernet__26amp_3B_26amp_3B_Wireless"><a href="#Ethernet__26amp_3B_26amp_3B_Wireless" class="headerlink" title="Ethernet &amp;&amp; Wireless"></a>Ethernet &amp;&amp; Wireless</h2><p>If no requirement for static IP address, we prefer DHCP that can obtain it automatically. <code>dhcp</code> is a popular client that is capable of handing both IPv4 and IPv6 configurations.<br>Firstly install the <code>dhcp</code>, rather than ‘dhcpcd’, which has conflits with <code>NetWorkManager</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge dhcp</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Important</strong>: Don’t add anything to <code>/etc/conf.d/net</code>, and ‘NetworkManager<code>will set</code>dhcp` default;</p>
+<p>Then, set the symbol of ethernet and wireless.<br><strong>This is the necessary step.</strong> Without symbol, the <code>NetworkManager</code> would fail to start.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # cd /etc/ini.t&#10;root # ln -s net.lo net.enp2s0&#10;root # ln -s net.lo net.wlp3s0</span><br></pre></td></tr></table></figure></p>
+<p><strong>Important</strong>: Don’t add ethernet and wireless to any runlevel, <code>NetworkManager</code> will call them automatically;</p>
+<h2 id="GUI"><a href="#GUI" class="headerlink" title="GUI"></a>GUI</h2><p>Both Wicd and NetworkManager are greatful graphical client on desktop environment, and we prefer Networkmanager. Though wicd is powerful, it has not plugin for panel. However, Networkmanager has a panel client <code>nm-applet</code> as a button in panel, which looks concise.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge networkmanager</span></span><br><span class="line">root <span class="comment"># emerge nm-applet</span></span><br><span class="line">root <span class="comment"># rc-update add NetworkManager default</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h2><p>Don’t use the shadowsocks-libev in default gentoo portage, which need specify either Ethernet or Wireless manually. The shadowsocks in <code>pip</code> is prefered one.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge dev-python/pip</span></span><br><span class="line">root <span class="comment"># pip install shadowsocks</span></span><br></pre></td></tr></table></figure></p>
+<p>Then set the shadowsocks configuration <code>/etc/shadowsocks.json</code> like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;        &#34;server&#34;:&#34;128.199.226.255&#34;,&#10;        &#34;server_port&#34;:8388,&#10;        &#34;local_port&#34;:1080,&#10;        &#34;password&#34;:&#34;262524&#34;,&#10;        &#34;timeout&#34;:600,&#10;        &#34;method&#34;:&#34;aes-256-cfb&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Launch shadowsocks<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># ssclient -c /etc/shadowsocks.json</span></span><br></pre></td></tr></table></figure></p>
+
+	
+	</div>
+  <a type="button" href="/2015/07/02/Linux/Gentoo-Network/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-07-02 </div>
 			<div class="article-title"><a href="/2015/07/02/Linux/Configuring_Vim_Editor/" >Configuring Vim Editor</a></div>						
 		</h3>
 	
@@ -660,36 +733,6 @@
 	
 	</div>
   <a type="button" href="/2015/07/02/Linux/Gentoo_Android_SDK/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-07-02 </div>
-			<div class="article-title"><a href="/2015/07/02/Linux/Gentoo-Network/" >Gentoo II NetWork -- Ethernet, Wireless, Shadowsocks</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>It is easy to config the Network for most desktop with just single Ethernet interface, but not easy for laptop with both Ethernet and Wireless interface. Because Wifi supplicant has some conflict with dhcpcd, we should pay more attention to them.</p>
-<h2 id="Ethernet__26amp_3B_26amp_3B_Wireless"><a href="#Ethernet__26amp_3B_26amp_3B_Wireless" class="headerlink" title="Ethernet &amp;&amp; Wireless"></a>Ethernet &amp;&amp; Wireless</h2><p>If no requirement for static IP address, we prefer DHCP that can obtain it automatically. <code>dhcp</code> is a popular client that is capable of handing both IPv4 and IPv6 configurations.<br>Firstly install the <code>dhcp</code>, rather than ‘dhcpcd’, which has conflits with <code>NetWorkManager</code>.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge dhcp</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>Important</strong>: Don’t add anything to <code>/etc/conf.d/net</code>, and ‘NetworkManager<code>will set</code>dhcp` default;</p>
-<p>Then, set the symbol of ethernet and wireless.<br><strong>This is the necessary step.</strong> Without symbol, the <code>NetworkManager</code> would fail to start.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root # cd /etc/ini.t&#10;root # ln -s net.lo net.enp2s0&#10;root # ln -s net.lo net.wlp3s0</span><br></pre></td></tr></table></figure></p>
-<p><strong>Important</strong>: Don’t add ethernet and wireless to any runlevel, <code>NetworkManager</code> will call them automatically;</p>
-<h2 id="GUI"><a href="#GUI" class="headerlink" title="GUI"></a>GUI</h2><p>Both Wicd and NetworkManager are greatful graphical client on desktop environment, and we prefer Networkmanager. Though wicd is powerful, it has not plugin for panel. However, Networkmanager has a panel client <code>nm-applet</code> as a button in panel, which looks concise.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge networkmanager</span></span><br><span class="line">root <span class="comment"># emerge nm-applet</span></span><br><span class="line">root <span class="comment"># rc-update add NetworkManager default</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h2><p>Don’t use the shadowsocks-libev in default gentoo portage, which need specify either Ethernet or Wireless manually. The shadowsocks in <code>pip</code> is prefered one.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># emerge dev-python/pip</span></span><br><span class="line">root <span class="comment"># pip install shadowsocks</span></span><br></pre></td></tr></table></figure></p>
-<p>Then set the shadowsocks configuration <code>/etc/shadowsocks.json</code> like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;        &#34;server&#34;:&#34;128.199.226.255&#34;,&#10;        &#34;server_port&#34;:8388,&#10;        &#34;local_port&#34;:1080,&#10;        &#34;password&#34;:&#34;262524&#34;,&#10;        &#34;timeout&#34;:600,&#10;        &#34;method&#34;:&#34;aes-256-cfb&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Launch shadowsocks<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="comment"># ssclient -c /etc/shadowsocks.json</span></span><br></pre></td></tr></table></figure></p>
-
-	
-	</div>
-  <a type="button" href="/2015/07/02/Linux/Gentoo-Network/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -1274,7 +1317,7 @@
 		
 			<li><a href="/catetories/云计算/">云计算<span>2</span></a></li>
 		
-			<li><a href="/catetories/数据结构-算法/">数据结构&amp;算法<span>2</span></a></li>
+			<li><a href="/catetories/数据结构-算法/">数据结构&amp;算法<span>4</span></a></li>
 		
 		</ul>
 	</div>
@@ -1286,37 +1329,40 @@
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/Gentoo-Tutorial/" class="b">Gentoo Tutorial<span>1</span>
-			</a></li>
-		
-			<li><a href="/tags/rsync-sersync/" class="b">rsync + sersync<span>1</span>
-			</a></li>
-		
-			<li><a href="/tags/Network/" class="b">Network<span>4</span>
-			</a></li>
-		
-			<li><a href="/tags/Fedora/" class="b">Fedora<span>1</span>
-			</a></li>
-		
-			<li><a href="/tags/Github/" class="b">Github<span>2</span>
+			<li><a href="/tags/GithubPages/" class="b">GithubPages<span>1</span>
 			</a></li>
 		
 			<li><a href="/tags/hexo/" class="b">hexo<span>1</span>
 			</a></li>
 		
+			<li><a href="/tags/Gentoo-Tutorial/" class="b">Gentoo Tutorial<span>1</span>
+			</a></li>
+		
+			<li><a href="/tags/Network/" class="b">Network<span>4</span>
+			</a></li>
+		
+			<li><a href="/tags/Github/" class="b">Github<span>2</span>
+			</a></li>
+		
+			<li><a href="/tags/最大子矩阵/" class="b">最大子矩阵<span>2</span>
+			</a></li>
+		
+			<li><a href="/tags/ACM/" class="b">ACM<span>1</span>
+			</a></li>
+		
 			<li><a href="/tags/用户管理/" class="b">用户管理<span>1</span>
 			</a></li>
 		
-			<li><a href="/tags/GithubPages/" class="b">GithubPages<span>1</span>
+			<li><a href="/tags/rsync-sersync/" class="b">rsync + sersync<span>1</span>
 			</a></li>
 		
-			<li><a href="/tags/HashMap原理/" class="b">HashMap原理<span>1</span>
+			<li><a href="/tags/Fedora/" class="b">Fedora<span>1</span>
 			</a></li>
 		
 			<li><a href="/tags/VMware虚拟机/" class="b">VMware虚拟机<span>1</span>
 			</a></li>
 		
-			<li><a href="/tags/ACM/" class="b">ACM<span>1</span>
+			<li><a href="/tags/HashMap原理/" class="b">HashMap原理<span>1</span>
 			</a></li>
 		
 			<li><a href="/tags/多态性/" class="b">多态性<span>1</span>
@@ -1334,6 +1380,14 @@
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2016/02/23/C/LongestPalindrome/" ><i class="fa fa-file-o"></i>字符串-最长回文子串...</a>
+      </li>
+    
+      <li>
+        <a href="/2016/02/17/C/max_sub_matrix/" ><i class="fa fa-file-o"></i>HDU1559-最大子矩阵(限子矩阵长宽)...</a>
+      </li>
+    
+      <li>
         <a href="/2016/02/15/C/WordLadder/" ><i class="fa fa-file-o"></i>LeetCode127——WordLadder题解...</a>
       </li>
     
@@ -1343,14 +1397,6 @@
     
       <li>
         <a href="/2015/12/30/Journals/20151230_log/" ><i class="fa fa-file-o"></i>...</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/24/Linux/Introduction_To_Linux/" ><i class="fa fa-file-o"></i>...</a>
-      </li>
-    
-      <li>
-        <a href="/2015/12/10/Linux/Gentoo_Backup_Strategy/" ><i class="fa fa-file-o"></i>Gentoo Backup Strategy...</a>
       </li>
     
   </ul>
